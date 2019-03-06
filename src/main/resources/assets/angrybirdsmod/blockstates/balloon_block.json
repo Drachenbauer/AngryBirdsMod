@@ -1,0 +1,9 @@
+{
+    "variants":
+    {
+        "facing=north": { "model": "angrybirdsmod:block/balloon_block" },
+        "facing=east":  { "model": "angrybirdsmod:block/balloon_block", "y": 90 },
+        "facing=south": { "model": "angrybirdsmod:block/balloon_block", "y": 180 },
+        "facing=west":  { "model": "angrybirdsmod:block/balloon_block", "y": 270 }
+    }
+}

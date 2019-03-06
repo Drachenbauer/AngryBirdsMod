@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " b ",
+        " c ",
+        " e "
+    ],
+    
+    "key":
+    {  
+    	"b":
+        {
+            "item": "minecraft:bone_meal"
+        },
+                
+        "c":
+        {
+            "item": "minecraft:clay"
+        },
+        
+        "e":
+        {
+            "item": "minecraft:egg"
+        }        
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:egg_block",
+        "count": 1
+    }
+}

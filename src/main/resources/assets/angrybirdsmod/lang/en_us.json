@@ -1,0 +1,43 @@
+
+{
+    //Block names
+    "block.angrybirdsmod.balloon_block": "Balloon",
+    "block.angrybirdsmod.egg_block": "Egg",
+    "block.angrybirdsmod.nest_block": "Nest",
+    "block.angrybirdsmod.slingshot_block": "Single stringed Slingshot",
+    "block.angrybirdsmod.slingshot2_block": "Double stringed Slingshot",
+    
+    //Item names
+	"item.angrybirdsmod.red_spawn_egg": "Red-Spawn-Egg",
+	"item.angrybirdsmod.chuck_spawn_egg": "Chuck-Spawn-Egg",
+	"item.angrybirdsmod.blues_spawn_egg": "The Blues-Spawn-Egg",
+	"item.angrybirdsmod.bomb_spawn_egg": "Bomb-Spawn-Egg",
+	"item.angrybirdsmod.mathilda_spawn_egg": "Mathilda-Spawn-Egg",
+	"item.angrybirdsmod.terence_spawn_egg": "Terence-Spawn-Egg",
+	"item.angrybirdsmod.silver_spawn_egg": "Silver-Spawn-Egg",
+	"item.angrybirdsmod.bubbles_spawn_egg": "Bubbles-Spawn-Egg",
+	"item.angrybirdsmod.hal_spawn_egg": "Hal-Spawn-Egg",
+	"item.angrybirdsmod.stella_spawn_egg": "Stella-Spawn-Egg",
+	"item.angrybirdsmod.willow_spawn_egg": "Willow-Spawn-Egg",
+	"item.angrybirdsmod.poppy_spawn_egg": "Poppy-Spawn-Egg",
+	"item.angrybirdsmod.dahlia_spawn_egg": "Dahlia-Spawn-Egg",
+	"item.angrybirdsmod.luca_spawn_egg": "Luca-Spawn-Egg",
+	"item.angrybirdsmod.icebird_spawn_egg": "Ice Bird-Spawn-Egg",
+
+    //Entity names
+    "entity.angrybirdsmod.red": "Red",
+    "entity.angrybirdsmod.chuck": "Chuck",
+    "entity.angrybirdsmod.blues": "The Blues",
+    "entity.angrybirdsmod.bomb": "Bomb",
+    "entity.angrybirdsmod.mathilda": "Mathilda",
+    "entity.angrybirdsmod.terence": "Terence",
+    "entity.angrybirdsmod.silver": "Silver",
+    "entity.angrybirdsmod.bubbles": "Bubbles",
+    "entity.angrybirdsmod.hal": "Hal",
+    "entity.angrybirdsmod.stella": "Stella",
+    "entity.angrybirdsmod.willow": "Willow",
+    "entity.angrybirdsmod.poppy": "Poppy",
+    "entity.angrybirdsmod.dahlia": "Dahlia",
+    "entity.angrybirdsmod.luca": "Luca",
+    "entity.angrybirdsmod.icebird": "Ice Bird"
+}

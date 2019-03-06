@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "   ",
+        " p ",
+        " s "
+    ],
+    
+    "key":
+    {
+        "p":
+        {
+            "item": "minecraft:phantom_membrane"
+        },
+        
+        "s":
+        {
+            "item": "minecraft:string"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:balloon_block",
+        "count": 1
+    },
+    
+    "group": "balloon"
+}

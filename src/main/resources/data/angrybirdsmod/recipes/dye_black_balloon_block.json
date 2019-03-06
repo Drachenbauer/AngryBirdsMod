@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " i ",
+        " b ",
+        "   "
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "minecraft:ink_sac"
+        },
+        
+        "b":
+        {
+            "item": "angrybirdsmod:balloon_block"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:balloon_block",
+        "count": 1
+    },
+    
+    "group": "balloon"
+}

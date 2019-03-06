@@ -1,0 +1,28 @@
+modLoader="javafml" #mandatory
+loaderVersion="[25,)" #mandatory (25 is current forge version)
+credits="Drachenbauer" #optional
+authors="Drachenbauer" #optional
+
+[[mods]] #mandatory
+modId="angrybirdsmod" #mandatory
+version="${1.0}" #mandatory
+displayName="Angry Birds Mod" #mandatory
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Get the Angry Birds into Minecraft
+'''
+
+[[dependencies.angrybirdsmod]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[25,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+    
+# Here's another dependency
+[[dependencies.angrybirdsmod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.13.2]"
+    ordering="NONE"
+	side="BOTH"
