@@ -21,7 +21,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class SlingshotBlock extends Block
 {
@@ -35,12 +34,6 @@ public class SlingshotBlock extends Block
 		setRegistryName(Reference.MOD_ID, name);
 		//BlockInit.BLOCKS.add(this);
 		//ItemInit.ITEMS.add(new ItemBlock(this, new Item.Properties().group(ItemGroup.DECORATIONS).maxStackSize(64)).setRegistryName(this.getRegistryName()));
-	}
-	
-	@Override
-	public Item asItem()
-	{
-	    return ForgeRegistries.ITEMS.getValue(this.getRegistryName());
 	}
 	
 	public Block addToBlockAndItemBlockRegistryList()

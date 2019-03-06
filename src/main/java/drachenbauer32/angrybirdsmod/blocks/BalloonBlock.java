@@ -26,7 +26,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class BalloonBlock extends Block implements IRecipe
 {
@@ -40,12 +39,6 @@ public class BalloonBlock extends Block implements IRecipe
 		setRegistryName(Reference.MOD_ID, name);
 		//BlockInit.BLOCKS.add(this);
 		//ItemInit.ITEMS.add(new ItemBlock(this, getDefaultProperties()).setRegistryName(this.getRegistryName().getPath()));
-	}
-	
-	@Override
-	public Item asItem()
-	{
-	    return ForgeRegistries.ITEMS.getValue(this.getRegistryName());
 	}
 	
 	public Block addToBlockAndItemBlockRegistryList()
