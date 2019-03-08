@@ -6,6 +6,7 @@ import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.EnumRarity;
@@ -26,9 +27,10 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReaderBase;
 import net.minecraft.world.World;
 
-public class BalloonBlock extends Block implements IRecipe
+public class BalloonBlock extends Block implements IRecipe, IBlockColor
 {
 	protected static final VoxelShape BALLOON_BLOCK_AABB = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 16.0D, 11.0D);
 	public static final DirectionProperty FACING = BlockHorizontal.HORIZONTAL_FACING;
@@ -130,12 +132,9 @@ public class BalloonBlock extends Block implements IRecipe
 		return false;
 	}
 
-    /*public interface IBlockColor
-    {
-        int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex);
-    }
-    @Override
-    public IBlockColor getBlockColor() {
-        return null;
-    }*/
+	@Override
+	public int getColor(IBlockState arg0, IWorldReaderBase arg1, BlockPos arg2, int arg3)
+	{
+		return 0;
+	}
 }
