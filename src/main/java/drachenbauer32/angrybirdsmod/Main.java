@@ -30,7 +30,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.ObjectHolder;
 
 //@ObjectHolder(Reference.MOD_ID)
 @Mod(Reference.MOD_ID)
@@ -93,17 +92,11 @@ public class Main
 		        registry.register(itemBlock1);
 		    }
 		    
-			//registerEntityAndEgg(event.getRegistry(), EntityRed.class, EntityRed::new, 0xdf0000, 0xdfbf9f, 32, 1, true, "red");
-			EggRed = EntityType.Builder.create(EntityRed.class, EntityRed::new).tracker(32, 1, true).build("angrybirdsmod.red").setRegistryName("red");
-		    event.getRegistry().register(new ItemSpawnEgg(EggRed, 0xdf0000, 0xdfbf9f, new Item.Properties().group(ItemGroup.MATERIALS)).setRegistryName("red_spawn_egg"));
-		    EggChuck = EntityType.Builder.create(EntityChuck.class, EntityChuck::new).tracker(32, 1, true).build(Reference.MOD_ID + ".chuck").setRegistryName("chuck");
-		    event.getRegistry().register(new ItemSpawnEgg(EggChuck, 0xffff00, 0xffffff, new Item.Properties().group(ItemGroup.MATERIALS)).setRegistryName("chuck_spawn_egg"));
-		    EggBlues = EntityType.Builder.create(EntityBlues.class, EntityBlues::new).tracker(32, 1, true).build(Reference.MOD_ID + ".blues").setRegistryName("blues");
-		    event.getRegistry().register(new ItemSpawnEgg(EggBlues, 0x007fff, 0xff0000, new Item.Properties().group(ItemGroup.MATERIALS)).setRegistryName("blues_spawn_egg"));
-		    EggBomb = EntityType.Builder.create(EntityBomb.class, EntityBomb::new).tracker(32, 1, true).build(Reference.MOD_ID + ".bomb").setRegistryName("bomb");
-		    event.getRegistry().register(new ItemSpawnEgg(EggBomb, 0x3f3f3f, 0x7f7f7f, new Item.Properties().group(ItemGroup.MATERIALS)).setRegistryName("bomb_spawn_egg"));
-		    EggMathilda = EntityType.Builder.create(EntityMathilda.class, EntityMathilda::new).tracker(32, 1, true).build(Reference.MOD_ID + ".mathilda").setRegistryName("mathilda");
-		    event.getRegistry().register(new ItemSpawnEgg(EggMathilda, 0xffffff, 0xffbfbf, new Item.Properties().group(ItemGroup.MATERIALS)).setRegistryName("mathilda_spawn_egg"));
+			EggRed = registerEntityAndEgg(event.getRegistry(), EntityRed.class, EntityRed::new, 0xdf0000, 0xdfbf9f, 32, 1, true, "red");
+			EggChuck = registerEntityAndEgg(event.getRegistry(), EntityChuck.class, EntityChuck::new, 0xffff00, 0xffffff, 32, 1, true, "chuck");
+			EggBlues = registerEntityAndEgg(event.getRegistry(), EntityBlues.class, EntityBlues::new, 0x007fff, 0xff0000, 32, 1, true, "blues");
+			EggBomb = registerEntityAndEgg(event.getRegistry(), EntityBomb.class, EntityBomb::new, 0x3f3f3f, 0x7f7f7f, 32, 1, true, "bomb");
+			EggMathilda = registerEntityAndEgg(event.getRegistry(), EntityMathilda.class, EntityMathilda::new, 0xffffff, 0xffbfbf, 32, 1, true, "mathilda");
 		}
 		
 		@SubscribeEvent
@@ -116,12 +109,12 @@ public class Main
 			event.getRegistry().register(EggMathilda);
 		}
 		
-		/*public static <T extends Entity>EntityType<T> registerEntityAndEgg(IForgeRegistry<Item> itemRegistry, Class<T> entityClass, Function<? super World, T> factory, int eggPrimaryColor, int eggSecondaryColor, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, String name)
+		public static <T extends Entity>EntityType<T> registerEntityAndEgg(IForgeRegistry<Item> itemRegistry, Class<T> entityClass, Function<? super World, T> factory, int eggPrimaryColor, int eggSecondaryColor, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, String name)
 	    {
 	        @SuppressWarnings("unchecked")
 			EntityType<T> type = (EntityType<T>) EntityType.Builder.create(entityClass, factory).tracker(trackingRange, updateFrequency, sendVelocityUpdates).build(Reference.MOD_ID + '.' + name).setRegistryName(name);
 	        itemRegistry.register(new ItemSpawnEgg(type, eggPrimaryColor, eggSecondaryColor, new Item.Properties().group(ItemGroup.MATERIALS)).setRegistryName(name + "_spawn_egg"));
 	        return type;
-	    }*/
+	    }
     }
 }

@@ -9,22 +9,18 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
 public class EggBlock extends Block
 {
-	public static final AxisAlignedBB EGG_BLOCK_AABB = new AxisAlignedBB(0.3125, 0, 0.3125, 0.6875, 0.5, 0.6875);
+	protected static final VoxelShape EGG_BLOCK_AABB = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D);
 	
 	public EggBlock(String name, Properties class1) 
 	{
 		super(class1);
 		setRegistryName(Reference.MOD_ID, name);
-		//BlockInit.BLOCKS.add(this);
-		//ItemInit.ITEMS.add(new ItemBlock(this, new Item.Properties().group(ItemGroup.DECORATIONS).maxStackSize(64)).setRegistryName(this.getRegistryName()));
 	}
 	
 	public Block addToBlockAndItemBlockRegistryList()
@@ -33,22 +29,6 @@ public class EggBlock extends Block
 		BlockInit.ITEMBLOCKS.add(new ItemBlock(this, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()));
 		return this;
 	}
-	
-	/*private Item.Properties getDefaultProperties()
-	{
-	     return new Item.Properties()
-	                .defaultMaxDamage(0)
-	                .group(ItemGroup.DECORATIONS)
-	                .maxStackSize(64)
-	                .rarity(EnumRarity.COMMON)
-	                .setNoRepair()
-	               ;
-	}
-
-	public Item getItemBlock()
-	{
-	    return new ItemBlock(this, getDefaultProperties()).setRegistryName(this.getRegistryName().getPath());
-	}*/
 	
 	@Override
 	public boolean isSolid(IBlockState state)
@@ -65,18 +45,18 @@ public class EggBlock extends Block
 	@Override
 	public VoxelShape getShape(IBlockState state, IBlockReader p_196244_2_, BlockPos p_196244_3_)
 	{
-		return VoxelShapes.create(EGG_BLOCK_AABB);
+		return EGG_BLOCK_AABB;
 	}
 	
 	@Override
 	public VoxelShape getRenderShape(IBlockState state, IBlockReader p_196247_2_, BlockPos p_196247_3_)
 	{
-		return VoxelShapes.create(EGG_BLOCK_AABB);
+		return EGG_BLOCK_AABB;
 	}
 	
 	@Override
 	public VoxelShape getCollisionShape(IBlockState state, IBlockReader p_196268_2_, BlockPos p_196268_3_)
 	{
-		return VoxelShapes.create(EGG_BLOCK_AABB);
+		return EGG_BLOCK_AABB;
 	}
 }
