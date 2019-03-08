@@ -17,9 +17,9 @@ public class EggBlock extends Block
 {
 	protected static final VoxelShape EGG_BLOCK_AABB = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D);
 	
-	public EggBlock(String name, Properties class1) 
+	public EggBlock(String name, Properties properties) 
 	{
-		super(class1);
+		super(properties);
 		setRegistryName(Reference.MOD_ID, name);
 	}
 	

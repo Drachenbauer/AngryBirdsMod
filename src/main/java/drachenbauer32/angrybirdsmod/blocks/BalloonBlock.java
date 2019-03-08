@@ -1,34 +1,28 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
+import drachenbauer32.angrybirdsmod.entity.tile_entity.TileEntityBlockColors;
 import drachenbauer32.angrybirdsmod.init.BlockInit;
 import drachenbauer32.angrybirdsmod.util.Reference;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.color.IBlockColor;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReaderBase;
-import net.minecraft.world.World;
 
 public class BalloonBlock extends Block
 {
@@ -36,9 +30,9 @@ public class BalloonBlock extends Block
 	public static final DirectionProperty FACING = BlockHorizontal.HORIZONTAL_FACING;
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 	
-	public BalloonBlock(String name, Properties class1) 
+	public BalloonBlock(String name, Properties properties) 
 	{
-		super(class1);
+		super(properties);
 		setRegistryName(Reference.MOD_ID, name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, EnumFacing.NORTH));
 		this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
@@ -94,5 +88,20 @@ public class BalloonBlock extends Block
 	public IBlockState rotate(IBlockState state, Rotation rot)
 	{
 	    return state.with(FACING, rot.rotate(state.get(FACING)));
+	}
+	
+	@Override
+	public boolean hasTileEntity()
+	{
+		return true;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(IBlockState state, IBlockReader world)
+	{
+		return new TileEntityBlockColors(null)
+		{
+			
+		};
 	}
 }

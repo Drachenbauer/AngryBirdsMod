@@ -27,9 +27,9 @@ public class SlingshotBlock extends Block
 	protected static final VoxelShape WEST_AABB = Block.makeCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 	public static final DirectionProperty FACING = BlockHorizontal.HORIZONTAL_FACING;
 	
-	public SlingshotBlock(String name, Properties class1) 
+	public SlingshotBlock(String name, Properties properties) 
 	{
-		super(class1);
+		super(properties);
 		setRegistryName(Reference.MOD_ID, name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, EnumFacing.NORTH));
 	}
