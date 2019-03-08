@@ -30,7 +30,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReaderBase;
 import net.minecraft.world.World;
 
-public class BalloonBlock extends Block implements IRecipe, IBlockColor
+public class BalloonBlock extends Block
 {
 	protected static final VoxelShape BALLOON_BLOCK_AABB = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 16.0D, 11.0D);
 	public static final DirectionProperty FACING = BlockHorizontal.HORIZONTAL_FACING;
@@ -94,47 +94,5 @@ public class BalloonBlock extends Block implements IRecipe, IBlockColor
 	public IBlockState rotate(IBlockState state, Rotation rot)
 	{
 	    return state.with(FACING, rot.rotate(state.get(FACING)));
-	}
-
-	@Override
-	public boolean canFit(int arg0, int arg1)
-	{
-		return false;
-	}
-
-	@Override
-	public ItemStack getCraftingResult(IInventory arg0)
-	{
-		return null;
-	}
-
-	@Override
-	public ResourceLocation getId()
-	{
-		return null;
-	}
-
-	@Override
-	public ItemStack getRecipeOutput()
-	{
-		return null;
-	}
-
-	@Override
-	public IRecipeSerializer<?> getSerializer()
-	{
-		return null;
-	}
-
-	@Override
-	public boolean matches(IInventory arg0, World arg1)
-	{
-		return false;
-	}
-
-	@Override
-	public int getColor(IBlockState arg0, IWorldReaderBase arg1, BlockPos arg2, int arg3)
-	{
-		return 0;
 	}
 }
