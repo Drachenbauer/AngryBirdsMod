@@ -1,14 +1,9 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
-import drachenbauer32.angrybirdsmod.init.BlockInit;
 import drachenbauer32.angrybirdsmod.util.Reference;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -21,13 +16,6 @@ public class EggBlock extends Block
 	{
 		super(properties);
 		setRegistryName(Reference.MOD_ID, name);
-	}
-	
-	public Block addToBlockAndItemBlockRegistryList()
-	{
-		BlockInit.BLOCKS.add(this);
-		BlockInit.ITEMBLOCKS.add(new ItemBlock(this, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()));
-		return this;
 	}
 	
 	@Override

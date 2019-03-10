@@ -1,16 +1,11 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
-import drachenbauer32.angrybirdsmod.init.BlockInit;
 import drachenbauer32.angrybirdsmod.util.Reference;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.EnumFacing;
@@ -29,13 +24,6 @@ public class NestBlock extends Block
 		super(properties);
 		setRegistryName(Reference.MOD_ID, name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, EnumFacing.NORTH));
-	}
-	
-	public Block addToBlockAndItemBlockRegistryList()
-	{
-		BlockInit.BLOCKS.add(this);
-		BlockInit.ITEMBLOCKS.add(new ItemBlock(this, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()));
-		return this;
 	}
 	
 	@Override
