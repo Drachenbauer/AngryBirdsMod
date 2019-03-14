@@ -28,6 +28,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemSpawnEgg;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -83,32 +84,26 @@ public class Main
 		@SubscribeEvent
 		public static void registerBlocks(final RegistryEvent.Register<Block> event)
 		{
-			event.getRegistry().registerAll
-			(
-				BlockList.balloon_block = new BalloonBlock("balloon_block", Block.Properties.create(Material.CLOTH, MaterialColor.SNOW).sound(SoundType.CLOTH).
-		                lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
-				BlockList.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).sound(SoundType.STONE).
-		                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
-				BlockList.nest_block = new NestBlock("nest_block", Block.Properties.create(Material.GRASS, MaterialColor.GOLD).sound(SoundType.PLANT).
-		                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
-				BlockList.slingshot_block = new SlingshotBlock("slingshot_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
-		                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-				BlockList.slingshot2_block = new Slingshot2Block("slingshot2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
-				        lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity())
-			);
+			event.getRegistry().registerAll(BlockList.balloon_block = new BalloonBlock("balloon_block", Block.Properties.create(Material.CLOTH, MaterialColor.SNOW).sound(SoundType.CLOTH).
+		                							lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
+											BlockList.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).sound(SoundType.STONE).
+													lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
+											BlockList.nest_block = new NestBlock("nest_block", Block.Properties.create(Material.GRASS, MaterialColor.GOLD).sound(SoundType.PLANT).
+													lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
+											BlockList.slingshot_block = new SlingshotBlock("slingshot_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+													lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+											BlockList.slingshot2_block = new Slingshot2Block("slingshot2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+													lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()));
 		}
 		
 		@SubscribeEvent
 		public static void registerItems(final RegistryEvent.Register<Item> event)
 		{
-			event.getRegistry().registerAll
-			(
-				ItemList.baloon_block = new ItemBlock(BlockList.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.balloon_block.getRegistryName()),
-				ItemList.egg_block = new ItemBlock(BlockList.egg_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.egg_block.getRegistryName()),
-				ItemList.nest_block = new ItemBlock(BlockList.nest_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.nest_block.getRegistryName()),
-				ItemList.slingshot_block = new ItemBlock(BlockList.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot_block.getRegistryName()),
-				ItemList.slingshot2_block = new ItemBlock(BlockList.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot2_block.getRegistryName())
-			);
+			event.getRegistry().registerAll(ItemList.baloon_block = new ItemBlock(BlockList.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.balloon_block.getRegistryName()),
+											ItemList.egg_block = new ItemBlock(BlockList.egg_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.egg_block.getRegistryName()),
+											ItemList.nest_block = new ItemBlock(BlockList.nest_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.nest_block.getRegistryName()),
+											ItemList.slingshot_block = new ItemBlock(BlockList.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot_block.getRegistryName()),
+											ItemList.slingshot2_block = new ItemBlock(BlockList.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot2_block.getRegistryName()));
 			
 			EggRed = registerEntityAndEgg(event.getRegistry(), EntityRed.class, EntityRed::new, 0xdf0000, 0xdfbf9f, 32, 1, true, "red");
 			EggChuck = registerEntityAndEgg(event.getRegistry(), EntityChuck.class, EntityChuck::new, 0xffff00, 0xffffff, 32, 1, true, "chuck");
@@ -120,14 +115,11 @@ public class Main
 		@SubscribeEvent
 		public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event)
 		{
-			event.getRegistry().registerAll
-			(
-				EggRed,
-				EggChuck,
-				EggBlues,
-				EggBomb,
-				EggMathilda
-			);
+			event.getRegistry().registerAll(EggRed,
+											EggChuck,
+											EggBlues,
+											EggBomb,
+											EggMathilda);
 		}
 		
 		public static <T extends Entity>EntityType<T> registerEntityAndEgg(IForgeRegistry<Item> itemRegistry, Class<T> entityClass, Function<? super World, T> factory, int eggPrimaryColor, int eggSecondaryColor, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, String name)
