@@ -81,6 +81,8 @@ public class Main
 		
 		//@SubscribeEvent(priority=normal)
 		
+		
+		
 		@SubscribeEvent
 		public static void registerBlocks(final RegistryEvent.Register<Block> event)
 		{
@@ -99,11 +101,16 @@ public class Main
 		@SubscribeEvent
 		public static void registerItems(final RegistryEvent.Register<Item> event)
 		{
-			event.getRegistry().registerAll(ItemList.baloon_block = new ItemBlock(BlockList.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.balloon_block.getRegistryName()),
-											ItemList.egg_block = new ItemBlock(BlockList.egg_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.egg_block.getRegistryName()),
-											ItemList.nest_block = new ItemBlock(BlockList.nest_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.nest_block.getRegistryName()),
-											ItemList.slingshot_block = new ItemBlock(BlockList.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot_block.getRegistryName()),
-											ItemList.slingshot2_block = new ItemBlock(BlockList.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot2_block.getRegistryName()));
+			event.getRegistry().registerAll(ItemList.baloon_block = new ItemBlock(BlockList.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+													maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.balloon_block.getRegistryName()),
+											ItemList.egg_block = new ItemBlock(BlockList.egg_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+													maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.egg_block.getRegistryName()),
+											ItemList.nest_block = new ItemBlock(BlockList.nest_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+													maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.nest_block.getRegistryName()),
+											ItemList.slingshot_block = new ItemBlock(BlockList.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+													maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot_block.getRegistryName()),
+											ItemList.slingshot2_block = new ItemBlock(BlockList.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+													maxStackSize(64).rarity(EnumRarity.COMMON).setNoRepair()).setRegistryName(BlockList.slingshot2_block.getRegistryName()));
 			
 			EggRed = registerEntityAndEgg(event.getRegistry(), EntityRed.class, EntityRed::new, 0xdf0000, 0xdfbf9f, 32, 1, true, "red");
 			EggChuck = registerEntityAndEgg(event.getRegistry(), EntityChuck.class, EntityChuck::new, 0xffff00, 0xffffff, 32, 1, true, "chuck");
