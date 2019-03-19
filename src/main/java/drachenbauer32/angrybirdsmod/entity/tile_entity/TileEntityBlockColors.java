@@ -5,8 +5,13 @@ import net.minecraft.tileentity.TileEntityType;
 
 public class TileEntityBlockColors extends TileEntity
 {
-	public TileEntityBlockColors(TileEntityType<?> tileEntityTypeIn)
+	protected TileEntityBlockColors(TileEntityType<?> tileEntityTypeIn)
 	{
 		super(tileEntityTypeIn);
+	}
+	
+	public TileEntityBlockColors()
+	{
+		this(TileEntityType.BANNER);
 	}
 }

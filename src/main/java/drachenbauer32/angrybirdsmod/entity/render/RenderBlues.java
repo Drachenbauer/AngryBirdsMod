@@ -5,7 +5,8 @@ import org.lwjgl.opengl.GL11;
 import drachenbauer32.angrybirdsmod.entity.EntityBlues;
 import drachenbauer32.angrybirdsmod.entity.model.ModelBluesTrio;
 import drachenbauer32.angrybirdsmod.util.Reference;
-
+import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -31,9 +32,16 @@ public class RenderBlues extends RenderLiving<EntityBlues>
 		super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
 	}
 	
-	public float prepareScale(EntityBlues entitylivingbaseIn, float partialTicks)
+	@Override
+	protected void preRenderCallback(EntityBlues entitylivingbaseIn, float partialTickTime)
+	{
+	      float f = 0.5F;
+	      GlStateManager.scalef(f, f, f);
+	}
+	
+	/*public float prepareScale(EntityBlues entitylivingbaseIn, float partialTicks)
 	{
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		return super.prepareScale(entitylivingbaseIn, partialTicks);
-	}
+	}*/
 }

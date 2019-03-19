@@ -8,28 +8,28 @@ import net.minecraft.entity.Entity;
 public class ModelWillow extends ModelBase
 {
 	private final ModelRenderer bone;
-	
+
 	public ModelWillow()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
-		
+		textureWidth = 128;
+		textureHeight = 64;
+
 		bone = new ModelRenderer(this);
-		bone.setRotationPoint(0.0F, 20.0F, 0.0F);
-		bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 25, 6, -1.0F, 2.0F, -5.0F, 2, 1, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 24, 12, -5.0F, -5.0F, -5.0F, 10, 9, 10, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 0, -1.0F, -2.0F, -6.0F, 2, 2, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 1, 4, -2.0F, -4.0F, -6.0F, 1, 2, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 1, 4, 1.0F, -4.0F, -6.0F, 1, 2, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 26, 0, -5.0F, 1.0F, -3.0F, 1, 3, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 26, 0, 4.0F, 1.0F, -3.0F, 1, 3, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 26, 0, -5.0F, 2.0F, -1.0F, 1, 2, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 26, 0, 4.0F, 2.0F, -1.0F, 1, 2, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 16, -8.0F, 3.0F, -3.0F, 3, 1, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 16, 5.0F, 3.0F, -3.0F, 3, 1, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 16, -8.0F, 3.0F, -1.0F, 3, 1, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 16, 5.0F, 3.0F, -1.0F, 3, 1, 1, 0.0F, false));
+		bone.setRotationPoint(0.0F, 16.0F, 0.0F);
+		bone.cubeList.add(new ModelBox(bone, 0, 0, -8.0F, -8.0F, -8.0F, 16, 16, 16, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 50, 12, -2.0F, 4.0F, -10.0F, 4, 2, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 56, 28, -9.0F, -9.0F, -9.0F, 18, 17, 18, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 0, -2.0F, -4.0F, -10.0F, 4, 4, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 2, 8, -4.0F, -8.0F, -10.0F, 2, 4, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 2, 8, 2.0F, -8.0F, -10.0F, 2, 4, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 52, 0, -9.0F, 2.0F, -6.0F, 1, 6, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 52, 0, 8.0F, 2.0F, -6.0F, 1, 6, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 52, 0, -9.0F, 4.0F, -2.0F, 1, 4, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 52, 0, 8.0F, 4.0F, -2.0F, 1, 4, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 32, -14.0F, 7.0F, -6.0F, 5, 1, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 32, 9.0F, 7.0F, -6.0F, 5, 1, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 32, -14.0F, 7.0F, -2.0F, 5, 1, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 32, 9.0F, 7.0F, -2.0F, 5, 1, 2, 0.0F, false));
 	}
 	
 	@Override

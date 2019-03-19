@@ -55,6 +55,7 @@ public class RenderHandler
 				return new RenderBomb(manager);
 			}
 		});
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityMathilda.class, new IRenderFactory<EntityMathilda>()
 		{
 			@Override
