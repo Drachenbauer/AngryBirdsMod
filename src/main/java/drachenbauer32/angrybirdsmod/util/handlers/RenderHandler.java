@@ -20,49 +20,10 @@ public class RenderHandler
 {
 	public static void regigisterEntityRenders()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityRed.class, new IRenderFactory<EntityRed>()
-		{
-			@Override
-			public Render<? super EntityRed> createRenderFor(RenderManager manager)
-			{
-				return new RenderRed(manager);
-			}
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityChuck.class, new IRenderFactory<EntityChuck>()
-		{
-			@Override
-			public Render<? super EntityChuck> createRenderFor(RenderManager manager)
-			{
-				return new RenderChuck(manager);
-			}
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityBlues.class, new IRenderFactory<EntityBlues>()
-		{
-			@Override
-			public Render<? super EntityBlues> createRenderFor(RenderManager manager)
-			{
-				return new RenderBlues(manager);
-			}
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class, new IRenderFactory<EntityBomb>()
-		{
-			@Override
-			public Render<? super EntityBomb> createRenderFor(RenderManager manager)
-			{
-				return new RenderBomb(manager);
-			}
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityMathilda.class, new IRenderFactory<EntityMathilda>()
-		{
-			@Override
-			public Render<? super EntityMathilda> createRenderFor(RenderManager manager)
-			{
-				return new RenderMathilda(manager);
-			}
-		});
+		RenderingRegistry.registerEntityRenderingHandler(EntityRed.class,(RenderManager manager) -> new RenderRed(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityChuck.class,(RenderManager manager) -> new RenderChuck(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBlues.class,(RenderManager manager) -> new RenderBlues(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class,(RenderManager manager) -> new RenderBomb(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityMathilda.class,(RenderManager manager) -> new RenderMathilda(manager));
 	}
 }

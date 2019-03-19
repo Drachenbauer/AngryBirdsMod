@@ -5,7 +5,7 @@ import net.minecraft.tileentity.TileEntityType;
 
 public class TileEntityBlockColors extends TileEntity
 {
-	protected TileEntityBlockColors(TileEntityType<?> tileEntityTypeIn)
+	public TileEntityBlockColors(TileEntityType<?> tileEntityTypeIn)
 	{
 		super(tileEntityTypeIn);
 	}

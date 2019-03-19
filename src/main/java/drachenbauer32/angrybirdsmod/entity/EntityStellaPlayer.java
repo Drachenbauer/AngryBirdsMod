@@ -3,9 +3,6 @@ package drachenbauer32.angrybirdsmod.entity;
 import com.mojang.authlib.GameProfile;
 
 import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHandSide;
