@@ -1,11 +1,8 @@
 package drachenbauer32.angrybirdsmod.entity.render;
 
-import org.lwjgl.opengl.GL11;
-
 import drachenbauer32.angrybirdsmod.entity.EntityBlues;
 import drachenbauer32.angrybirdsmod.entity.model.ModelBluesTrio;
 import drachenbauer32.angrybirdsmod.util.Reference;
-import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -33,10 +30,10 @@ public class RenderBlues extends RenderLiving<EntityBlues>
 	}
 	
 	@Override
-	protected void preRenderCallback(EntityBlues entitylivingbaseIn, float partialTickTime)
+	protected void preRenderCallback(EntityBlues entityLiving, float partialTickTime)
 	{
-	      float f = 0.5F;
-	      GlStateManager.scalef(f, f, f);
+	    float f = 0.5F;
+	    GlStateManager.scalef(f, f, f);
 	}
 	
 	/*public float prepareScale(EntityBlues entitylivingbaseIn, float partialTicks)
