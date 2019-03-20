@@ -11,9 +11,7 @@ import drachenbauer32.angrybirdsmod.entity.render.RenderChuck;
 import drachenbauer32.angrybirdsmod.entity.render.RenderMathilda;
 import drachenbauer32.angrybirdsmod.entity.render.RenderRed;
 
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderHandler 

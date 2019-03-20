@@ -6,7 +6,10 @@ import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
@@ -18,6 +21,7 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 public class BalloonBlock extends Block
 {
@@ -67,6 +71,21 @@ public class BalloonBlock extends Block
 	{
         builder.add(FACING, HALF);
     }
+	
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
+			ItemStack stack)
+	{
+		
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+	}
+	
+	@Override
+	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player)
+	{
+		
+		super.onBlockHarvested(worldIn, pos, state, player);
+	}
 	
 	public IBlockState getStateForPlacement(BlockItemUseContext context)
 	{

@@ -1,20 +1,21 @@
 package drachenbauer32.angrybirdsmod.entity;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityBlues extends EntityChicken
+public class EntityBlues extends EntityAnimal
 {
-	public EntityBlues(World worldIn)
+	protected EntityBlues(EntityType<?> type, World p_i48568_2_)
 	{
-		super(worldIn);
-		this.setSize(0.25F, 0.84375F);
+		super(type, p_i48568_2_);
+		setSize(0.25F, 0.84375F);
 	}
-	
-	
+
 	@Override
 	protected void playStepSound(BlockPos p_180429_1_, IBlockState p_180429_2_)
 	{
@@ -32,11 +33,10 @@ public class EntityBlues extends EntityChicken
 	{
 		return 0.625f;
 	}
-	
+
 	@Override
-	public void livingTick()
+	public EntityAgeable createChild(EntityAgeable ageable)
 	{
-		super.livingTick();
-		this.timeUntilNextEgg = 100;
+		return null;
 	}
 }

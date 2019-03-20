@@ -81,8 +81,6 @@ public class Main
 		
 		//@SubscribeEvent(priority=normal)
 		
-		
-		
 		@SubscribeEvent
 		public static void registerBlocks(final RegistryEvent.Register<Block> event)
 		{
