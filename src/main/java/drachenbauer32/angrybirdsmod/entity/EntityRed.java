@@ -1,8 +1,8 @@
 package drachenbauer32.angrybirdsmod.entity;
 
+import drachenbauer32.angrybirdsmod.util.AngryBirdsEntityTypes;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -10,9 +10,9 @@ import net.minecraft.world.World;
 
 public class EntityRed extends EntityAnimal
 {
-	protected EntityRed(EntityType<?> type, World p_i48568_2_)
-	{
-		super(type, p_i48568_2_);
+	public EntityRed(World worldIn)
+    {
+		super(AngryBirdsEntityTypes.RED, worldIn);
 		setSize(0.5F, 0.6875F);
 	}
 
