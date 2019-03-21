@@ -106,6 +106,6 @@ public class BalloonBlock extends Block
 	@Override
 	public TileEntity createTileEntity(IBlockState state, IBlockReader world)
 	{
-		return new TileEntityBlockColors(null);
+		return new TileEntityBlockColors();
 	}
 }
