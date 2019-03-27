@@ -22,6 +22,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -84,7 +85,7 @@ public class Main
 		@SubscribeEvent
 		public static void registerBlocks(final RegistryEvent.Register<Block> event)
 		{
-			event.getRegistry().registerAll(BlockList.balloon_block = new BalloonBlock("balloon_block", Block.Properties.create(Material.CLOTH, MaterialColor.SNOW).sound(SoundType.CLOTH).
+			event.getRegistry().registerAll(BlockList.balloon_block = new BalloonBlock("balloon_block", EnumDyeColor.WHITE, Block.Properties.create(Material.CLOTH, MaterialColor.SNOW).sound(SoundType.CLOTH).
 		                							lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
 											BlockList.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).sound(SoundType.STONE).
 													lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
