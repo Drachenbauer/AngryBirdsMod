@@ -32,7 +32,7 @@ public class BalloonBlock extends BlockAbstractColors
 	protected static final VoxelShape BALLOON_BLOCK_AABB = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 16.0D, 11.0D);
 	public static final DirectionProperty FACING = BlockHorizontal.HORIZONTAL_FACING;
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-	private static final Map<EnumDyeColor, Block> BANNERS_BY_COLOR = Maps.newHashMap();
+	private static final Map<EnumDyeColor, Block> BALLOONS_BY_COLOR = Maps.newHashMap();
 	
 	public BalloonBlock(String name, EnumDyeColor p_i48448_1_, Block.Properties builder) 
 	{
@@ -40,7 +40,7 @@ public class BalloonBlock extends BlockAbstractColors
 		setRegistryName(Reference.MOD_ID, name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, EnumFacing.NORTH));
 		this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
-		BANNERS_BY_COLOR.put(p_i48448_1_, this);
+		BALLOONS_BY_COLOR.put(p_i48448_1_, this);
 	}
 	
 	@Override
