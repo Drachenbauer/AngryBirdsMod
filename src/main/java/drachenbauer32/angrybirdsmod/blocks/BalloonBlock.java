@@ -105,6 +105,6 @@ public class BalloonBlock extends BlockAbstractColors
 	
 	public static Block forColor(EnumDyeColor p_196287_0_)
 	{
-	    return BANNERS_BY_COLOR.getOrDefault(p_196287_0_, Blocks.WHITE_BANNER);
+	    return BALLOONS_BY_COLOR.getOrDefault(p_196287_0_, Blocks.WHITE_BANNER);
 	}
 }
