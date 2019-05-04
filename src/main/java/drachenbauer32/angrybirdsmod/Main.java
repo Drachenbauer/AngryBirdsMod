@@ -29,7 +29,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemSpawnEgg;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.RenderPlayerEvent;
+//import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
