@@ -19,8 +19,8 @@ public class Reference
 	public static final int ENTITY_BUBBLES = 8;
 	public static final int ENTITY_HAL = 9;
 	public static final int ENTITY_STELLA = 10;
-	public static final int ENTITY_WILLOW = 11;
-	public static final int ENTITY_POPPY = 12;
+	public static final int ENTITY_POPPY = 11;
+	public static final int ENTITY_WILLOW = 12;
 	public static final int ENTITY_DAHLIA = 13;
 	public static final int ENTITY_LUCA = 14;
 	public static final int ENTITY_ICE_BIRD = 15;

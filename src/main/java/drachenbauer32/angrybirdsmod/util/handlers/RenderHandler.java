@@ -1,27 +1,28 @@
 package drachenbauer32.angrybirdsmod.util.handlers;
 
-import drachenbauer32.angrybirdsmod.entity.EntityBlues;
-import drachenbauer32.angrybirdsmod.entity.EntityBomb;
-import drachenbauer32.angrybirdsmod.entity.EntityChuck;
-import drachenbauer32.angrybirdsmod.entity.EntityMathilda;
-import drachenbauer32.angrybirdsmod.entity.EntityRed;
-import drachenbauer32.angrybirdsmod.entity.render.RenderBlues;
-import drachenbauer32.angrybirdsmod.entity.render.RenderBomb;
-import drachenbauer32.angrybirdsmod.entity.render.RenderChuck;
-import drachenbauer32.angrybirdsmod.entity.render.RenderMathilda;
-import drachenbauer32.angrybirdsmod.entity.render.RenderRed;
-
-import net.minecraft.client.renderer.entity.RenderManager;
+import drachenbauer32.angrybirdsmod.entities.BluesEntity;
+import drachenbauer32.angrybirdsmod.entities.BombEntity;
+import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
+import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
+import drachenbauer32.angrybirdsmod.entities.RedEntity;
+import drachenbauer32.angrybirdsmod.entities.renders.BluesRender;
+import drachenbauer32.angrybirdsmod.entities.renders.BombRender;
+import drachenbauer32.angrybirdsmod.entities.renders.ChuckRender;
+import drachenbauer32.angrybirdsmod.entities.renders.MathildaRender;
+import drachenbauer32.angrybirdsmod.entities.renders.RedRender;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
+@OnlyIn(Dist.CLIENT)
 public class RenderHandler 
 {
 	public static void regigisterEntityRenders()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityRed.class,(RenderManager manager) -> new RenderRed(manager));
-		RenderingRegistry.registerEntityRenderingHandler(EntityChuck.class,(RenderManager manager) -> new RenderChuck(manager));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBlues.class,(RenderManager manager) -> new RenderBlues(manager));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class,(RenderManager manager) -> new RenderBomb(manager));
-		RenderingRegistry.registerEntityRenderingHandler(EntityMathilda.class,(RenderManager manager) -> new RenderMathilda(manager));
+		RenderingRegistry.registerEntityRenderingHandler(RedEntity.class,new RedRender.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(ChuckEntity.class,new ChuckRender.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(BluesEntity.class,new BluesRender.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(BombEntity.class,new BombRender.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(MathildaEntity.class,new MathildaRender.RenderFactory());
 	}
 }

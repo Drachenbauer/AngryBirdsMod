@@ -1,7 +1,7 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -13,21 +13,19 @@ public class BalloonBlockTop extends Block
 	{
 		super(properties);
 	}
-	
-	@Override
-	public VoxelShape getShape(IBlockState state, IBlockReader p_196244_2_, BlockPos p_196244_3_)
+
+	public VoxelShape getShape(BlockState state, IBlockReader p_196244_2_, BlockPos p_196244_3_)
 	{
 		return BALLOON_BLOCK_AABB;
 	}
-	
+
 	@Override
-	public VoxelShape getRenderShape(IBlockState state, IBlockReader p_196247_2_, BlockPos p_196247_3_)
+	public VoxelShape getRenderShape(BlockState state, IBlockReader p_196247_2_, BlockPos p_196247_3_)
 	{
 		return BALLOON_BLOCK_AABB;
 	}
-	
-	@Override
-	public VoxelShape getCollisionShape(IBlockState state, IBlockReader p_196268_2_, BlockPos p_196268_3_)
+
+	public VoxelShape getCollisionShape(BlockState state, IBlockReader p_196268_2_, BlockPos p_196268_3_)
 	{
 		return BALLOON_BLOCK_AABB;
 	}
