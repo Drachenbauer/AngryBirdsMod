@@ -15,11 +15,11 @@ import net.minecraftforge.event.RegistryEvent;
 
 public class AngryBirdsEntities 
 {
-	public static EntityType<?> RED_ENTITY = EntityType.Builder.create(RedEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".red_entity").setRegistryName("red entity");
-	public static EntityType<?> CHUCK_ENTITY = EntityType.Builder.create(ChuckEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".chuck_entity").setRegistryName("chuck entity");
-	public static EntityType<?> BLUES_ENTITY = EntityType.Builder.create(BluesEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".blues_entity").setRegistryName("blues entity");
-	public static EntityType<?> BOMB_ENTITY = EntityType.Builder.create(BombEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".bomb_entity").setRegistryName("bomb entity");
-	public static EntityType<?> MATHILDA_ENTITY = EntityType.Builder.create(MathildaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".mathilda_entity").setRegistryName("mathilda entity");
+	public static EntityType<?> RED_ENTITY = EntityType.Builder.create(RedEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".red_entity").setRegistryName("red_entity");
+	public static EntityType<?> CHUCK_ENTITY = EntityType.Builder.create(ChuckEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".chuck_entity").setRegistryName("chuck_entity");
+	public static EntityType<?> BLUES_ENTITY = EntityType.Builder.create(BluesEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".blues_entity").setRegistryName("blues_entity");
+	public static EntityType<?> BOMB_ENTITY = EntityType.Builder.create(BombEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".bomb_entity").setRegistryName("bomb_entity");
+	public static EntityType<?> MATHILDA_ENTITY = EntityType.Builder.create(MathildaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".mathilda_entity").setRegistryName("mathilda_entity");
 	
 	
 	public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item>event)

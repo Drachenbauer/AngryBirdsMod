@@ -32,7 +32,7 @@ public class MathildaEntity extends AnimalEntity
     protected void registerGoals()
     {
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new RandomWalkingGoal(this, 1.2d));
+        this.goalSelector.addGoal(1, new RandomWalkingGoal(this, 0.2d));
         this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(3, new LookRandomlyGoal(this));
     }

@@ -29,21 +29,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-//@ObjectHolder(Reference.MOD_ID)
 @Mod(Reference.MOD_ID)
 public class AngryBirds
-{	
-    //@ObjectHolder("red")
-    public static EntityType<?> EggRed;
-    //@ObjectHolder("chuck")
-    public static EntityType<?> EggChuck;
-    //@ObjectHolder("blues")
-    public static EntityType<?> EggBlues;
-    //@ObjectHolder("bomb")
-    public static EntityType<?> EggBomb;
-    //@ObjectHolder("mathilda")
-    public static EntityType<?> EggMathilda;
-    
+{
     public AngryBirds() 
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -68,23 +56,23 @@ public class AngryBirds
 		public static void onRenderPlayer(RenderPlayerEvent.Pre event)
 		{
 			event.setCanceled(true);
-		}*/
+		}
         
-        //@SubscribeEvent(priority=normal)
+        @SubscribeEvent(priority=normal)*/
         
         @SubscribeEvent
         public static void registerBlocks(final RegistryEvent.Register<Block> event)
         {
             event.getRegistry().registerAll(AngryBirdsBlocks.balloon_block = new BalloonBlock("balloon_block", DyeColor.WHITE, Block.Properties.create(Material.WOOL, MaterialColor.SNOW).sound(SoundType.CLOTH).
-                    lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
-                    AngryBirdsBlocks.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).sound(SoundType.STONE).
-                            lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
-                    AngryBirdsBlocks.nest_block = new NestBlock("nest_block", Block.Properties.create(Material.PLANTS, MaterialColor.GOLD).sound(SoundType.PLANT).
-                            lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
-                    AngryBirdsBlocks.slingshot_block = new SlingshotBlock("slingshot_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
-                            lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                    AngryBirdsBlocks.slingshot2_block = new Slingshot2Block("slingshot2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
-                            lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()));
+                                                 lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
+                                            AngryBirdsBlocks.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).sound(SoundType.STONE).
+                                                 lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
+                                            AngryBirdsBlocks.nest_block = new NestBlock("nest_block", Block.Properties.create(Material.PLANTS, MaterialColor.GOLD).sound(SoundType.PLANT).
+                                                 lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_block = new SlingshotBlock("slingshot_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                 lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot2_block = new Slingshot2Block("slingshot2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                 lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()));
         }
         
         @SubscribeEvent

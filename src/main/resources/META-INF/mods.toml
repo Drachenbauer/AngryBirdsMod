@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[25,)" #mandatory (25 is current forge version)
+loaderVersion="[27,)" #mandatory (27 is current forge version)
 credits="Drachenbauer" #optional
 authors="Drachenbauer" #optional
 
