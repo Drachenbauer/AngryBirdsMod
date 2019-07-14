@@ -1,7 +1,8 @@
-package drachenbauer32.angrybirdsmod.entities.renders;
+package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
 import drachenbauer32.angrybirdsmod.entities.models.MathildaModel;
+import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
@@ -11,17 +12,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
-public class MathildaRender extends LivingRenderer<MathildaEntity, MathildaModel>
+public class MathildaRenderer extends LivingRenderer<MathildaEntity, MathildaModel>
 {
-    public MathildaRender(EntityRendererManager manager)
+    private static final ResourceLocation MATHILDA_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/mathilda.png");
+    
+    public MathildaRenderer(EntityRendererManager manager)
     {
-        super(manager, new MathildaModel(), 0f);
+        super(manager, new MathildaModel(), 0.5f);
     }
 
     @Override
     protected ResourceLocation getEntityTexture(MathildaEntity arg0)
     {
-        return new ResourceLocation("textures/entity/mathilda.png");
+        return MATHILDA_TEXTURE;
     }
 	
     public static class RenderFactory implements IRenderFactory<MathildaEntity>
@@ -29,7 +32,7 @@ public class MathildaRender extends LivingRenderer<MathildaEntity, MathildaModel
         @Override
         public EntityRenderer<? super MathildaEntity> createRenderFor(EntityRendererManager manager)
         {
-            return new MathildaRender(manager);
+            return new MathildaRenderer(manager);
         }
     }
 }

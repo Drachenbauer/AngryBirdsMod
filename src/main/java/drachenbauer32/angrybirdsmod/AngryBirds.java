@@ -99,7 +99,8 @@ public class AngryBirds
                                             AngryBirdsEntities.CHUCK_ENTITY,
                                             AngryBirdsEntities.BLUES_ENTITY,
                                             AngryBirdsEntities.BOMB_ENTITY,
-                                            AngryBirdsEntities.MATHILDA_ENTITY);
+                                            AngryBirdsEntities.MATHILDA_ENTITY,
+                                            AngryBirdsEntities.TERENCE_ENTITY);
         }
     }
 }

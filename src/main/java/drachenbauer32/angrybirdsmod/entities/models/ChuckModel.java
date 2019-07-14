@@ -30,8 +30,8 @@ public class ChuckModel extends EntityModel<ChuckEntity>
 		bone.cubeList.add(new ModelBox(bone, 25, 0, -3.0F, -2.0F, -3.0F, 2, 1, 1, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 25, 0, 1.0F, -2.0F, -3.0F, 2, 1, 1, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 52, 0, -1.0F, 1.0F, -7.0F, 2, 2, 3, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 2, 0.0F, -6.0F, -1.0F, 0, 2, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 2, 0.0F, 1.0F, 4.0F, 0, 2, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, -6.0F, -1.0F, 0, 2, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, 1.0F, 4.0F, 0, 2, 2, 0.0F, false));
 		
 		bone2 = new RendererModel(this);
 		bone2.setRotationPoint(0.0F, 2.0F, 4.0F);

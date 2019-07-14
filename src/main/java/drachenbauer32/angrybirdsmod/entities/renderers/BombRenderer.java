@@ -1,7 +1,8 @@
-package drachenbauer32.angrybirdsmod.entities.renders;
+package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.models.BombModel;
+import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
@@ -11,17 +12,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
-public class BombRender extends LivingRenderer<BombEntity, BombModel>
+public class BombRenderer extends LivingRenderer<BombEntity, BombModel>
 {
-    public BombRender(EntityRendererManager manager)
+    private static final ResourceLocation BOMB_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/bomb.png");
+    
+    public BombRenderer(EntityRendererManager manager)
     {
-        super(manager, new BombModel(), 0f);
+        super(manager, new BombModel(), 0.75f);
     }
 
     @Override
     protected ResourceLocation getEntityTexture(BombEntity arg0)
     {
-        return new ResourceLocation("textures/entity/bomb.png");
+        return BOMB_TEXTURE;
     }
 	
     public static class RenderFactory implements IRenderFactory<BombEntity>
@@ -29,7 +32,7 @@ public class BombRender extends LivingRenderer<BombEntity, BombModel>
         @Override
         public EntityRenderer<? super BombEntity> createRenderFor(EntityRendererManager manager)
         {
-            return new BombRender(manager);
+            return new BombRenderer(manager);
         }
     }
 }

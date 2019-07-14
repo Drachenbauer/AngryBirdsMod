@@ -31,7 +31,7 @@ public class BluesTrioModel extends EntityModel<BluesEntity>
 		bone.cubeList.add(new ModelBox(bone, 24, 0, -1.0F, 0.0F, -7.0F, 2, 2, 3, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 24, 0, -1.0F, -8.0F, -7.0F, 2, 2, 3, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 24, 0, -1.0F, -16.0F, -7.0F, 2, 2, 3, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 1, 1, 0.0F, -22.0F, -1.0F, 0, 2, 3, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, -22.0F, -1.0F, 0, 2, 3, 0.0F, false));
 
 		bone2 = new RendererModel(this);
 		bone2.setRotationPoint(0.0F, -20.0F, -3.0F);

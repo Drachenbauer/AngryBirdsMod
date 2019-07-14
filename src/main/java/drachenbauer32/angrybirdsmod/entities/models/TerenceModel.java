@@ -1,14 +1,14 @@
 package drachenbauer32.angrybirdsmod.entities.models;
 
+import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
-import net.minecraft.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TerenceModel extends EntityModel
+public class TerenceModel extends EntityModel<TerenceEntity>
 {
 	private final RendererModel bone;
 	private final RendererModel bone2;
@@ -24,14 +24,14 @@ public class TerenceModel extends EntityModel
 		bone.setRotationPoint(0.0F, 14.0F, 0.0F);
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -10.0F, -10.0F, -10.0F, 20, 20, 20, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 0, 12, -1.0F, 5.0F, -12.0F, 2, 2, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 66, 2, 0.0F, -14.0F, -2.0F, 0, 4, 6, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, -14.0F, -2.0F, 0, 4, 6, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 0, 10, 0.0F, 4.0F, 10.0F, 0, 2, 8, 0.0F, false));
 
 		bone2 = new RendererModel(this);
 		bone2.setRotationPoint(0.0F, -10.0F, -6.0F);
 		setRotationAngle(bone2, 0.7854F, 0.0F, 0.0F);
 		bone.addChild(bone2);
-		bone2.cubeList.add(new ModelBox(bone2, 64, 0, 0.0F, 0.0F, 0.0F, 0, 4, 8, 0.0F, false));
+		bone2.cubeList.add(new ModelBox(bone2, 0, 0, 0.0F, 0.0F, 0.0F, 0, 4, 8, 0.0F, false));
 
 		bone3 = new RendererModel(this);
 		bone3.setRotationPoint(0.0F, 4.0F, 10.0F);
@@ -47,7 +47,7 @@ public class TerenceModel extends EntityModel
 	}
 	
 	@Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    public void render(TerenceEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         bone.render(scale);
     }
@@ -60,7 +60,7 @@ public class TerenceModel extends EntityModel
     }
     
     @Override
-    public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+    public void setRotationAngles(TerenceEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
             float headPitch, float scaleFactor )
     {
         bone.rotateAngleX = headPitch * 0.017453292f;
