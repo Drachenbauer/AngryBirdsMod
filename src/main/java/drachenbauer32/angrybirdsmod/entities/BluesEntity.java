@@ -16,7 +16,7 @@ public class BluesEntity extends AnimalEntity
     @SuppressWarnings("unchecked")
     public BluesEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.BLUES_ENTITY, worldIn);
+        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.BLUES, worldIn);
     }
     
     @Override

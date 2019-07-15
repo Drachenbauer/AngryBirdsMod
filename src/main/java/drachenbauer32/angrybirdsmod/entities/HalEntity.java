@@ -11,12 +11,12 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
-public class SilverEntity extends AnimalEntity
+public class HalEntity extends AnimalEntity
 {
     @SuppressWarnings("unchecked")
-    public SilverEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public HalEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.SILVER, worldIn);
+        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.HAL, worldIn);
     }
     
     @Override

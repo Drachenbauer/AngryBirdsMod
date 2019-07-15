@@ -16,7 +16,7 @@ public class TerenceEntity extends AnimalEntity
     @SuppressWarnings("unchecked")
     public TerenceEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.TERENCE_ENTITY, worldIn);
+        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.TERENCE, worldIn);
     }
     
     @Override

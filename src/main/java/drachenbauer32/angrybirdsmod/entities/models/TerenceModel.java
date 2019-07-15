@@ -24,7 +24,7 @@ public class TerenceModel extends EntityModel<TerenceEntity>
 		bone.setRotationPoint(0.0F, 14.0F, 0.0F);
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -10.0F, -10.0F, -10.0F, 20, 20, 20, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 0, 12, -1.0F, 5.0F, -12.0F, 2, 2, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, -14.0F, -2.0F, 0, 4, 6, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 2, 2, 0.0F, -14.0F, -2.0F, 0, 4, 6, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 0, 10, 0.0F, 4.0F, 10.0F, 0, 2, 8, 0.0F, false));
 
 		bone2 = new RendererModel(this);

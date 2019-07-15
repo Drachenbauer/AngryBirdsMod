@@ -1,14 +1,14 @@
 package drachenbauer32.angrybirdsmod.entities.models;
 
+import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
-import net.minecraft.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class BluesModel extends EntityModel
+public class BluesModel extends EntityModel<BluesEntity>
 {
 	private final RendererModel bone;
 	private final RendererModel bone2;
@@ -24,7 +24,7 @@ public class BluesModel extends EntityModel
 		bone.setRotationPoint(0.0F, 20.0F, 0.0F);
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 0, 16, -1.0F, 0.0F, -7.0F, 2, 2, 3, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, -6.0F, -1.0F, 0, 2, 3, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 1, 1, 0.0F, -6.0F, -1.0F, 0, 2, 3, 0.0F, false));
 
 		bone2 = new RendererModel(this);
 		bone2.setRotationPoint(0.0F, -4.0F, -3.0F);
@@ -46,7 +46,7 @@ public class BluesModel extends EntityModel
 	}
 	
 	@Override
-	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+	public void render(BluesEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
 	{
 		bone.render(scale);
 	}
@@ -59,7 +59,7 @@ public class BluesModel extends EntityModel
 	}
 	
 	@Override
-    public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+    public void setRotationAngles(BluesEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
             float headPitch, float scaleFactor )
     {
         bone.rotateAngleX = headPitch * 0.017453292f;

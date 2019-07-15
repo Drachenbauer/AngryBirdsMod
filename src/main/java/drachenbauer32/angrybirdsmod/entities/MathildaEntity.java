@@ -19,7 +19,7 @@ public class MathildaEntity extends AnimalEntity
     @SuppressWarnings("unchecked")
     public MathildaEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.MATHILDA_ENTITY, worldIn);
+        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.MATHILDA, worldIn);
     }
     
     @Override

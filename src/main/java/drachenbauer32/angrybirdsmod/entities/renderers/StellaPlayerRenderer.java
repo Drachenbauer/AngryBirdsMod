@@ -14,7 +14,7 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 @OnlyIn(Dist.CLIENT)
 public class StellaPlayerRenderer extends LivingRenderer<StellaPlayerEntity, StellaPlayerModel>
 {
-    private static final ResourceLocation STELLA_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/stella.png");
+    private static final ResourceLocation STELLA_PLAYER_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/stella_player.png");
     
     public StellaPlayerRenderer(EntityRendererManager manager)
     {
@@ -24,7 +24,7 @@ public class StellaPlayerRenderer extends LivingRenderer<StellaPlayerEntity, Ste
     @Override
     protected ResourceLocation getEntityTexture(StellaPlayerEntity arg0)
     {
-        return STELLA_TEXTURE;
+        return STELLA_PLAYER_TEXTURE;
     }
 	
     public static class RenderFactory implements IRenderFactory<StellaPlayerEntity>

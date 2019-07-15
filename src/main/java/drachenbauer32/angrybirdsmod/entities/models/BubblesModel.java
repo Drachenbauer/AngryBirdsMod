@@ -1,14 +1,14 @@
 package drachenbauer32.angrybirdsmod.entities.models;
 
+import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
-import net.minecraft.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class BubblesModel extends EntityModel
+public class BubblesModel extends EntityModel <BubblesEntity>
 {
 	private final RendererModel bone;
 	private final RendererModel bone2;
@@ -46,7 +46,7 @@ public class BubblesModel extends EntityModel
 	}
 	
 	@Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    public void render(BubblesEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         bone.render(scale);
     }
@@ -59,7 +59,7 @@ public class BubblesModel extends EntityModel
     }
     
     @Override
-    public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+    public void setRotationAngles(BubblesEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
             float headPitch, float scaleFactor )
     {
         bone.rotateAngleX = headPitch * 0.017453292f;

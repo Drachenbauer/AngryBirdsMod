@@ -95,12 +95,18 @@ public class AngryBirds
         @SubscribeEvent
         public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event)
         {
-            event.getRegistry().registerAll(AngryBirdsEntities.RED_ENTITY,
-                                            AngryBirdsEntities.CHUCK_ENTITY,
-                                            AngryBirdsEntities.BLUES_ENTITY,
-                                            AngryBirdsEntities.BOMB_ENTITY,
-                                            AngryBirdsEntities.MATHILDA_ENTITY,
-                                            AngryBirdsEntities.TERENCE_ENTITY);
+            event.getRegistry().registerAll(AngryBirdsEntities.RED,
+                                            AngryBirdsEntities.CHUCK,
+                                            AngryBirdsEntities.BLUES,
+                                            AngryBirdsEntities.BOMB,
+                                            AngryBirdsEntities.MATHILDA,
+                                            AngryBirdsEntities.TERENCE,
+                                            AngryBirdsEntities.SILVER,
+                                            AngryBirdsEntities.BUBBLES,
+                                            AngryBirdsEntities.HAL,
+                                            AngryBirdsEntities.STELLA,
+                                            AngryBirdsEntities.POPPY,
+                                            AngryBirdsEntities.WILLOW);
         }
     }
 }

@@ -16,7 +16,7 @@ public class BombEntity extends AnimalEntity
     @SuppressWarnings("unchecked")
     public BombEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.BOMB_ENTITY, worldIn);
+        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.BOMB, worldIn);
     }
     
     @Override

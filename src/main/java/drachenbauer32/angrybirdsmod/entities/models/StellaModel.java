@@ -1,14 +1,14 @@
 package drachenbauer32.angrybirdsmod.entities.models;
 
+import drachenbauer32.angrybirdsmod.entities.StellaEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
-import net.minecraft.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StellaModel extends EntityModel
+public class StellaModel extends EntityModel<StellaEntity>
 {
 	private final RendererModel bone;
 	private final RendererModel bone2;
@@ -54,7 +54,7 @@ public class StellaModel extends EntityModel
 	}
 	
 	@Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    public void render(StellaEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         bone.render(scale);
     }
@@ -67,7 +67,7 @@ public class StellaModel extends EntityModel
     }
     
     @Override
-    public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+    public void setRotationAngles(StellaEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
             float headPitch, float scaleFactor )
     {
         bone.rotateAngleX = headPitch * 0.017453292f;

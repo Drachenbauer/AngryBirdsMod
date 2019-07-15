@@ -16,7 +16,7 @@ public class ChuckEntity extends AnimalEntity
     @SuppressWarnings("unchecked")
     public ChuckEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.CHUCK_ENTITY, worldIn);
+        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.CHUCK, worldIn);
     }
     
     @Override

@@ -3,7 +3,7 @@ package drachenbauer32.angrybirdsmod.entities.renderers;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
-import drachenbauer32.angrybirdsmod.entities.models.BluesModel;
+import drachenbauer32.angrybirdsmod.entities.models.BluesTrioModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
@@ -14,13 +14,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
-public class BluesRenderer extends LivingRenderer<BluesEntity, BluesModel>
+public class BluesTrioRenderer extends LivingRenderer<BluesEntity, BluesTrioModel>
 {
-    private static final ResourceLocation BLUES_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/blues.png");
+    private static final ResourceLocation BLUES_TRIO_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/blues_trio.png");
     
-    public BluesRenderer(EntityRendererManager manager)
+    public BluesTrioRenderer(EntityRendererManager manager)
     {
-        super(manager, new BluesModel(), 0.25f);
+        super(manager, new BluesTrioModel(), 0.25f);
     }
     
     @Override
@@ -33,7 +33,7 @@ public class BluesRenderer extends LivingRenderer<BluesEntity, BluesModel>
     @Override
     protected ResourceLocation getEntityTexture(BluesEntity arg0)
     {
-        return BLUES_TEXTURE;
+        return BLUES_TRIO_TEXTURE;
     }
 	
     public static class RenderFactory implements IRenderFactory<BluesEntity>
@@ -41,7 +41,7 @@ public class BluesRenderer extends LivingRenderer<BluesEntity, BluesModel>
         @Override
         public EntityRenderer<? super BluesEntity> createRenderFor(EntityRendererManager manager)
         {
-            return new BluesRenderer(manager);
+            return new BluesTrioRenderer(manager);
         }
     }
 }
