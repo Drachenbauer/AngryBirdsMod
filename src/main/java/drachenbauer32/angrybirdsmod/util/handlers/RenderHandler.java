@@ -4,7 +4,10 @@ import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
+import drachenbauer32.angrybirdsmod.entities.DahliaEntity;
 import drachenbauer32.angrybirdsmod.entities.HalEntity;
+import drachenbauer32.angrybirdsmod.entities.IceBirdEntity;
+import drachenbauer32.angrybirdsmod.entities.LucaEntity;
 import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
 import drachenbauer32.angrybirdsmod.entities.PoppyEntity;
 import drachenbauer32.angrybirdsmod.entities.RedEntity;
@@ -16,7 +19,10 @@ import drachenbauer32.angrybirdsmod.entities.renderers.BluesTrioRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.BombRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.BubblesRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.ChuckRenderer;
+import drachenbauer32.angrybirdsmod.entities.renderers.DahliaRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.HalRenderer;
+import drachenbauer32.angrybirdsmod.entities.renderers.IceBirdRenderer;
+import drachenbauer32.angrybirdsmod.entities.renderers.LucaRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.MathildaRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.PoppyRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.RedRenderer;
@@ -45,5 +51,8 @@ public class RenderHandler
 		RenderingRegistry.registerEntityRenderingHandler(StellaEntity.class,new StellaRenderer.RenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(PoppyEntity.class,new PoppyRenderer.RenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(WillowEntity.class,new WillowRenderer.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(DahliaEntity.class,new DahliaRenderer.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(LucaEntity.class,new LucaRenderer.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(IceBirdEntity.class,new IceBirdRenderer.RenderFactory());
 	}
 }

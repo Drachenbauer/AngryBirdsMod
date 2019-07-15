@@ -106,7 +106,10 @@ public class AngryBirds
                                             AngryBirdsEntities.HAL,
                                             AngryBirdsEntities.STELLA,
                                             AngryBirdsEntities.POPPY,
-                                            AngryBirdsEntities.WILLOW);
+                                            AngryBirdsEntities.WILLOW,
+                                            AngryBirdsEntities.DAHLIA,
+                                            AngryBirdsEntities.LUCA,
+                                            AngryBirdsEntities.ICE_BIRD);
         }
     }
 }

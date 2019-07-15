@@ -1,5 +1,6 @@
 package drachenbauer32.angrybirdsmod.entities.models;
 
+import drachenbauer32.angrybirdsmod.entities.StellaPlayerEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
@@ -12,7 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StellaMoviePlayerModel extends EntityModel
+public class StellaMoviePlayerModel extends EntityModel<StellaPlayerEntity>
 {
 	private final RendererModel bipedHead;
 	private final RendererModel bone2;
@@ -131,7 +132,7 @@ public class StellaMoviePlayerModel extends EntityModel
 	}
 	
 	@Override
-	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+	public void render(StellaPlayerEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
 	{
 		bipedHead.render(scale);
 		bipedBody.render(scale);
@@ -149,7 +150,7 @@ public class StellaMoviePlayerModel extends EntityModel
     }
 	
 	@Override
-	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+	public void setRotationAngles(StellaPlayerEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
             float headPitch, float scaleFactor )
 	{
 		boolean flag = entity instanceof LivingEntity && ((LivingEntity)entity).getTicksElytraFlying() > 4;
@@ -371,10 +372,10 @@ public class StellaMoviePlayerModel extends EntityModel
 	    }
 	}
 	
-	public void setLivingAnimations(LivingEntity livingEntity, float limbSwing, float limbSwingAmount, float partialTickTime) 
+	public void setLivingAnimations(StellaPlayerEntity entity, float limbSwing, float limbSwingAmount, float partialTickTime) 
 	{
-	    this.field_205061_a = livingEntity.getSwimAnimation(partialTickTime);
-	    super.setLivingAnimations(livingEntity, limbSwing, limbSwingAmount, partialTickTime);
+	    this.field_205061_a = entity.getSwimAnimation(partialTickTime);
+	    super.setLivingAnimations(entity, limbSwing, limbSwingAmount, partialTickTime);
 	}
 	
 	protected float func_205060_a(float p_205060_1_, float p_205060_2_, float p_205060_3_)

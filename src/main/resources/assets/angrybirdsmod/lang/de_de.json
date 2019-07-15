@@ -21,7 +21,7 @@
 	"item.angrybirdsmod.willow_egg": "Willow-Spawn-Ei",
 	"item.angrybirdsmod.dahlia_egg": "Dahlia-Spawn-Ei",
 	"item.angrybirdsmod.luca_egg": "Luca-Spawn-Ei",
-	"item.angrybirdsmod.icebird_egg": "Ice Bird-Spawn-Ei",
+	"item.angrybirdsmod.ice_bird_egg": "Ice Bird-Spawn-Ei",
 	
     //Entity names
     "entity.angrybirdsmod.red": "Red",
@@ -38,5 +38,5 @@
     "entity.angrybirdsmod.willow": "Willow",
     "entity.angrybirdsmod.dahlia": "Dahlia",
     "entity.angrybirdsmod.luca": "Luca",
-    "entity.angrybirdsmod.icebird": "Ice Bird"
+    "entity.angrybirdsmod.ice_bird": "Ice Bird"
 }

@@ -4,7 +4,10 @@ import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
+import drachenbauer32.angrybirdsmod.entities.DahliaEntity;
 import drachenbauer32.angrybirdsmod.entities.HalEntity;
+import drachenbauer32.angrybirdsmod.entities.IceBirdEntity;
+import drachenbauer32.angrybirdsmod.entities.LucaEntity;
 import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
 import drachenbauer32.angrybirdsmod.entities.PoppyEntity;
 import drachenbauer32.angrybirdsmod.entities.RedEntity;
@@ -34,6 +37,9 @@ public class AngryBirdsEntities
     public static EntityType<?> STELLA = EntityType.Builder.create(StellaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".stella").setRegistryName("stella");
     public static EntityType<?> POPPY = EntityType.Builder.create(PoppyEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".poppy").setRegistryName("poppy");
     public static EntityType<?> WILLOW = EntityType.Builder.create(WillowEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".willow").setRegistryName("willow");
+    public static EntityType<?> DAHLIA = EntityType.Builder.create(DahliaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".dahlia").setRegistryName("dahlia");
+    public static EntityType<?> LUCA = EntityType.Builder.create(LucaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".luca").setRegistryName("luca");
+    public static EntityType<?> ICE_BIRD = EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
     
     public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item>event)
     {
@@ -48,7 +54,10 @@ public class AngryBirdsEntities
                                         AngryBirdsItems.hal_egg = registerEntitySpawnEgg(HAL, 0x00bf00, 0xffffff, "hal_egg"),
                                         AngryBirdsItems.stella_egg = registerEntitySpawnEgg(STELLA, 0xffadb7, 0xffd7dc, "stella_egg"),
                                         AngryBirdsItems.poppy_egg = registerEntitySpawnEgg(POPPY, 0xffff3f, 0xffffbf, "poppy_egg"),
-                                        AngryBirdsItems.willow_egg = registerEntitySpawnEgg(WILLOW, 0x3f9fff, 0x7fbfff, "willow_egg"));	    
+                                        AngryBirdsItems.willow_egg = registerEntitySpawnEgg(WILLOW, 0x3f9fff, 0x7fbfff, "willow_egg"),
+                                        AngryBirdsItems.dahlia_egg = registerEntitySpawnEgg(DAHLIA, 0xbf7f3f, 0xffdfbf, "dahlia_egg"),
+                                        AngryBirdsItems.luca_egg = registerEntitySpawnEgg(LUCA, 0x7fbfff, 0xffffbf, "luca_egg"),
+                                        AngryBirdsItems.ice_bird_egg = registerEntitySpawnEgg(ICE_BIRD, 0x7fbfff, 0x007fff, "ice_bird_egg"));	    
     }
     
     public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name)

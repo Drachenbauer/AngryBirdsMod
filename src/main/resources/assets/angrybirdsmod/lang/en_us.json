@@ -8,22 +8,22 @@
     "block.angrybirdsmod.slingshot2_block": "Double stringed Slingshot",
     
     //Item names
-	"item.angrybirdsmod.red_spawn_egg": "Red-Spawn-Egg",
-	"item.angrybirdsmod.chuck_spawn_egg": "Chuck-Spawn-Egg",
-	"item.angrybirdsmod.blues_spawn_egg": "The Blues-Spawn-Egg",
-	"item.angrybirdsmod.bomb_spawn_egg": "Bomb-Spawn-Egg",
-	"item.angrybirdsmod.mathilda_spawn_egg": "Mathilda-Spawn-Egg",
-	"item.angrybirdsmod.terence_spawn_egg": "Terence-Spawn-Egg",
-	"item.angrybirdsmod.silver_spawn_egg": "Silver-Spawn-Egg",
-	"item.angrybirdsmod.bubbles_spawn_egg": "Bubbles-Spawn-Egg",
-	"item.angrybirdsmod.hal_spawn_egg": "Hal-Spawn-Egg",
-	"item.angrybirdsmod.stella_spawn_egg": "Stella-Spawn-Egg",
-	"item.angrybirdsmod.willow_spawn_egg": "Willow-Spawn-Egg",
-	"item.angrybirdsmod.poppy_spawn_egg": "Poppy-Spawn-Egg",
-	"item.angrybirdsmod.dahlia_spawn_egg": "Dahlia-Spawn-Egg",
-	"item.angrybirdsmod.luca_spawn_egg": "Luca-Spawn-Egg",
-	"item.angrybirdsmod.icebird_spawn_egg": "Ice Bird-Spawn-Egg",
-
+	"item.angrybirdsmod.red_egg": "Red-Spawn-Egg",
+	"item.angrybirdsmod.chuck_egg": "Chuck-Spawn-Egg",
+	"item.angrybirdsmod.blues_egg": "The Blues-Spawn-Egg",
+	"item.angrybirdsmod.bomb_egg": "Bomb-Spawn-Egg",
+	"item.angrybirdsmod.mathilda_egg": "Mathilda-Spawn-Egg",
+	"item.angrybirdsmod.terence_egg": "Terence-Spawn-Egg",
+	"item.angrybirdsmod.silver_egg": "Silver-Spawn-Egg",
+	"item.angrybirdsmod.bubbles_egg": "Bubbles-Spawn-Egg",
+	"item.angrybirdsmod.hal_egg": "Hal-Spawn-Egg",
+	"item.angrybirdsmod.stella_egg": "Stella-Spawn-Egg",
+	"item.angrybirdsmod.poppy_egg": "Poppy-Spawn-Egg",
+	"item.angrybirdsmod.willow_egg": "Willow-Spawn-Egg",
+	"item.angrybirdsmod.dahlia_egg": "Dahlia-Spawn-Egg",
+	"item.angrybirdsmod.luca_egg": "Luca-Spawn-Egg",
+	"item.angrybirdsmod.ice_bird_egg": "Ice Bird-Spawn-Egg",
+	
     //Entity names
     "entity.angrybirdsmod.red": "Red",
     "entity.angrybirdsmod.chuck": "Chuck",
@@ -35,9 +35,9 @@
     "entity.angrybirdsmod.bubbles": "Bubbles",
     "entity.angrybirdsmod.hal": "Hal",
     "entity.angrybirdsmod.stella": "Stella",
-    "entity.angrybirdsmod.willow": "Willow",
     "entity.angrybirdsmod.poppy": "Poppy",
+    "entity.angrybirdsmod.willow": "Willow",
     "entity.angrybirdsmod.dahlia": "Dahlia",
     "entity.angrybirdsmod.luca": "Luca",
-    "entity.angrybirdsmod.icebird": "Ice Bird"
+    "entity.angrybirdsmod.ice_bird": "Ice Bird"
 }
