@@ -18,37 +18,37 @@ public class IceBirdModel extends EntityModel<IceBirdEntity>
 	
 	public IceBirdModel()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 34;
+		textureHeight = 16;
 		
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 20.0F, 0.0F);
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 16, -1.0F, 0.0F, -7.0F, 2, 2, 3, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 24, 0, -1.0F, 0.0F, -7.0F, 2, 2, 3, 0.0F, false));
 		
 		bone2 = new RendererModel(this);
 		bone2.setRotationPoint(0.0F, -4.0F, 0.0F);
 		setRotationAngle(bone2, 0.2618F, 0.0F, 0.0F);
 		bone.addChild(bone2);
-		bone2.cubeList.add(new ModelBox(bone2, 0, 24, -1.0F, -5.0F, -2.0F, 2, 5, 2, 0.0F, false));
+		bone2.cubeList.add(new ModelBox(bone2, 0, 0, -1.0F, -5.0F, -2.0F, 2, 5, 2, 0.0F, false));
 		
 		bone3 = new RendererModel(this);
 		bone3.setRotationPoint(0.0F, -4.0F, 0.0F);
 		setRotationAngle(bone3, -0.2618F, 0.0F, 0.0F);
 		bone.addChild(bone3);
-		bone3.cubeList.add(new ModelBox(bone3, 0, 24, -1.0F, -3.0F, 0.0F, 2, 3, 2, 0.0F, false));
+		bone3.cubeList.add(new ModelBox(bone3, 0, 0, -1.0F, -3.0F, 0.0F, 2, 3, 2, 0.0F, false));
 		
 		bone4 = new RendererModel(this);
 		bone4.setRotationPoint(0.0F, 1.0F, 4.0F);
 		setRotationAngle(bone4, -1.309F, 0.0F, 0.0F);
 		bone.addChild(bone4);
-		bone4.cubeList.add(new ModelBox(bone4, 0, 24, -1.0F, -5.0F, -2.0F, 2, 5, 2, 0.0F, false));
+		bone4.cubeList.add(new ModelBox(bone4, 0, 0, -1.0F, -5.0F, -2.0F, 2, 5, 2, 0.0F, false));
 		
 		bone5 = new RendererModel(this);
 		bone5.setRotationPoint(0.0F, 1.0F, 4.0F);
 		setRotationAngle(bone5, -1.8326F, 0.0F, 0.0F);
 		bone.addChild(bone5);
-		bone5.cubeList.add(new ModelBox(bone5, 0, 24, -1.0F, -3.0F, 0.0F, 2, 3, 2, 0.0F, false));
+		bone5.cubeList.add(new ModelBox(bone5, 0, 0, -1.0F, -3.0F, 0.0F, 2, 3, 2, 0.0F, false));
 	}
 	
 	@Override

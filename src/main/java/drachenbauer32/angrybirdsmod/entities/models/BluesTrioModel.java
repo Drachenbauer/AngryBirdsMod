@@ -22,7 +22,7 @@ public class BluesTrioModel extends EntityModel<BluesEntity>
 	public BluesTrioModel()
 	{
 
-		textureWidth = 64;
+		textureWidth = 34;
 		textureHeight = 32;
 
 		bone = new RendererModel(this);

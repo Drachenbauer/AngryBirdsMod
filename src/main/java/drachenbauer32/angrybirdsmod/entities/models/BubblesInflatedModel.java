@@ -18,7 +18,7 @@ public class BubblesInflatedModel extends EntityModel<BubblesEntity>
 	public BubblesInflatedModel()
 	{
 	    textureWidth = 160;
-        textureHeight = 160;
+        textureHeight = 80;
 
         bone = new RendererModel(this);
         bone.setRotationPoint(0.0F, 4.0F, 0.0F);

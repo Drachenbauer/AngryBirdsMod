@@ -18,7 +18,7 @@ public class TerenceModel extends EntityModel<TerenceEntity>
 	public TerenceModel()
 	{
 		textureWidth = 80;
-		textureHeight = 80;
+		textureHeight = 40;
 
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 14.0F, 0.0F);

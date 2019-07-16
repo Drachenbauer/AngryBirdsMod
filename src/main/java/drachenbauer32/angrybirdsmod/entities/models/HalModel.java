@@ -18,7 +18,7 @@ public class HalModel extends EntityModel<HalEntity>
 	
 	public HalModel()
 	{
-		textureWidth = 64;
+		textureWidth = 32;
 		textureHeight = 32;
 		
 		bone = new RendererModel(this);

@@ -18,44 +18,44 @@ public class ChuckModel extends EntityModel<ChuckEntity>
 	
 	public ChuckModel()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 32;
+		textureHeight = 28;
 		
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 20.0F, 0.0F);
-		bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, 1.0F, -4.0F, 8, 3, 8, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 32, 0, -3.0F, -1.0F, -3.0F, 6, 2, 6, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 32, 8, -2.0F, -3.0F, -2.0F, 4, 2, 4, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 48, 10, -1.0F, -4.0F, -1.0F, 2, 1, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 25, 0, -3.0F, -2.0F, -3.0F, 2, 1, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 25, 0, 1.0F, -2.0F, -3.0F, 2, 1, 1, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 52, 0, -1.0F, 1.0F, -7.0F, 2, 2, 3, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, -6.0F, -1.0F, 0, 2, 2, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, 1.0F, 4.0F, 0, 2, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 17, -4.0F, 1.0F, -4.0F, 8, 3, 8, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 9, -3.0F, -1.0F, -3.0F, 6, 2, 6, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 3, -2.0F, -3.0F, -2.0F, 4, 2, 4, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 0, -1.0F, -4.0F, -1.0F, 2, 1, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 20, 9, -1.0F, 1.0F, -7.0F, 2, 2, 3, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 25, 17, -3.0F, -2.0F, -3.0F, 2, 1, 1, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 25, 17, 1.0F, -2.0F, -3.0F, 2, 1, 1, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 17, 0.0F, -6.0F, -1.0F, 0, 2, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 17, 0.0F, 1.0F, 4.0F, 0, 2, 2, 0.0F, false));
 		
 		bone2 = new RendererModel(this);
 		bone2.setRotationPoint(0.0F, 2.0F, 4.0F);
 		setRotationAngle(bone2, -1.0472F, 0.0F, 0.0F);
 		bone.addChild(bone2);
-		bone2.cubeList.add(new ModelBox(bone2, 0, 0, 0.0F, -3.0F, -1.0F, 0, 3, 2, 0.0F, false));
+		bone2.cubeList.add(new ModelBox(bone2, 0, 17, 0.0F, -3.0F, -1.0F, 0, 3, 2, 0.0F, false));
 		
 		bone3 = new RendererModel(this);
 		bone3.setRotationPoint(0.0F, -4.0F, 0.0F);
 		setRotationAngle(bone3, -1.0472F, 0.0F, 0.0F);
 		bone.addChild(bone3);
-		bone3.cubeList.add(new ModelBox(bone3, 0, 0, 0.0F, -4.0F, -1.0F, 0, 4, 2, 0.0F, false));
+		bone3.cubeList.add(new ModelBox(bone3, 0, 17, 0.0F, -4.0F, -1.0F, 0, 4, 2, 0.0F, false));
 		
 		bone4 = new RendererModel(this);
 		bone4.setRotationPoint(0.0F, -4.0F, 0.0F);
 		setRotationAngle(bone4, -0.5236F, 0.0F, 0.0F);
 		bone.addChild(bone4);
-		bone4.cubeList.add(new ModelBox(bone4, 0, 0, 0.0F, -3.0F, -1.0F, 0, 3, 2, 0.0F, false));
+		bone4.cubeList.add(new ModelBox(bone4, 0, 17, 0.0F, -3.0F, -1.0F, 0, 3, 2, 0.0F, false));
 		
 		bone5 = new RendererModel(this);
 		bone5.setRotationPoint(0.0F, 2.0F, 4.0F);
 		setRotationAngle(bone5, -0.5236F, 0.0F, 0.0F);
 		bone.addChild(bone5);
-		bone5.cubeList.add(new ModelBox(bone5, 0, 0, 0.0F, -4.0F, -1.0F, 0, 4, 2, 0.0F, false));
+		bone5.cubeList.add(new ModelBox(bone5, 0, 17, 0.0F, -4.0F, -1.0F, 0, 4, 2, 0.0F, false));
 	}
 	
 	@Override

@@ -18,8 +18,8 @@ public class PoppyModel extends EntityModel<PoppyEntity>
 	
 	public PoppyModel()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 32;
+		textureHeight = 18;
 		
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 20.0F, 0.0F);

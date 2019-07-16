@@ -7,6 +7,9 @@
     "block.angrybirdsmod.slingshot_block": "Single stringed Slingshot",
     "block.angrybirdsmod.slingshot2_block": "Double stringed Slingshot",
     
+    //ItemGroup name
+    "itemGroup.AngryBirds": "Angry Birds Items",
+    
     //Item names
 	"item.angrybirdsmod.red_egg": "Red-Spawn-Egg",
 	"item.angrybirdsmod.chuck_egg": "Chuck-Spawn-Egg",

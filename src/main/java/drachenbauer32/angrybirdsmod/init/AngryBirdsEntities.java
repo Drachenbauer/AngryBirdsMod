@@ -1,5 +1,6 @@
 package drachenbauer32.angrybirdsmod.init;
 
+import drachenbauer32.angrybirdsmod.AngryBirds;
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
@@ -62,7 +63,7 @@ public class AngryBirdsEntities
     
     public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name)
     {
-        SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(ItemGroup.MISC));
+        SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(AngryBirds.ANGRY_BIRDS));
         item.setRegistryName(name);
         return item;
     }

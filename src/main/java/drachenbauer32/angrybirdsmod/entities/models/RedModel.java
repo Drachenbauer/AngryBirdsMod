@@ -17,13 +17,13 @@ public class RedModel extends EntityModel<RedEntity>
 	
 	public RedModel()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 32;
+		textureHeight = 16;
 
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 20.0F, 0.0F);
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 16, -1.0F, 1.0F, -6.0F, 2, 2, 2, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 0, 0, -1.0F, 1.0F, -6.0F, 2, 2, 2, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 1, 1, 0.0F, -6.0F, -1.0F, 0, 2, 3, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 0, 3, 0.0F, 1.0F, 4.0F, 0, 1, 4, 0.0F, false));
 

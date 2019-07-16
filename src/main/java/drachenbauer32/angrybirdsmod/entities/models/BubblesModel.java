@@ -17,20 +17,20 @@ public class BubblesModel extends EntityModel <BubblesEntity>
 	
 	public BubblesModel()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 34;
+		textureHeight = 16;
 		
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 20.0F, 0.0F);
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 0, 16, -1.0F, 0.0F, -7.0F, 2, 2, 3, 0.0F, false));
-		bone.cubeList.add(new ModelBox(bone, 32, 3, 0.0F, -12.0F, -1.0F, 0, 8, 1, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 24, 0, -1.0F, 0.0F, -7.0F, 2, 2, 3, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 32, 7, 0.0F, -12.0F, -1.0F, 0, 8, 1, 0.0F, false));
 		
 		bone2 = new RendererModel(this);
 		bone2.setRotationPoint(0.0F, -4.0F, 0.0F);
 		setRotationAngle(bone2, -0.5236F, 0.0F, 0.0F);
 		bone.addChild(bone2);
-		bone2.cubeList.add(new ModelBox(bone2, 32, 3, 0.0F, -4.0F, -1.0F, 0, 4, 1, 0.0F, false));
+		bone2.cubeList.add(new ModelBox(bone2, 32, 7, 0.0F, -4.0F, -1.0F, 0, 4, 1, 0.0F, false));
 		
 		bone3 = new RendererModel(this);
 		bone3.setRotationPoint(0.0F, 1.0F, 4.0F);

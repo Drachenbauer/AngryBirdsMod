@@ -8,6 +8,7 @@ import drachenbauer32.angrybirdsmod.blocks.SlingshotBlock;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
+import drachenbauer32.angrybirdsmod.util.AngryBirdsItemGroup;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import drachenbauer32.angrybirdsmod.util.handlers.RenderHandler;
 import net.minecraft.block.Block;
@@ -32,6 +33,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Reference.MOD_ID)
 public class AngryBirds
 {
+    public static final ItemGroup ANGRY_BIRDS = new AngryBirdsItemGroup();
+    
     public AngryBirds() 
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -78,15 +81,15 @@ public class AngryBirds
         @SubscribeEvent
         public static void registerItems(final RegistryEvent.Register<Item> event)
         {
-            event.getRegistry().registerAll(AngryBirdsItems.balloon_block = new BlockItem(AngryBirdsBlocks.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+            event.getRegistry().registerAll(AngryBirdsItems.balloon_block = new BlockItem(AngryBirdsBlocks.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.balloon_block.getRegistryName()),
-                                            AngryBirdsItems.egg_block = new BlockItem(AngryBirdsBlocks.egg_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+                                            AngryBirdsItems.egg_block = new BlockItem(AngryBirdsBlocks.egg_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.egg_block.getRegistryName()),
-                                            AngryBirdsItems.nest_block = new BlockItem(AngryBirdsBlocks.nest_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+                                            AngryBirdsItems.nest_block = new BlockItem(AngryBirdsBlocks.nest_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.nest_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_block = new BlockItem(AngryBirdsBlocks.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+                                            AngryBirdsItems.slingshot_block = new BlockItem(AngryBirdsBlocks.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot2_block = new BlockItem(AngryBirdsBlocks.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ItemGroup.DECORATIONS).
+                                            AngryBirdsItems.slingshot2_block = new BlockItem(AngryBirdsBlocks.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot2_block.getRegistryName()));
             
             AngryBirdsEntities.registerEntitySpawnEggs(event);

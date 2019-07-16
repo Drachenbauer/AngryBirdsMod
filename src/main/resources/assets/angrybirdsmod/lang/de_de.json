@@ -6,6 +6,9 @@
     "block.angrybirdsmod.slingshot_block": "Schleuder mit einer Schnur",
     "block.angrybirdsmod.slingshot2_block": "Schleuder mit zwei Schnüren",
     
+    //ItemGroup name
+    "itemGroup.AngryBirds": "Angry Birds Items",
+    
 	//Item names
 	"item.angrybirdsmod.red_egg": "Red-Spawn-Ei",
 	"item.angrybirdsmod.chuck_egg": "Chuck-Spawn-Ei",

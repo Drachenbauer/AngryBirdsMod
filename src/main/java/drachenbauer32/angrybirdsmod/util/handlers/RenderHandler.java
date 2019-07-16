@@ -17,6 +17,7 @@ import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
 import drachenbauer32.angrybirdsmod.entities.WillowEntity;
 import drachenbauer32.angrybirdsmod.entities.renderers.BluesTrioRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.BombRenderer;
+import drachenbauer32.angrybirdsmod.entities.renderers.BubblesInflatedRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.BubblesRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.ChuckRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.DahliaRenderer;
@@ -47,6 +48,7 @@ public class RenderHandler
 		RenderingRegistry.registerEntityRenderingHandler(TerenceEntity.class,new TerenceRenderer.RenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(SilverEntity.class,new SilverRenderer.RenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(BubblesEntity.class,new BubblesRenderer.RenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(BubblesEntity.class,new BubblesInflatedRenderer.RenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(HalEntity.class,new HalRenderer.RenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(StellaEntity.class,new StellaRenderer.RenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(PoppyEntity.class,new PoppyRenderer.RenderFactory());

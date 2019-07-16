@@ -14,8 +14,8 @@ public class BombModel extends EntityModel<BombEntity>
 	
 	public BombModel()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 48;
+		textureHeight = 24;
 
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 18.0F, 0.0F);

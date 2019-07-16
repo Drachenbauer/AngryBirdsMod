@@ -16,8 +16,8 @@ public class DahliaModel extends EntityModel<DahliaEntity>
 	
 	public DahliaModel()
 	{
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 32;
+		textureHeight = 16;
 		
 		bone = new RendererModel(this);
 		bone.setRotationPoint(0.0F, 20.0F, 0.0F);
