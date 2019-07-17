@@ -1,5 +1,11 @@
 package drachenbauer32.angrybirdsmod;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
+import com.google.common.collect.Ordering;
+
 import drachenbauer32.angrybirdsmod.blocks.BalloonBlock;
 import drachenbauer32.angrybirdsmod.blocks.EggBlock;
 import drachenbauer32.angrybirdsmod.blocks.NestBlock;
@@ -21,6 +27,7 @@ import net.minecraft.item.Rarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 //import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -33,6 +40,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Reference.MOD_ID)
 public class AngryBirds
 {
+    public static Comparator<? super ItemStack> tabSorter;
+    
     public static final ItemGroup ANGRY_BIRDS = new AngryBirdsItemGroup();
     
     public AngryBirds() 
@@ -40,6 +49,32 @@ public class AngryBirds
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientRegistries);
         MinecraftForge.EVENT_BUS.register(this);
+    }
+    
+    void preInit()
+    {
+        List<Item> order = Arrays.asList(AngryBirdsItems.red_egg,
+                                         AngryBirdsItems.chuck_egg,
+                                         AngryBirdsItems.blues_egg,
+                                         AngryBirdsItems.bomb_egg,
+                                         AngryBirdsItems.mathilda_egg,
+                                         AngryBirdsItems.terence_egg,
+                                         AngryBirdsItems.silver_egg,
+                                         AngryBirdsItems.bubbles_egg,
+                                         AngryBirdsItems.hal_egg,
+                                         AngryBirdsItems.stella_egg,
+                                         AngryBirdsItems.poppy_egg,
+                                         AngryBirdsItems.willow_egg,
+                                         AngryBirdsItems.dahlia_egg,
+                                         AngryBirdsItems.luca_egg,
+                                         AngryBirdsItems.ice_bird_egg,
+                                         AngryBirdsItems.balloon_block,
+                                         AngryBirdsItems.egg_block,
+                                         AngryBirdsItems.nest_block,
+                                         AngryBirdsItems.slingshot_block,
+                                         AngryBirdsItems.slingshot2_block);
+        
+        tabSorter = Ordering.explicit(order).onResultOf(ItemStack::g﻿etIt﻿em);
     }
     
     private void setup(final FMLCommonSetupEvent event)

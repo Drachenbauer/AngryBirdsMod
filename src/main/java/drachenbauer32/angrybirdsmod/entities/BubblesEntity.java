@@ -1,8 +1,5 @@
 package drachenbauer32.angrybirdsmod.entities;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -16,7 +13,7 @@ import net.minecraft.world.World;
 
 public class BubblesEntity extends AnimalEntity
 {
-    private Timer timer = new Timer();
+    public int timeUntilDeflating = 0;
     
     @SuppressWarnings("unchecked")
     public BubblesEntity(EntityType<? extends AnimalEntity> type, World worldIn)
@@ -46,19 +43,22 @@ public class BubblesEntity extends AnimalEntity
     }
     
     @Override
+    public void livingTick()
+    {
+        timeUntilDeflating++;
+        
+        if (timeUntilDeflating >= 80)
+        {
+            //command or deflating here
+        }
+        
+        super.livingTick();
+    }
+    
+    @Override
     public void onCollideWithPlayer(PlayerEntity entityIn)
     {
-        //command for inflate
-        timer.schedule(new TimerTask()
-        {
-            @Override
-            public void run()
-            {
-                //command for deflate after 4 seconds
-            }
-        }
-        , 4000);
-        
-        super.onCollideWithPlayer(entityIn);
+        timeUntilDeflating = 0;
+        //command for inflating here
     }
 }
