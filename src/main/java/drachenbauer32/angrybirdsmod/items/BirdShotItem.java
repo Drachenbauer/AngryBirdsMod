@@ -21,6 +21,8 @@ public class BirdShotItem extends Item
     {
         BirdShotEntity birdshotentity;
         
+      
+        
         if(shooter.getHeldItemOffhand().getItem() == AngryBirdsItems.chuck_shot)
         {
             birdshotentity = new ChuckShotEntity(worldIn, shooter);

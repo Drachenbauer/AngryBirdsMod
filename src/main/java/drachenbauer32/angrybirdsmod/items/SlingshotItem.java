@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
@@ -21,6 +22,25 @@ public class SlingshotItem extends BowItem
     public SlingshotItem(Item.Properties builder)
     {
         super(builder);
+        
+        this.addPropertyOverride(new ResourceLocation("angrybirdsmod:pull"), (p_210310_0_, p_210310_1_, p_210310_2_) ->
+        {
+            if (p_210310_2_ == null)
+            {
+                return 0.0F;
+            }
+            else
+            {
+                return !(p_210310_2_.getActiveItemStack().getItem() instanceof BowItem) ? 0.0F : (float)(p_210310_0_.getUseDuration() - p_210310_2_.getItemInUseCount()) / 20.0F;
+            }
+        }
+        );
+        
+        this.addPropertyOverride(new ResourceLocation("angrybirdsmod:pulling"), (p_210309_0_, p_210309_1_, p_210309_2_) ->
+        {
+            return p_210309_2_ != null && p_210309_2_.isHandActive() && p_210309_2_.getActiveItemStack() == p_210309_0_ ? 1.0F : 0.0F;
+        }
+        );
     }
     
     @Override
@@ -51,11 +71,11 @@ public class SlingshotItem extends BowItem
                 
                 if (!((double)f < 0.1D))
                 {
-                    boolean flag1 = playerentity.abilities.isCreativeMode || (itemstack.getItem() instanceof ArrowItem && ((ArrowItem)itemstack.getItem()).isInfinite(itemstack, stack, playerentity));
+                    boolean flag1 = playerentity.abilities.isCreativeMode || (itemstack.getItem() instanceof BirdShotItem && ((BirdShotItem)itemstack.getItem()).isInfinite(itemstack, stack, playerentity));
                     
                     if (!worldIn.isRemote)
                     {
-                        BirdShotItem birdshotitem = (BirdShotItem)(itemstack.getItem() instanceof ArrowItem ? itemstack.getItem() : Items.ARROW);
+                        BirdShotItem birdshotitem = (BirdShotItem)(itemstack.getItem() instanceof BirdShotItem ? itemstack.getItem() : AngryBirdsItems.red_shot);
                         AbstractArrowEntity abstractbirdshotentity = birdshotitem.createArrow(worldIn, itemstack, playerentity);
                         abstractbirdshotentity = customeBird(abstractbirdshotentity);
                         abstractbirdshotentity.shoot(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
