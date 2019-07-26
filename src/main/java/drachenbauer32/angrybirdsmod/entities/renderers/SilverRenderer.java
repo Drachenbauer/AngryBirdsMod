@@ -14,13 +14,13 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 @OnlyIn(Dist.CLIENT)
 public class SilverRenderer extends LivingRenderer<SilverEntity, SilverModel>
 {
-private static final ResourceLocation SILVER_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/silver.png");
+    private static final ResourceLocation SILVER_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/silver.png");
     
     public SilverRenderer(EntityRendererManager manager)
     {
         super(manager, new SilverModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(SilverEntity arg0)
     {

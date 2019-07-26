@@ -3,6 +3,7 @@ package drachenbauer32.angrybirdsmod.entities;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Pose;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
@@ -23,6 +24,12 @@ public class BombEntity extends AnimalEntity
     public AgeableEntity createChild(AgeableEntity arg0)
     {
         return null;
+    }
+    
+    @Override
+    public float getEyeHeight(Pose p_213307_1_)
+    {
+        return 0.5625f;
     }
     
     @Override

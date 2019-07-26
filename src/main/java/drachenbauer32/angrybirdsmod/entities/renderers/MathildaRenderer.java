@@ -20,13 +20,13 @@ public class MathildaRenderer extends LivingRenderer<MathildaEntity, MathildaMod
     {
         super(manager, new MathildaModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(MathildaEntity arg0)
     {
         return MATHILDA_TEXTURE;
     }
-	
+    
     public static class RenderFactory implements IRenderFactory<MathildaEntity>
     {
         @Override

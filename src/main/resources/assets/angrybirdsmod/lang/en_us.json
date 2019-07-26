@@ -1,12 +1,5 @@
 
 {
-    //Block names
-    "block.angrybirdsmod.balloon_block": "Balloon",
-    "block.angrybirdsmod.egg_block": "Egg",
-    "block.angrybirdsmod.nest_block": "Nest",
-    "block.angrybirdsmod.slingshot_block": "Single stringed Slingshot",
-    "block.angrybirdsmod.slingshot2_block": "Double stringed Slingshot",
-    
     //ItemGroup name
     "itemGroup.AngryBirds": "Angry Birds Items",
     
@@ -26,6 +19,18 @@
 	"item.angrybirdsmod.dahlia_egg": "Dahlia-Spawn-Egg",
 	"item.angrybirdsmod.luca_egg": "Luca-Spawn-Egg",
 	"item.angrybirdsmod.ice_bird_egg": "Ice Bird-Spawn-Egg",
+	
+	"item.angrybirdsmod.slingshot": "Slingshot",
+	"item.angrybirdsmod.red_shot": "Red-Munition",
+	
+	
+	//Block names
+    "block.angrybirdsmod.balloon_block": "Balloon",
+    "block.angrybirdsmod.egg_block": "Egg",
+    "block.angrybirdsmod.nest_block": "Nest",
+    "block.angrybirdsmod.slingshot_block": "Single stringed Slingshot",
+    "block.angrybirdsmod.slingshot2_block": "Double stringed Slingshot",
+	
 	
     //Entity names
     "entity.angrybirdsmod.red": "Red",

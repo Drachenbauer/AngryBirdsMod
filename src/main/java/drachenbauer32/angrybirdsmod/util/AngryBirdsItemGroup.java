@@ -1,6 +1,6 @@
 package drachenbauer32.angrybirdsmod.util;
 
-import drachenbauer32.angrybirdsmod.AngryBirds;
+//import drachenbauer32.angrybirdsmod.AngryBirds;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -23,6 +23,6 @@ public class AngryBirdsItemGroup extends ItemGroup
     public void fill(NonNullList<ItemStack> items)
     {
         super.fill(items);
-        items.sort(AngryBirds.tabSorter);
+        //items.sort(AngryBirds.tabSorter);
     }
 }

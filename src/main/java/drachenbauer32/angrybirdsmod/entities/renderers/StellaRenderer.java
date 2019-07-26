@@ -20,7 +20,7 @@ public class StellaRenderer extends LivingRenderer<StellaEntity, StellaModel>
     {
         super(manager, new StellaModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(StellaEntity arg0)
     {

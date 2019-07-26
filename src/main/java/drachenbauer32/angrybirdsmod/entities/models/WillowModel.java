@@ -10,16 +10,16 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class WillowModel extends EntityModel<WillowEntity>
 {
-	private final RendererModel bone;
-
-	public WillowModel()
-	{
-		textureWidth = 128;
-		textureHeight = 64;
-
-		bone = new RendererModel(this);
-		bone.setRotationPoint(0.0F, 16.0F, 0.0F);
-		bone.cubeList.add(new ModelBox(bone, 0, 0, -8.0F, -8.0F, -8.0F, 16, 16, 16, 0.0F, false));
+    private final RendererModel bone;
+    
+    public WillowModel()
+    {
+        textureWidth = 128;
+        textureHeight = 64;
+        
+        bone = new RendererModel(this);
+        bone.setRotationPoint(0.0F, 16.0F, 0.0F);
+        bone.cubeList.add(new ModelBox(bone, 0, 0, -8.0F, -8.0F, -8.0F, 16, 16, 16, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 50, 12, -2.0F, 4.0F, -10.0F, 4, 2, 2, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 56, 28, -9.0F, -9.0F, -9.0F, 18, 17, 18, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 96, 0, -4.0F, -9.0F, 9.0F, 8, 8, 8, 0.0F, false));
@@ -34,9 +34,9 @@ public class WillowModel extends EntityModel<WillowEntity>
         bone.cubeList.add(new ModelBox(bone, 0, 32, 9.0F, 7.0F, -6.0F, 5, 1, 2, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 0, 32, -14.0F, 7.0F, -2.0F, 5, 1, 2, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 0, 32, 9.0F, 7.0F, -2.0F, 5, 1, 2, 0.0F, false));
-	}
-	
-	@Override
+    }
+    
+    @Override
     public void render(WillowEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         bone.render(scale);
@@ -51,7 +51,7 @@ public class WillowModel extends EntityModel<WillowEntity>
     
     @Override
     public void setRotationAngles(WillowEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
-            float headPitch, float scaleFactor )
+                                  float headPitch, float scaleFactor)
     {
         bone.rotateAngleX = headPitch * 0.017453292f;
         bone.rotateAngleY = netHeadYaw * 0.017453292f;

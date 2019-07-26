@@ -1,10 +1,10 @@
 package drachenbauer32.angrybirdsmod;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
+//import java.util.List;
 
-import com.google.common.collect.Ordering;
+//import com.google.common.collect.Ordering;
 
 import drachenbauer32.angrybirdsmod.blocks.BalloonBlock;
 import drachenbauer32.angrybirdsmod.blocks.EggBlock;
@@ -14,6 +14,8 @@ import drachenbauer32.angrybirdsmod.blocks.SlingshotBlock;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
+import drachenbauer32.angrybirdsmod.items.BirdShotItem;
+import drachenbauer32.angrybirdsmod.items.SlingshotItem;
 import drachenbauer32.angrybirdsmod.util.AngryBirdsItemGroup;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import drachenbauer32.angrybirdsmod.util.handlers.RenderHandler;
@@ -53,7 +55,7 @@ public class AngryBirds
     
     void preInit()
     {
-        List<Item> order = Arrays.asList(AngryBirdsItems.red_egg,
+        /*List<Item> order = Arrays.asList(AngryBirdsItems.red_egg,
                                          AngryBirdsItems.chuck_egg,
                                          AngryBirdsItems.blues_egg,
                                          AngryBirdsItems.bomb_egg,
@@ -68,13 +70,17 @@ public class AngryBirds
                                          AngryBirdsItems.dahlia_egg,
                                          AngryBirdsItems.luca_egg,
                                          AngryBirdsItems.ice_bird_egg,
+                                         
+                                         AngryBirdsItems.slingshot,
+                                         AngryBirdsItems.red_shot,
+                                         
                                          AngryBirdsItems.balloon_block,
                                          AngryBirdsItems.egg_block,
                                          AngryBirdsItems.nest_block,
                                          AngryBirdsItems.slingshot_block,
-                                         AngryBirdsItems.slingshot2_block);
+                                         AngryBirdsItems.slingshot2_block);*/
         
-        tabSorter = Ordering.explicit(order).onResultOf(ItemStack::g﻿etIt﻿em);
+       //tabSorter = Ordering.explicit(order).onResultOf(ItemStack::g﻿etIt﻿em);
     }
     
     private void setup(final FMLCommonSetupEvent event)
@@ -125,7 +131,12 @@ public class AngryBirds
                                             AngryBirdsItems.slingshot_block = new BlockItem(AngryBirdsBlocks.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_block.getRegistryName()),
                                             AngryBirdsItems.slingshot2_block = new BlockItem(AngryBirdsBlocks.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot2_block.getRegistryName()));
+                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot2_block.getRegistryName()),
+                                            
+                                            AngryBirdsItems.slingshot = new SlingshotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                                 maxStackSize(1).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot"),
+                                            AngryBirdsItems.red_shot = new BirdShotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("red_shot"));
             
             AngryBirdsEntities.registerEntitySpawnEggs(event);
         }

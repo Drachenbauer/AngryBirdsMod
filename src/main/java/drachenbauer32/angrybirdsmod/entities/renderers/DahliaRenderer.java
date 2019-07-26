@@ -20,7 +20,7 @@ public class DahliaRenderer extends LivingRenderer<DahliaEntity, DahliaModel>
     {
         super(manager, new DahliaModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(DahliaEntity arg0)
     {

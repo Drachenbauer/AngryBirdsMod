@@ -3,6 +3,7 @@ package drachenbauer32.angrybirdsmod.util.handlers;
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
+import drachenbauer32.angrybirdsmod.entities.BubblesInflatedEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
 import drachenbauer32.angrybirdsmod.entities.DahliaEntity;
 import drachenbauer32.angrybirdsmod.entities.HalEntity;
@@ -11,6 +12,7 @@ import drachenbauer32.angrybirdsmod.entities.LucaEntity;
 import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
 import drachenbauer32.angrybirdsmod.entities.PoppyEntity;
 import drachenbauer32.angrybirdsmod.entities.RedEntity;
+import drachenbauer32.angrybirdsmod.entities.RedShotEntity;
 import drachenbauer32.angrybirdsmod.entities.SilverEntity;
 import drachenbauer32.angrybirdsmod.entities.StellaEntity;
 import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
@@ -27,6 +29,7 @@ import drachenbauer32.angrybirdsmod.entities.renderers.LucaRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.MathildaRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.PoppyRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.RedRenderer;
+import drachenbauer32.angrybirdsmod.entities.renderers.RedShotRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.SilverRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.StellaRenderer;
 import drachenbauer32.angrybirdsmod.entities.renderers.TerenceRenderer;
@@ -38,23 +41,25 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 @OnlyIn(Dist.CLIENT)
 public class RenderHandler 
 {
-	public static void regigisterEntityRenders()
-	{
-		RenderingRegistry.registerEntityRenderingHandler(RedEntity.class,new RedRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(ChuckEntity.class,new ChuckRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(BluesEntity.class,new BluesTrioRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(BombEntity.class,new BombRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(MathildaEntity.class,new MathildaRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(TerenceEntity.class,new TerenceRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(SilverEntity.class,new SilverRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(BubblesEntity.class,new BubblesRenderer.RenderFactory());
-		//RenderingRegistry.registerEntityRenderingHandler(BubblesEntity.class,new BubblesInflatedRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(HalEntity.class,new HalRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(StellaEntity.class,new StellaRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(PoppyEntity.class,new PoppyRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(WillowEntity.class,new WillowRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(DahliaEntity.class,new DahliaRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(LucaEntity.class,new LucaRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(IceBirdEntity.class,new IceBirdRenderer.RenderFactory());
-	}
+    public static void regigisterEntityRenders()
+    {
+        RenderingRegistry.registerEntityRenderingHandler(RedEntity.class,new RedRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(ChuckEntity.class,new ChuckRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(BluesEntity.class,new BluesTrioRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(BombEntity.class,new BombRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(MathildaEntity.class,new MathildaRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(TerenceEntity.class,new TerenceRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(SilverEntity.class,new SilverRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(BubblesEntity.class,new BubblesRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(BubblesInflatedEntity.class,new BubblesInflatedRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(HalEntity.class,new HalRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(StellaEntity.class,new StellaRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(PoppyEntity.class,new PoppyRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(WillowEntity.class,new WillowRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(DahliaEntity.class,new DahliaRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(LucaEntity.class,new LucaRenderer.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(IceBirdEntity.class,new IceBirdRenderer.RenderFactory());
+        
+        RenderingRegistry.registerEntityRenderingHandler(RedShotEntity.class,new RedShotRenderer.RenderFactory());
+    }
 }

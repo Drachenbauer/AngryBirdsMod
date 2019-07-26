@@ -20,13 +20,13 @@ public class StellaPlayerRenderer extends LivingRenderer<StellaPlayerEntity, Ste
     {
         super(manager, new StellaPlayerModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(StellaPlayerEntity arg0)
     {
         return STELLA_PLAYER_TEXTURE;
     }
-	
+    
     public static class RenderFactory implements IRenderFactory<StellaPlayerEntity>
     {
         @Override

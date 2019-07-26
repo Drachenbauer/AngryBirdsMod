@@ -20,7 +20,7 @@ public class HalRenderer extends LivingRenderer<HalEntity, HalModel>
     {
         super(manager, new HalModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(HalEntity arg0)
     {

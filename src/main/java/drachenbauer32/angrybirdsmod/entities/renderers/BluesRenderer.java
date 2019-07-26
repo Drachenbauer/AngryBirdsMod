@@ -35,7 +35,7 @@ public class BluesRenderer extends LivingRenderer<BluesEntity, BluesModel>
     {
         return BLUES_TEXTURE;
     }
-	
+    
     public static class RenderFactory implements IRenderFactory<BluesEntity>
     {
         @Override

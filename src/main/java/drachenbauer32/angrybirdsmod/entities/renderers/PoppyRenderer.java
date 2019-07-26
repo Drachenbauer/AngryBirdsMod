@@ -20,7 +20,7 @@ public class PoppyRenderer extends LivingRenderer<PoppyEntity, PoppyModel>
     {
         super(manager, new PoppyModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(PoppyEntity arg0)
     {

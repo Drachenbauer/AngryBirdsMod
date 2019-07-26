@@ -15,34 +15,34 @@ import net.minecraft.world.World;
 
 public class AbstractColorBlock extends ContainerBlock
 {
-	private final DyeColor color;
-	
-	protected AbstractColorBlock(DyeColor p_i48453_1_ , Properties builder)
-	{
-		super(builder);
-		color = p_i48453_1_;
-	}
-
-	/*@Override
+    private final DyeColor color;
+    
+    protected AbstractColorBlock(DyeColor p_i48453_1_ , Properties builder)
+    {
+        super(builder);
+        color = p_i48453_1_;
+    }
+    
+    /*@Override
 	public TileEntity createNewTileEntity(IBlockReader worldIn)
 	{
 		return new TileEntityBlockColors();
 	}*/
-
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack)
-	{
-	    TileEntity tileentity = worldIn.getTileEntity(pos);
-	    if (tileentity instanceof TileEntityBlockColors)
-	    {
-	        ((TileEntityBlockColors)tileentity).loadFromItemStack(stack, this.color);
-	    }
-	}
     
-	public DyeColor getColor()
-	{
-	    return this.color;
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack)
+    {
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        if (tileentity instanceof TileEntityBlockColors)
+        {
+            ((TileEntityBlockColors)tileentity).loadFromItemStack(stack, this.color);
+        }
     }
-
+    
+    public DyeColor getColor()
+    {
+        return this.color;
+    }
+    
     @Override
     public TileEntity createNewTileEntity(IBlockReader worldIn)
     {

@@ -21,13 +21,13 @@ public class ChuckRenderer extends LivingRenderer<ChuckEntity, ChuckModel>
         super(manager, new ChuckModel(), 0.5f);
         // TODO Auto-generated constructor stub
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(ChuckEntity arg0)
     {
         return CHUCK_TEXTURE;
     }
-	
+    
     public static class RenderFactory implements IRenderFactory<ChuckEntity>
     {
         @Override

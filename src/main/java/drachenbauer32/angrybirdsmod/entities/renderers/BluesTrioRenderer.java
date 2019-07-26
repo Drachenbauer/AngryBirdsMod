@@ -35,7 +35,7 @@ public class BluesTrioRenderer extends LivingRenderer<BluesEntity, BluesTrioMode
     {
         return BLUES_TRIO_TEXTURE;
     }
-	
+    
     public static class RenderFactory implements IRenderFactory<BluesEntity>
     {
         @Override

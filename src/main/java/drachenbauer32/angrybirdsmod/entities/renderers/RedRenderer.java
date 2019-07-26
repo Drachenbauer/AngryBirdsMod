@@ -20,13 +20,13 @@ public class RedRenderer extends LivingRenderer<RedEntity, RedModel>
     {
         super(manager, new RedModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(RedEntity arg0)
     {
         return RED_TEXTURE;
     }
-	
+    
     public static class RenderFactory implements IRenderFactory<RedEntity>
     {
         @Override

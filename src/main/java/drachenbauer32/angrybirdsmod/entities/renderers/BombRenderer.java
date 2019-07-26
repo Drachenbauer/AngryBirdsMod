@@ -20,13 +20,13 @@ public class BombRenderer extends LivingRenderer<BombEntity, BombModel>
     {
         super(manager, new BombModel(), 0.75f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(BombEntity arg0)
     {
         return BOMB_TEXTURE;
     }
-	
+    
     public static class RenderFactory implements IRenderFactory<BombEntity>
     {
         @Override

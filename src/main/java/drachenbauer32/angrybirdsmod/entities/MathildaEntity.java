@@ -3,6 +3,7 @@ package drachenbauer32.angrybirdsmod.entities;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Pose;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
@@ -29,6 +30,12 @@ public class MathildaEntity extends AnimalEntity
     }
     
     @Override
+    public float getEyeHeight(Pose p_213307_1_)
+    {
+        return 0.5f;
+    }
+    
+    @Override
     protected void registerGoals()
     {
         this.goalSelector.addGoal(0, new SwimGoal(this));
@@ -47,9 +54,9 @@ public class MathildaEntity extends AnimalEntity
         super.livingTick();
         if (!this.world.isRemote && this.isAlive() && !this.isChild() && --this.timeUntilNextEgg <= 0)
         {
-           this.entityDropItem(Items.EGG);
-           this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
+            this.entityDropItem(Items.EGG);
+            this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
         }
-
-     }
+        
+    }
 }

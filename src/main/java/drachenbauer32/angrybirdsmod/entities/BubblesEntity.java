@@ -3,6 +3,7 @@ package drachenbauer32.angrybirdsmod.entities;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Pose;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
@@ -13,7 +14,8 @@ import net.minecraft.world.World;
 
 public class BubblesEntity extends AnimalEntity
 {
-    public int timeUntilDeflating = 0;
+    private int timeUntilDeflating = 0;
+    private BubblesInflatedEntity inflated = new BubblesInflatedEntity(AngryBirdsEntities.BUBBLES_INFLATED, world);
     
     @SuppressWarnings("unchecked")
     public BubblesEntity(EntityType<? extends AnimalEntity> type, World worldIn)
@@ -25,6 +27,12 @@ public class BubblesEntity extends AnimalEntity
     public AgeableEntity createChild(AgeableEntity arg0)
     {
         return null;
+    }
+    
+    @Override
+    public float getEyeHeight(Pose p_213307_1_)
+    {
+        return 0.15625f;
     }
     
     @Override
@@ -45,20 +53,28 @@ public class BubblesEntity extends AnimalEntity
     @Override
     public void livingTick()
     {
-        timeUntilDeflating++;
-        
-        if (timeUntilDeflating >= 80)
+        if (timeUntilDeflating > 0)
         {
-            //command or deflating here
+            timeUntilDeflating--;
+            
+            if (timeUntilDeflating == 0)
+            {
+                //command for deflating here
+            }
         }
-        
-        super.livingTick();
+        else
+        {
+            super.livingTick();
+        }
     }
     
     @Override
     public void onCollideWithPlayer(PlayerEntity entityIn)
     {
-        timeUntilDeflating = 0;
-        //command for inflating here
+        if (timeUntilDeflating == 0)
+        {
+            timeUntilDeflating = 80;
+            //command for inflating here
+        }
     }
 }

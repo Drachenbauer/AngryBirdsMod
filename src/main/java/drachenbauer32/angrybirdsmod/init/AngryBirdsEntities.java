@@ -4,6 +4,7 @@ import drachenbauer32.angrybirdsmod.AngryBirds;
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
+import drachenbauer32.angrybirdsmod.entities.BubblesInflatedEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
 import drachenbauer32.angrybirdsmod.entities.DahliaEntity;
 import drachenbauer32.angrybirdsmod.entities.HalEntity;
@@ -12,16 +13,18 @@ import drachenbauer32.angrybirdsmod.entities.LucaEntity;
 import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
 import drachenbauer32.angrybirdsmod.entities.PoppyEntity;
 import drachenbauer32.angrybirdsmod.entities.RedEntity;
+import drachenbauer32.angrybirdsmod.entities.RedShotEntity;
 import drachenbauer32.angrybirdsmod.entities.SilverEntity;
 import drachenbauer32.angrybirdsmod.entities.StellaEntity;
 import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
 import drachenbauer32.angrybirdsmod.entities.WillowEntity;
 import drachenbauer32.angrybirdsmod.util.Reference;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent;
 
 public class AngryBirdsEntities 
@@ -34,6 +37,7 @@ public class AngryBirdsEntities
     public static EntityType<?> TERENCE = EntityType.Builder.create(TerenceEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".terence").setRegistryName("terence");
     public static EntityType<?> SILVER = EntityType.Builder.create(SilverEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".silver").setRegistryName("silver");
     public static EntityType<?> BUBBLES = EntityType.Builder.create(BubblesEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".bubbles").setRegistryName("bubbles");
+    public static EntityType<?> BUBBLES_INFLATED = EntityType.Builder.create(BubblesInflatedEntity::new, EntityClassification.MISC).build(Reference.MOD_ID + ".bubbles_inflated").setRegistryName("bubbles_inflated");
     public static EntityType<?> HAL = EntityType.Builder.create(HalEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".hal").setRegistryName("hal");
     public static EntityType<?> STELLA = EntityType.Builder.create(StellaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".stella").setRegistryName("stella");
     public static EntityType<?> POPPY = EntityType.Builder.create(PoppyEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".poppy").setRegistryName("poppy");
@@ -41,6 +45,14 @@ public class AngryBirdsEntities
     public static EntityType<?> DAHLIA = EntityType.Builder.create(DahliaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".dahlia").setRegistryName("dahlia");
     public static EntityType<?> LUCA = EntityType.Builder.create(LucaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".luca").setRegistryName("luca");
     public static EntityType<?> ICE_BIRD = EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
+    
+    public static EntityType<RedShotEntity> RED_SHOT = register("red_shot", EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));
+    
+    @SuppressWarnings("deprecation")
+    private static <T extends Entity> EntityType<T> register(String key, EntityType.Builder<T> builder)
+    {
+        return Registry.register(Registry.ENTITY_TYPE, key, builder.build(key));
+    }
     
     public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item>event)
     {

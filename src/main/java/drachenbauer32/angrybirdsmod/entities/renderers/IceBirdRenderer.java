@@ -20,7 +20,7 @@ public class IceBirdRenderer extends LivingRenderer<IceBirdEntity, IceBirdModel>
     {
         super(manager, new IceBirdModel(), 0.5f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(IceBirdEntity arg0)
     {

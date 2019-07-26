@@ -20,7 +20,7 @@ public class TerenceRenderer extends LivingRenderer<TerenceEntity, TerenceModel>
     {
         super(manager, new TerenceModel(), 1.25f);
     }
-
+    
     @Override
     protected ResourceLocation getEntityTexture(TerenceEntity arg0)
     {
