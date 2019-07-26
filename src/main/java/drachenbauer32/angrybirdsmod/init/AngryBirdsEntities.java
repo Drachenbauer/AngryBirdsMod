@@ -6,6 +6,7 @@ import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesInflatedEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
+import drachenbauer32.angrybirdsmod.entities.ChuckShotEntity;
 import drachenbauer32.angrybirdsmod.entities.DahliaEntity;
 import drachenbauer32.angrybirdsmod.entities.HalEntity;
 import drachenbauer32.angrybirdsmod.entities.IceBirdEntity;
@@ -47,6 +48,7 @@ public class AngryBirdsEntities
     public static EntityType<?> ICE_BIRD = EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
     
     public static EntityType<RedShotEntity> RED_SHOT = register("red_shot", EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));
+    public static EntityType<ChuckShotEntity> CHUCK_SHOT = register("chuck_shot", EntityType.Builder.<ChuckShotEntity>create(ChuckShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));
     
     @SuppressWarnings("deprecation")
     private static <T extends Entity> EntityType<T> register(String key, EntityType.Builder<T> builder)

@@ -136,7 +136,9 @@ public class AngryBirds
                                             AngryBirdsItems.slingshot = new SlingshotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(1).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot"),
                                             AngryBirdsItems.red_shot = new BirdShotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("red_shot"));
+                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("red_shot"),
+                                            AngryBirdsItems.chuck_shot = new BirdShotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("chuck_shot"));
             
             AngryBirdsEntities.registerEntitySpawnEggs(event);
         }

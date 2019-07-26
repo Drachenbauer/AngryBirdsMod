@@ -22,6 +22,7 @@ public class AngryBirdsItems
                        
                        slingshot,
                        red_shot,
+                       chuck_shot,
                        
                        balloon_block,
                        egg_block,
