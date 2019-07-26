@@ -21,6 +21,4 @@ public class RedShotEntity extends BirdShotEntity
     {
         super((EntityType<? extends BirdShotEntity>)AngryBirdsEntities.RED_SHOT,worldIn, shooter);
     }
-    
-    
 }
