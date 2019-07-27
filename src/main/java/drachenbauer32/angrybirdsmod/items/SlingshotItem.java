@@ -1,5 +1,7 @@
 package drachenbauer32.angrybirdsmod.items;
 
+import java.util.function.Predicate;
+
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -17,6 +19,12 @@ import net.minecraft.world.World;
 
 public class SlingshotItem extends BowItem
 {
+    public static final Predicate<ItemStack> BIRD_SHOTS = (p_220002_0_) ->
+    {
+        return p_220002_0_.getItem().isIn(AngryBirdsItems.BIRD_SHOTS);
+    }
+    ;
+    
     public SlingshotItem(Item.Properties builder)
     {
         super(builder);
@@ -89,7 +97,7 @@ public class SlingshotItem extends BowItem
                         }
                                 );
                         
-                        if (flag1 || playerentity.abilities.isCreativeMode && (itemstack.getItem() == Items.SPECTRAL_ARROW || itemstack.getItem() == Items.TIPPED_ARROW))
+                        if (flag1 || playerentity.abilities.isCreativeMode)
                         {
                             abstractbirdshotentity.pickupStatus = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
                         }
