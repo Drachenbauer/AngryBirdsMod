@@ -15,7 +15,7 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 @OnlyIn(Dist.CLIENT)
 public class ChuckShotRenderer extends AbstractBirdStotRenderer<ChuckShotEntity, ChuckShotModel>
 {
-    private static final ResourceLocation RED_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/red.png");
+    private static final ResourceLocation CHUCK_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/chuck.png");
     
     public ChuckShotRenderer(EntityRendererManager manager)
     {
@@ -31,7 +31,7 @@ public class ChuckShotRenderer extends AbstractBirdStotRenderer<ChuckShotEntity,
     @Override
     protected ResourceLocation getEntityTexture(ChuckShotEntity arg0)
     {
-        return RED_TEXTURE;
+        return CHUCK_TEXTURE;
     }
     
     public static class RenderFactory implements IRenderFactory<ChuckShotEntity>
