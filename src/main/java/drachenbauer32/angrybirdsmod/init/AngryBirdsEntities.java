@@ -26,8 +26,7 @@ public class AngryBirdsEntities
     public static EntityType<?> LUCA;
     public static EntityType<?> ICE_BIRD;
     
-    //@ObjectHolder(Reference.MOD_ID + ":red_shot")
-    //public static final EntityType<?> RED_SHOT = null;
+    //public static EntityType<?> RED_SHOT;
     public static EntityType<RedShotEntity> RED_SHOT = register("red_shot", EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));
     public static EntityType<ChuckShotEntity> CHUCK_SHOT = register("chuck_shot", EntityType.Builder.<ChuckShotEntity>create(ChuckShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));
     

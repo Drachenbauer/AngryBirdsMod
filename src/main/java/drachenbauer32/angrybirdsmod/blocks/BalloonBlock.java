@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 
+import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.util.Reference;
 
 import net.minecraft.block.Block;
@@ -75,18 +76,20 @@ public class BalloonBlock extends AbstractColorBlock
         builder.add(FACING, HALF);
     }
     
+    
+    
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer,
             ItemStack stack)
     {
-        //replaceBlock(oldState, newState, worldIn, pos, flags);
+        worldIn.setBlockState(pos.up(), AngryBirdsBlocks.balloon_block_top.getDefaultState());
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
     }
     
     @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player)
     {
-        //replaceBlock(oldState, newState, worldIn, pos, flags);
+        worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
         super.onBlockHarvested(worldIn, pos, state, player);
     }
     

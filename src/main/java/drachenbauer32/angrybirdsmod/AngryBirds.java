@@ -7,6 +7,7 @@ import java.util.Comparator;
 //import com.google.common.collect.Ordering;
 
 import drachenbauer32.angrybirdsmod.blocks.BalloonBlock;
+import drachenbauer32.angrybirdsmod.blocks.BalloonBlockTop;
 import drachenbauer32.angrybirdsmod.blocks.EggBlock;
 import drachenbauer32.angrybirdsmod.blocks.NestBlock;
 import drachenbauer32.angrybirdsmod.blocks.Slingshot2Block;
@@ -23,6 +24,7 @@ import drachenbauer32.angrybirdsmod.entities.LucaEntity;
 import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
 import drachenbauer32.angrybirdsmod.entities.PoppyEntity;
 import drachenbauer32.angrybirdsmod.entities.RedEntity;
+import drachenbauer32.angrybirdsmod.entities.RedShotEntity;
 import drachenbauer32.angrybirdsmod.entities.SilverEntity;
 import drachenbauer32.angrybirdsmod.entities.StellaEntity;
 import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
@@ -128,6 +130,8 @@ public class AngryBirds
         {
             event.getRegistry().registerAll(AngryBirdsBlocks.balloon_block = new BalloonBlock("balloon_block", DyeColor.WHITE, Block.Properties.create(Material.WOOL, MaterialColor.SNOW).sound(SoundType.CLOTH).
                                                  lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
+                                            AngryBirdsBlocks.balloon_block_top = new BalloonBlockTop(Block.Properties.create(Material.WOOL, MaterialColor.SNOW).sound(SoundType.CLOTH).
+                                                 lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
                                             AngryBirdsBlocks.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).sound(SoundType.STONE).
                                                  lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
                                             AngryBirdsBlocks.nest_block = new NestBlock("nest_block", Block.Properties.create(Material.PLANTS, MaterialColor.GOLD).sound(SoundType.PLANT).
@@ -180,6 +184,8 @@ public class AngryBirds
             AngryBirdsEntities.DAHLIA = EntityType.Builder.create(DahliaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".dahlia").setRegistryName("dahlia");
             AngryBirdsEntities.LUCA = EntityType.Builder.create(LucaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".luca").setRegistryName("luca");
             AngryBirdsEntities.ICE_BIRD = EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
+            
+            //AngryBirdsEntities.RED_SHOT = EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F);
             
             event.getRegistry().registerAll(AngryBirdsItems.red_egg = registerEntitySpawnEgg(AngryBirdsEntities.RED, 0xdf0000, 0xdfbf9f, "red_egg"),
                                             AngryBirdsItems.chuck_egg = registerEntitySpawnEgg(AngryBirdsEntities.CHUCK, 0xffff00, 0xffffff, "chuck_egg"),

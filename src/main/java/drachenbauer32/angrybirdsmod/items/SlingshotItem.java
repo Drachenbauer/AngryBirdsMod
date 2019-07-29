@@ -143,8 +143,19 @@ public class SlingshotItem extends BowItem
         }
     }
     
-    public AbstractArrowEntity customeBird(AbstractArrowEntity abstractbirdshotentity)
+    public AbstractArrowEntity customeBird(AbstractArrowEntity bird)
     {
-        return abstractbirdshotentity;
+        return bird;
     }
+    
+    public Predicate<ItemStack> getInventoryAmmoPredicate()
+    {
+        return BIRD_SHOTS;
+    }
+    
+    /*@Override
+    public boolean isArrow()
+    {
+        
+    }*/
 }

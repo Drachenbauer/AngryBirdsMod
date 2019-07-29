@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "": { "model": "angrybirdsmod:block/balloon_block" }
+    }
+}

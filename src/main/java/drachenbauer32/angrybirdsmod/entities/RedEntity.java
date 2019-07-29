@@ -12,6 +12,7 @@ import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -23,11 +24,13 @@ public class RedEntity extends AnimalEntity
     private int jumpDuration;
     private boolean wasOnGround;
     private int currentMoveTypeDuration;
+    //private AxisAlignedBB boundingbox;
     
     @SuppressWarnings("unchecked")
     public RedEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.RED, worldIn);
+        //boundingbox = new AxisAlignedBB(0d, 0d, 0d, 0d, 0d, 0d);
         this.jumpController = new RedEntity.JumpHelperController(this);
         this.moveController = new RedEntity.MoveHelperController(this);
         this.setMovementSpeed(0.0D);
@@ -44,6 +47,12 @@ public class RedEntity extends AnimalEntity
     {
         return 0.25f;
     }
+    
+    /*@Override
+    public AxisAlignedBB getBoundingBox()
+    {
+        return boundingbox;
+    }*/
     
     @Override
     protected void registerGoals()
@@ -71,7 +80,7 @@ public class RedEntity extends AnimalEntity
             
             if (d1 < 0.01D)
             {
-                this.moveRelative(0.1F, new Vec3d(0.0D, 0.0D, 0.5D));
+                this.moveRelative(0.1F, new Vec3d(0.0D, 0.0D, 0.25D));
             }
         }
         
