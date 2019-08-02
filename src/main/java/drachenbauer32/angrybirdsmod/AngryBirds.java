@@ -256,8 +256,8 @@ public class AngryBirds
         public static void registerItemColors(final ColorHandlerEvent.Item event)
         {
             event.getItemColors().register(itemColor, AngryBirdsItems.balloon_block,
-                                                        AngryBirdsItems.slingshot_birch_block,
-                                                        AngryBirdsBItems.slingshot_birch_2_block);
+                                                      AngryBirdsItems.slingshot_birch_block,
+                                                      AngryBirdsItems.slingshot_birch_2_block);
         }
         
         public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name)
