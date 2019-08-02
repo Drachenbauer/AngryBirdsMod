@@ -138,25 +138,25 @@ public class SlingshotBirchBlockSideTop extends Block
             
             case EAST:
             worldIn.setBlockState(pos.north(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().north(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.north(2), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.north().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().south().down(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.north(2).down(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case SOUTH:
             worldIn.setBlockState(pos.east(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().east(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.east(2), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.east().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().east().down(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.east(2).down(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case WEST:
             worldIn.setBlockState(pos.south(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().south(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.south(2), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.south().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().south().down(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.south(2).down(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
         }

@@ -130,33 +130,33 @@ public class SlingshotBirchBlockSide extends Block
         {
             default:
             worldIn.setBlockState(pos.west(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west().west(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.west(2), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.west().up(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west().west().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.west(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case EAST:
             worldIn.setBlockState(pos.north(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().north(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.north(2), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.north().up(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().south().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.north(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case SOUTH:
             worldIn.setBlockState(pos.east(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().east(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.east(2), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.east().up(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().east().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.east(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case WEST:
             worldIn.setBlockState(pos.south(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().south(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.south(2), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.south().up(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().south().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.south(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
         }

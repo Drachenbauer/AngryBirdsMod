@@ -48,6 +48,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Rarity;
@@ -68,13 +69,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(Reference.MOD_ID)
 public class AngryBirds
-{
-    public static Comparator<? super ItemStack> tabSorter;
-    
-    public static final ItemGroup ANGRY_BIRDS = new AngryBirdsItemGroup();
-    
-    public static IBlockColor blockColor;
-    
+{   
     public AngryBirds() 
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -125,7 +120,15 @@ public class AngryBirds
     
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents
-    {	
+    {
+        public static Comparator<? super ItemStack> tabSorter;
+        
+        public static final ItemGroup ANGRY_BIRDS = new AngryBirdsItemGroup();
+        
+        public static IBlockColor blockColor;
+        
+        public static IItemColor itemColor;
+        
         /*@SubscribeEvent
 		public static void onRenderPlayer(RenderPlayerEvent.Pre event)
 		{
@@ -249,9 +252,17 @@ public class AngryBirds
                                                         AngryBirdsBlocks.slingshot_birch_2_block);
         }
         
+        @SubscribeEvent
+        public static void registerItemColors(final ColorHandlerEvent.Item event)
+        {
+            event.getItemColors().register(itemColor, AngryBirdsItems.balloon_block,
+                                                        AngryBirdsItems.slingshot_birch_block,
+                                                        AngryBirdsBItems.slingshot_birch_2_block);
+        }
+        
         public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name)
         {
-            SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(AngryBirds.ANGRY_BIRDS));
+            SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(ANGRY_BIRDS));
             item.setRegistryName(name);
             return item;
         }

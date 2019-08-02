@@ -3,9 +3,9 @@
     
     "pattern":
     [
-        "sl ",
-        "ll ",
-        "  l"
+        " ls",
+        " ll",
+        "l  "
     ],
     
     "key":
@@ -23,7 +23,7 @@
     
     "result":
     {
-    	"item": "angrybirdsmod:slingshot_item",
+    	"item": "angrybirdsmod:slingshot",
         "count": 1
     },
     
