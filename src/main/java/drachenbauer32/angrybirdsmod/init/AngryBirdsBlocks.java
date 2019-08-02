@@ -13,5 +13,6 @@ public class AngryBirdsBlocks
                         slingshot_birch_2_block,
                         slingshot_birch_2_wood_base_block,
                         slingshot_birch_block_side,
-                        slingshot_birch_block_side_top;
+                        slingshot_birch_block_side_top,
+                        birch_planks_frame_block;
 }

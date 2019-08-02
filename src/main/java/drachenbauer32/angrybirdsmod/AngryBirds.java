@@ -8,6 +8,7 @@ import java.util.Comparator;
 
 import drachenbauer32.angrybirdsmod.blocks.BalloonBlock;
 import drachenbauer32.angrybirdsmod.blocks.BalloonBlockTop;
+import drachenbauer32.angrybirdsmod.blocks.BirchPlanksFrameBlock;
 import drachenbauer32.angrybirdsmod.blocks.EggBlock;
 import drachenbauer32.angrybirdsmod.blocks.NestBlock;
 import drachenbauer32.angrybirdsmod.blocks.SlingshotBirch2Block;
@@ -159,6 +160,8 @@ public class AngryBirds
                                             AngryBirdsBlocks.slingshot_birch_block_side = new SlingshotBirchBlockSide("slingshot_birch_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
                                                 lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
                                             AngryBirdsBlocks.slingshot_birch_block_side_top = new SlingshotBirchBlockSideTop("slingshot_birch_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.birch_planks_frame_block = new BirchPlanksFrameBlock("birch_planks_frame_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
                                                 lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()));
         }
         
@@ -175,6 +178,8 @@ public class AngryBirds
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_birch_block.getRegistryName()),
                                             AngryBirdsItems.slingshot_birch_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_birch_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_birch_2_block.getRegistryName()),
+                                            AngryBirdsItems.birch_planks_frame_block = new BlockItem(AngryBirdsBlocks.birch_planks_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.birch_planks_frame_block.getRegistryName()),
                                             
                                             AngryBirdsItems.slingshot = new SlingshotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(1).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot"),

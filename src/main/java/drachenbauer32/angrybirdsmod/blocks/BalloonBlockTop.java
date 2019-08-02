@@ -1,6 +1,6 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
+//import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -56,9 +56,11 @@ public class BalloonBlockTop extends Block
         super.onBlockHarvested(worldIn, pos, state, player);
     }
     
+    //@SuppressWarnings("deprecation")
     @Override
     public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
     {
-        return new ItemStack(AngryBirdsBlocks.balloon_block);
+        return super.getPickBlock(state, target, world, pos.down(), player);
+        //return getItem(world, pos.down(), state);
     }
 }
