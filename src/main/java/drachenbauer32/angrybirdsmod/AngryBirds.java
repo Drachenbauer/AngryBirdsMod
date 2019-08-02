@@ -10,8 +10,12 @@ import drachenbauer32.angrybirdsmod.blocks.BalloonBlock;
 import drachenbauer32.angrybirdsmod.blocks.BalloonBlockTop;
 import drachenbauer32.angrybirdsmod.blocks.EggBlock;
 import drachenbauer32.angrybirdsmod.blocks.NestBlock;
-import drachenbauer32.angrybirdsmod.blocks.Slingshot2Block;
-import drachenbauer32.angrybirdsmod.blocks.SlingshotBlock;
+import drachenbauer32.angrybirdsmod.blocks.SlingshotBirch2Block;
+import drachenbauer32.angrybirdsmod.blocks.SlingshotBirch2WoodBaseBlock;
+import drachenbauer32.angrybirdsmod.blocks.SlingshotBirchBlock;
+import drachenbauer32.angrybirdsmod.blocks.SlingshotBirchWoodBaseBlock;
+import drachenbauer32.angrybirdsmod.blocks.SlingshotBirchBlockSide;
+import drachenbauer32.angrybirdsmod.blocks.SlingshotBirchBlockSideTop;
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
@@ -24,7 +28,7 @@ import drachenbauer32.angrybirdsmod.entities.LucaEntity;
 import drachenbauer32.angrybirdsmod.entities.MathildaEntity;
 import drachenbauer32.angrybirdsmod.entities.PoppyEntity;
 import drachenbauer32.angrybirdsmod.entities.RedEntity;
-import drachenbauer32.angrybirdsmod.entities.RedShotEntity;
+//import drachenbauer32.angrybirdsmod.entities.RedShotEntity;
 import drachenbauer32.angrybirdsmod.entities.SilverEntity;
 import drachenbauer32.angrybirdsmod.entities.StellaEntity;
 import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
@@ -32,7 +36,9 @@ import drachenbauer32.angrybirdsmod.entities.WillowEntity;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
+import drachenbauer32.angrybirdsmod.items.BalloonBlockItem;
 import drachenbauer32.angrybirdsmod.items.BirdShotItem;
+import drachenbauer32.angrybirdsmod.items.SlingshotBlockItem;
 import drachenbauer32.angrybirdsmod.items.SlingshotItem;
 import drachenbauer32.angrybirdsmod.util.AngryBirdsItemGroup;
 import drachenbauer32.angrybirdsmod.util.Reference;
@@ -41,15 +47,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.DyeColor;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 //import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -65,6 +72,8 @@ public class AngryBirds
     public static Comparator<? super ItemStack> tabSorter;
     
     public static final ItemGroup ANGRY_BIRDS = new AngryBirdsItemGroup();
+    
+    public static IBlockColor blockColor;
     
     public AngryBirds() 
     {
@@ -98,8 +107,8 @@ public class AngryBirds
                                          AngryBirdsItems.balloon_block,
                                          AngryBirdsItems.egg_block,
                                          AngryBirdsItems.nest_block,
-                                         AngryBirdsItems.slingshot_block,
-                                         AngryBirdsItems.slingshot2_block);*/
+                                         AngryBirdsItems.slingshot_birch_block,
+                                         AngryBirdsItems.slingshot_birch_2_block);*/
         
        //tabSorter = Ordering.explicit(order).onResultOf(ItemStack::g﻿etIt﻿em);
     }
@@ -128,33 +137,41 @@ public class AngryBirds
         @SubscribeEvent
         public static void registerBlocks(final RegistryEvent.Register<Block> event)
         {
-            event.getRegistry().registerAll(AngryBirdsBlocks.balloon_block = new BalloonBlock("balloon_block", DyeColor.WHITE, Block.Properties.create(Material.WOOL, MaterialColor.SNOW).sound(SoundType.CLOTH).
-                                                 lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
-                                            AngryBirdsBlocks.balloon_block_top = new BalloonBlockTop(Block.Properties.create(Material.WOOL, MaterialColor.SNOW).sound(SoundType.CLOTH).
-                                                 lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
+            event.getRegistry().registerAll(AngryBirdsBlocks.balloon_block = new BalloonBlock("balloon_block", Block.Properties.create(Material.WOOL, MaterialColor.SNOW).sound(SoundType.CLOTH).
+                                                lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
+                                            AngryBirdsBlocks.balloon_block_top = new BalloonBlockTop("balloon_block_top", Block.Properties.create(Material.WOOL, MaterialColor.SNOW).sound(SoundType.CLOTH).
+                                                lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
                                             AngryBirdsBlocks.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).sound(SoundType.STONE).
-                                                 lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
+                                                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
                                             AngryBirdsBlocks.nest_block = new NestBlock("nest_block", Block.Properties.create(Material.PLANTS, MaterialColor.GOLD).sound(SoundType.PLANT).
-                                                 lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_block = new SlingshotBlock("slingshot_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
-                                                 lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot2_block = new Slingshot2Block("slingshot2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
-                                                 lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()));
+                                                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_block = new SlingshotBirchBlock("slingshot_birch_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_wood_base_block = new SlingshotBirchWoodBaseBlock("slingshot_birch_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_2_block = new SlingshotBirch2Block("slingshot_birch_2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_2_wood_base_block = new SlingshotBirch2WoodBaseBlock("slingshot_birch_2_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_block_side = new SlingshotBirchBlockSide("slingshot_birch_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_block_side_top = new SlingshotBirchBlockSideTop("slingshot_birch_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).sound(SoundType.WOOD).
+                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()));
         }
         
         @SubscribeEvent
         public static void registerItems(final RegistryEvent.Register<Item> event)
         {
-            event.getRegistry().registerAll(AngryBirdsItems.balloon_block = new BlockItem(AngryBirdsBlocks.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+            event.getRegistry().registerAll(AngryBirdsItems.balloon_block = new BalloonBlockItem(AngryBirdsBlocks.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.balloon_block.getRegistryName()),
                                             AngryBirdsItems.egg_block = new BlockItem(AngryBirdsBlocks.egg_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.egg_block.getRegistryName()),
                                             AngryBirdsItems.nest_block = new BlockItem(AngryBirdsBlocks.nest_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.nest_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_block = new BlockItem(AngryBirdsBlocks.slingshot_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot2_block = new BlockItem(AngryBirdsBlocks.slingshot2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot2_block.getRegistryName()),
+                                            AngryBirdsItems.slingshot_birch_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_birch_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_birch_block.getRegistryName()),
+                                            AngryBirdsItems.slingshot_birch_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_birch_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                                 maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_birch_2_block.getRegistryName()),
                                             
                                             AngryBirdsItems.slingshot = new SlingshotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                  maxStackSize(1).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot"),
@@ -168,22 +185,22 @@ public class AngryBirds
         
         public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item>event)
         {
-            AngryBirdsEntities.RED = EntityType.Builder.create(RedEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".red").setRegistryName("red");
-            AngryBirdsEntities.CHUCK = EntityType.Builder.create(ChuckEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".chuck").setRegistryName("chuck");
-            AngryBirdsEntities.BLUES = EntityType.Builder.create(BluesEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".blues").setRegistryName("blues");
-            AngryBirdsEntities.BOMB = EntityType.Builder.create(BombEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".bomb").setRegistryName("bomb");
-            AngryBirdsEntities.MATHILDA = EntityType.Builder.create(MathildaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".mathilda").setRegistryName("mathilda");
-            AngryBirdsEntities.TERENCE = EntityType.Builder.create(TerenceEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".terence").setRegistryName("terence");
-            AngryBirdsEntities.SILVER = EntityType.Builder.create(SilverEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".silver").setRegistryName("silver");
-            AngryBirdsEntities.BUBBLES = EntityType.Builder.create(BubblesEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".bubbles").setRegistryName("bubbles");
-            AngryBirdsEntities.BUBBLES_INFLATED = EntityType.Builder.create(BubblesInflatedEntity::new, EntityClassification.MISC).build(Reference.MOD_ID + ".bubbles_inflated").setRegistryName("bubbles_inflated");
-            AngryBirdsEntities.HAL = EntityType.Builder.create(HalEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".hal").setRegistryName("hal");
-            AngryBirdsEntities.STELLA = EntityType.Builder.create(StellaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".stella").setRegistryName("stella");
-            AngryBirdsEntities.POPPY = EntityType.Builder.create(PoppyEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".poppy").setRegistryName("poppy");
-            AngryBirdsEntities.WILLOW = EntityType.Builder.create(WillowEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".willow").setRegistryName("willow");
-            AngryBirdsEntities.DAHLIA = EntityType.Builder.create(DahliaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".dahlia").setRegistryName("dahlia");
-            AngryBirdsEntities.LUCA = EntityType.Builder.create(LucaEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".luca").setRegistryName("luca");
-            AngryBirdsEntities.ICE_BIRD = EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
+            AngryBirdsEntities.RED = EntityType.Builder.create(RedEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".red").setRegistryName("red");
+            AngryBirdsEntities.CHUCK = EntityType.Builder.create(ChuckEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".chuck").setRegistryName("chuck");
+            AngryBirdsEntities.BLUES = EntityType.Builder.create(BluesEntity::new, EntityClassification.CREATURE).size(0.25F, 0.75F).build(Reference.MOD_ID + ".blues").setRegistryName("blues");
+            AngryBirdsEntities.BOMB = EntityType.Builder.create(BombEntity::new, EntityClassification.CREATURE).size(0.75F, 0.75F).build(Reference.MOD_ID + ".bomb").setRegistryName("bomb");
+            AngryBirdsEntities.MATHILDA = EntityType.Builder.create(MathildaEntity::new, EntityClassification.CREATURE).size(0.5F, 0.625F).build(Reference.MOD_ID + ".mathilda").setRegistryName("mathilda");
+            AngryBirdsEntities.TERENCE = EntityType.Builder.create(TerenceEntity::new, EntityClassification.CREATURE).size(1.25F, 1.25F).build(Reference.MOD_ID + ".terence").setRegistryName("terence");
+            AngryBirdsEntities.SILVER = EntityType.Builder.create(SilverEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".silver").setRegistryName("silver");
+            AngryBirdsEntities.BUBBLES = EntityType.Builder.create(BubblesEntity::new, EntityClassification.CREATURE).size(0.25F, 0.25F).build(Reference.MOD_ID + ".bubbles").setRegistryName("bubbles");
+            AngryBirdsEntities.BUBBLES_INFLATED = EntityType.Builder.create(BubblesInflatedEntity::new, EntityClassification.MISC).size(1.25F, 1.25F).build(Reference.MOD_ID + ".bubbles_inflated").setRegistryName("bubbles_inflated");
+            AngryBirdsEntities.HAL = EntityType.Builder.create(HalEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".hal").setRegistryName("hal");
+            AngryBirdsEntities.STELLA = EntityType.Builder.create(StellaEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".stella").setRegistryName("stella");
+            AngryBirdsEntities.POPPY = EntityType.Builder.create(PoppyEntity::new, EntityClassification.CREATURE).size(0.5F, 0.625F).build(Reference.MOD_ID + ".poppy").setRegistryName("poppy");
+            AngryBirdsEntities.WILLOW = EntityType.Builder.create(WillowEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".willow").setRegistryName("willow");
+            AngryBirdsEntities.DAHLIA = EntityType.Builder.create(DahliaEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".dahlia").setRegistryName("dahlia");
+            AngryBirdsEntities.LUCA = EntityType.Builder.create(LucaEntity::new, EntityClassification.CREATURE).size(0.25F, 0.25F).build(Reference.MOD_ID + ".luca").setRegistryName("luca");
+            AngryBirdsEntities.ICE_BIRD = EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
             
             //AngryBirdsEntities.RED_SHOT = EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F);
             
@@ -222,6 +239,14 @@ public class AngryBirds
                                             AngryBirdsEntities.DAHLIA,
                                             AngryBirdsEntities.LUCA,
                                             AngryBirdsEntities.ICE_BIRD);
+        }
+        
+        @SubscribeEvent
+        public static void registerBlockColors(final ColorHandlerEvent.Block event)
+        {
+            event.getBlockColors().register(blockColor, AngryBirdsBlocks.balloon_block,
+                                                        AngryBirdsBlocks.slingshot_birch_block,
+                                                        AngryBirdsBlocks.slingshot_birch_2_block);
         }
         
         public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name)

@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "": { "model": "angrybirdsmod:block/acacia_planks_frame_block" }
+    }
+}

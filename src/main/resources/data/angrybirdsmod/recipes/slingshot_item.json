@@ -1,10 +1,11 @@
 {
     "type": "crafting_shaped",
+    
     "pattern":
     [
-        "s s",
-        "lpl",
-        " l "
+        "sl ",
+        "ll ",
+        "  l"
     ],
     
     "key":
@@ -16,18 +17,13 @@
         
         "l":
         {
-            "item": "minecraft:stripped_birch_log"
-        },
-        
-        "p":
-        {
-            "item": "minecraft:phantom_membrane"
+            "item": "minecraft:stick"
         }
     },
     
     "result":
     {
-    	"item": "angrybirdsmod:slingshot_block",
+    	"item": "angrybirdsmod:slingshot_item",
         "count": 1
     },
     

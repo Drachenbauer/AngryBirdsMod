@@ -30,8 +30,8 @@ public class AngryBirdsItems
                        balloon_block,
                        egg_block,
                        nest_block,
-                       slingshot_block,
-                       slingshot2_block;
+                       slingshot_birch_block,
+                       slingshot_birch_2_block;
     
     public static final Tag<Item> BIRD_SHOTS = makeWrapperTag("bird_shots");
     

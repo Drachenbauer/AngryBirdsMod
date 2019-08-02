@@ -152,10 +152,4 @@ public class SlingshotItem extends BowItem
     {
         return BIRD_SHOTS;
     }
-    
-    /*@Override
-    public boolean isArrow()
-    {
-        
-    }*/
 }

@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "": { "model": "angrybirdsmod:block/spruce_planks_frame_block" }
+    }
+}

@@ -1,6 +1,6 @@
 {
     "variants":
     {
-        "": { "model": "angrybirdsmod:block/balloon_block" }
+        "": { "model": "angrybirdsmod:block/balloon_block_top" }
     }
 }

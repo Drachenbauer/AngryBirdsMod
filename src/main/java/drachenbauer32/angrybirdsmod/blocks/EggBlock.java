@@ -5,6 +5,7 @@ import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
@@ -24,23 +25,20 @@ public class EggBlock extends Block
         return false;
     }
     
-    public boolean isFullCube(BlockState state)
-    {
-        return false;
-    }
-    
-    public VoxelShape getShape(BlockState state, IBlockReader p_196244_2_, BlockPos p_196244_3_)
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
         return EGG_BLOCK_AABB;
     }
     
     @Override
-    public VoxelShape getRenderShape(BlockState state, IBlockReader p_196247_2_, BlockPos p_196247_3_)
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
         return EGG_BLOCK_AABB;
     }
     
-    public VoxelShape getCollisionShape(BlockState state, IBlockReader p_196268_2_, BlockPos p_196268_3_)
+    @Override
+    public VoxelShape getRenderShape(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         return EGG_BLOCK_AABB;
     }

@@ -26,10 +26,10 @@
 	
 	//Block names
     "block.angrybirdsmod.balloon_block": "Luftballon",
-    "block.angrybirdsmod.egg_block": "Ei",
+    "block.angrybirdsmod.egg_block": "Ei (Block)",
     "block.angrybirdsmod.nest_block": "Nest",
-    "block.angrybirdsmod.slingshot_block": "Schleuder (Block) mit einer Schnur",
-    "block.angrybirdsmod.slingshot2_block": "Schleuder (Block) mit zwei Schnüren",
+    "block.angrybirdsmod.slingshot_birch_block": "Birkenholz-Schleuder (Block) mit einer Schnur",
+    "block.angrybirdsmod.slingshot_birch_2_block": "Birkenholz-Schleuder (Block) mit zwei Schnüren",
 	
 	
     //Entity names

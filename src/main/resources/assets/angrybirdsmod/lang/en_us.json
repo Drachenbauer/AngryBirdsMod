@@ -26,10 +26,10 @@
 	
 	//Block names
     "block.angrybirdsmod.balloon_block": "Balloon",
-    "block.angrybirdsmod.egg_block": "Egg",
+    "block.angrybirdsmod.egg_block": "Egg (Block)",
     "block.angrybirdsmod.nest_block": "Nest",
-    "block.angrybirdsmod.slingshot_block": "Single stringed Slingshot",
-    "block.angrybirdsmod.slingshot2_block": "Double stringed Slingshot",
+    "block.angrybirdsmod.slingshot_birch_block": "Single-stringed Birch-Wood-Slingshot (Block)",
+    "block.angrybirdsmod.slingshot_birch_2_block": "Double-stringed Birch-Wood-Slingshot (Block)",
 	
 	
     //Entity names

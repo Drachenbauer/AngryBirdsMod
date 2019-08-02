@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "": { "model": "angrybirdsmod:block/blue_ice_frame_block" }
+    }
+}
