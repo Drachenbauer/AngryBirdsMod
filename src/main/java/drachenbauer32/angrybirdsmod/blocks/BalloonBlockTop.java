@@ -60,7 +60,7 @@ public class BalloonBlockTop extends Block
     @Override
     public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
     {
-        return super.getPickBlock(state, target, world, pos.down(), player);
+        return super.getPickBlock(state, null, world, pos.down(), player);
         //return getItem(world, pos.down(), state);
     }
 }

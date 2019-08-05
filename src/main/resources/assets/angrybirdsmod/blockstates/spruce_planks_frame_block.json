@@ -1,6 +1,7 @@
 {
     "variants":
     {
-        "": { "model": "angrybirdsmod:block/spruce_planks_frame_block" }
+        "bottom=true": { "model": "angrybirdsmod:block/spruce_planks_frame_block" },
+        "bottom=false": { "model": "angrybirdsmod:block/spruce_planks_frame_block" }
     }
 }

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ppp",
+        "p p",
+        "ppp"
+    ],
+    
+    "key":
+    {
+    	"p":
+        {
+            "item": "minecraft:acacia_planks"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:acacia_planks_frame_block",
+        "count": 1
+    },
+    
+    "group": "frame_block"
+}

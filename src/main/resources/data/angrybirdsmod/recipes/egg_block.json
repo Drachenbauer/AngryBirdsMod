@@ -1,15 +1,16 @@
 {
     "type": "minecraft:crafting_shaped",
+    
     "pattern":
     [
-        " b ",
+        " d ",
         " c ",
-        " e "
+        " b "
     ],
     
     "key":
     {  
-    	"b":
+    	"d":
         {
             "item": "minecraft:white_dye"
         },
@@ -19,7 +20,7 @@
             "item": "minecraft:clay"
         },
         
-        "e":
+        "b":
         {
             "item": "angrybirdsmod:balloon_block"
         }        

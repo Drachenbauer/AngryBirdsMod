@@ -1,15 +1,16 @@
 {
     "type": "minecraft:crafting_shaped",
+    
     "pattern":
     [
-        " i ",
+        " d ",
         " b ",
         "   "
     ],
     
     "key":
     {
-        "i":
+        "d":
         {
             "item": "minecraft:black_dye"
         },

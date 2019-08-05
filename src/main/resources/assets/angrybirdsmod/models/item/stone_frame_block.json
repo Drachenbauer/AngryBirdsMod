@@ -1,0 +1,8 @@
+{
+    "parent": "angrybirdsmod:item/frame_block",
+    
+    "textures":
+    {
+        "0": "minecraft:block/stone"
+    }
+}

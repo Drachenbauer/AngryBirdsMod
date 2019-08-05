@@ -17,18 +17,19 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class SlingshotBirchWoodBaseBlock extends Block
+public class SlingshotBlockSide extends Block
 {
-    protected static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
-    protected static final VoxelShape EAST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
-    protected static final VoxelShape WEST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
+    protected static final VoxelShape NORTH_AABB = Block.makeCuboidShape(10.0D, 14.0D, 7.0D, 16.0D, 16.0D, 9.0D);
+    protected static final VoxelShape EAST_AABB = Block.makeCuboidShape(7.0D, 14.0D, 10.0D, 9.0D, 16.0D, 16.0D);
+    protected static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 14.0D, 7.0D, 6.0D, 16.0D, 9.0D);
+    protected static final VoxelShape WEST_AABB = Block.makeCuboidShape(7.0D, 14.0D, 0.0D, 9.0D, 16.0D, 6.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     
-    public SlingshotBirchWoodBaseBlock(String name, Properties properties)
+    public SlingshotBlockSide(String name, Properties properties) 
     {
         super(properties);
         setRegistryName(Reference.MOD_ID, name);
+        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
     
     @Override
@@ -121,41 +122,41 @@ public class SlingshotBirchWoodBaseBlock extends Block
     @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player)
     {
-        worldIn.setBlockState(pos.down(), Blocks.AIR.getDefaultState());
+        worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
         
         Direction facing = state.get(FACING);
         
         switch(facing)
         {
             default:
-            worldIn.setBlockState(pos.east(), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.west(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west().down(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.west(2), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.west().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.west(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case EAST:
             worldIn.setBlockState(pos.north(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().down(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.north(2), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.north().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.north(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case SOUTH:
             worldIn.setBlockState(pos.east(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west().down(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.east(2), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.east().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.east(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
             
             case WEST:
-            worldIn.setBlockState(pos.north(), Blocks.AIR.getDefaultState());
             worldIn.setBlockState(pos.south(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().down(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.south(2), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.south().up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos.south(2).up(), Blocks.AIR.getDefaultState());
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
         }

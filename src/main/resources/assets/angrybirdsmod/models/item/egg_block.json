@@ -1,6 +1,7 @@
 {
-   "parent": "angrybirdsmod:block/egg_block",
-   "display":
+    "parent": "angrybirdsmod:block/egg_block",
+    
+    "display":
 	{
 		"thirdperson_righthand":
 		{

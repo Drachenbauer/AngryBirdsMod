@@ -3,7 +3,6 @@ package drachenbauer32.angrybirdsmod.items;
 import drachenbauer32.angrybirdsmod.entities.BirdShotEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckShotEntity;
 import drachenbauer32.angrybirdsmod.entities.RedShotEntity;
-import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.Item;
@@ -12,24 +11,118 @@ import net.minecraft.world.World;
 
 public class BirdShotItem extends Item
 {
-    public BirdShotItem(Item.Properties builder)
+    private String name;
+    
+    public BirdShotItem(String name, Item.Properties builder)
     {
         super(builder);
+        setRegistryName(name);
+        this.name = name;
+        
     }
     
     public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter)
     {
         BirdShotEntity birdshotentity;
         
-      
-        
-        if(shooter.getHeldItemOffhand().getItem() == AngryBirdsItems.chuck_shot)
+        if(name.equals("ice_bird_shot"))
         {
             birdshotentity = new ChuckShotEntity(worldIn, shooter);
         }
         else
         {
-            birdshotentity = new RedShotEntity(worldIn, shooter);
+            if(name.equals("luca_shot"))
+            {
+                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+            }
+            else
+            {
+                if(name.equals("dahlia_shot"))
+                {
+                    birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                }
+                else
+                {
+                    if(name.equals("willow_shot"))
+                    {
+                        birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                    }
+                    else
+                    {
+                        if(name.equals("poppy_shot"))
+                        {
+                            birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                        }
+                        else
+                        {
+                            if(name.equals("stella_shot"))
+                            {
+                                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                            }
+                            else
+                            {
+                                if(name.equals("hal_shot"))
+                                {
+                                    birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                }
+                                else
+                                {
+                                    if(name.equals("bubbles_shot"))
+                                    {
+                                        birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                    }
+                                    else
+                                    {
+                                        if(name.equals("silver_shot"))
+                                        {
+                                            birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                        }
+                                        else
+                                        {
+                                            if(name.equals("terence_shot"))
+                                            {
+                                                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                            }
+                                            else
+                                            {
+                                                if(name.equals("mathilda_shot"))
+                                                {
+                                                    birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                }
+                                                else
+                                                {
+                                                    if(name.equals("bomb_shot"))
+                                                    {
+                                                        birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                    }
+                                                    else
+                                                    {
+                                                        if(name.equals("blues_shot"))
+                                                        {
+                                                            birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                        }
+                                                        else
+                                                        {
+                                                            if(name.equals("chuck_shot"))
+                                                            {
+                                                                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                            }
+                                                            else
+                                                            {
+                                                                birdshotentity = new RedShotEntity(worldIn, shooter);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         
         birdshotentity.setPotionEffect(stack);

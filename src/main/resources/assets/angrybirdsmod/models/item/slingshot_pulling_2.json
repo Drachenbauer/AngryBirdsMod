@@ -1,6 +1,8 @@
 {
     "parent": "angrybirdsmod:item/slingshot",
-    "textures": {
+    
+    "textures":
+    {
         "layer0": "angrybirdsmod:item/slingshot_pulling_2"
     }
 }

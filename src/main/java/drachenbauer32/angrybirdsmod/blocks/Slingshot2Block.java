@@ -16,21 +16,20 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class SlingshotBirchBlock extends Block
-{
+public class Slingshot2Block extends Block
+{	
     protected static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     protected static final VoxelShape EAST_AABB = Block.makeCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
     protected static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     protected static final VoxelShape WEST_AABB = Block.makeCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     
-    public SlingshotBirchBlock(String name, Properties properties) 
+    public Slingshot2Block(String name, Properties properties) 
     {
         super(properties);
         setRegistryName(Reference.MOD_ID, name);
@@ -133,7 +132,7 @@ public class SlingshotBirchBlock extends Block
         switch(facing)
         {
             default:
-            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_wood_base_block.getDefaultState());
+            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_2_wood_base_block.getDefaultState());
             worldIn.setBlockState(pos.west(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState());
             worldIn.setBlockState(pos.east(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState().with(FACING, Direction.SOUTH));
             worldIn.setBlockState(pos.west().up(), AngryBirdsBlocks.slingshot_birch_block_side_top.getDefaultState());
@@ -142,7 +141,7 @@ public class SlingshotBirchBlock extends Block
             return;
             
             case EAST:
-            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_wood_base_block.getDefaultState().with(FACING, Direction.EAST));
+            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_2_wood_base_block.getDefaultState().with(FACING, Direction.EAST));
             worldIn.setBlockState(pos.north(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState().with(FACING, Direction.EAST));
             worldIn.setBlockState(pos.south(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState().with(FACING, Direction.WEST));
             worldIn.setBlockState(pos.north().up(), AngryBirdsBlocks.slingshot_birch_block_side_top.getDefaultState().with(FACING, Direction.EAST));
@@ -151,7 +150,7 @@ public class SlingshotBirchBlock extends Block
             return;
             
             case SOUTH:
-            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_wood_base_block.getDefaultState().with(FACING, Direction.SOUTH));
+            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_2_wood_base_block.getDefaultState().with(FACING, Direction.SOUTH));
             worldIn.setBlockState(pos.east(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState().with(FACING, Direction.SOUTH));
             worldIn.setBlockState(pos.west(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState());
             worldIn.setBlockState(pos.east().up(), AngryBirdsBlocks.slingshot_birch_block_side_top.getDefaultState().with(FACING, Direction.SOUTH));
@@ -160,7 +159,7 @@ public class SlingshotBirchBlock extends Block
             return;
             
             case WEST:
-            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_wood_base_block.getDefaultState().with(FACING, Direction.WEST));
+            worldIn.setBlockState(pos.up(), AngryBirdsBlocks.slingshot_birch_2_wood_base_block.getDefaultState().with(FACING, Direction.WEST));
             worldIn.setBlockState(pos.south(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState().with(FACING, Direction.WEST));
             worldIn.setBlockState(pos.north(), AngryBirdsBlocks.slingshot_birch_block_side.getDefaultState().with(FACING, Direction.EAST));
             worldIn.setBlockState(pos.south().up(), AngryBirdsBlocks.slingshot_birch_block_side_top.getDefaultState().with(FACING, Direction.WEST));
@@ -211,11 +210,5 @@ public class SlingshotBirchBlock extends Block
             super.onBlockHarvested(worldIn, pos, state, player);
             return;
         }
-    }
-    
-    @Override
-    public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-    {
-        return new ItemStack(AngryBirdsBlocks.slingshot_birch_block);
     }
 }

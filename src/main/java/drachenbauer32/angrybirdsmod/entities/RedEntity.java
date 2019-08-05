@@ -24,7 +24,6 @@ public class RedEntity extends AnimalEntity
     private int jumpDuration;
     private boolean wasOnGround;
     private int currentMoveTypeDuration;
-    //private AxisAlignedBB boundingbox;
     
     @SuppressWarnings("unchecked")
     public RedEntity(EntityType<? extends AnimalEntity> type, World worldIn)
@@ -48,12 +47,6 @@ public class RedEntity extends AnimalEntity
         return 0.25f;
     }
     
-    /*@Override
-    public AxisAlignedBB getBoundingBox()
-    {
-        return boundingbox;
-    }*/
-    
     @Override
     protected void registerGoals()
     {
@@ -69,6 +62,12 @@ public class RedEntity extends AnimalEntity
     {
         super.registerAttributes();
     }
+    
+    /*@Override
+    public void updateSwimming()
+    {
+        super.updateSwimming();
+    }*/
     
     protected void jump()
     {

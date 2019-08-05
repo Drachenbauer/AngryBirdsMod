@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "iii",
+        "i i",
+        "iii"
+    ],
+    
+    "key":
+    {
+    	"i":
+        {
+            "item": "minecraft:blue_ice"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:blue_ice_frame_block",
+        "count": 1
+    },
+    
+    "group": "frame_block"
+}
