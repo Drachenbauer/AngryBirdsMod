@@ -3,7 +3,6 @@ package drachenbauer32.angrybirdsmod.items;
 import java.util.function.Predicate;
 
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
-import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -30,7 +29,7 @@ public class SlingshotItem extends BowItem
     {
         super(builder);
         
-        this.addPropertyOverride(new ResourceLocation(Reference.MOD_ID + ":pull"), (p_210310_0_, p_210310_1_, p_210310_2_) ->
+        this.addPropertyOverride(new ResourceLocation("pull"), (p_210310_0_, p_210310_1_, p_210310_2_) ->
         {
             if (p_210310_2_ == null)
             {
@@ -43,7 +42,7 @@ public class SlingshotItem extends BowItem
         }
         );
         
-        this.addPropertyOverride(new ResourceLocation(Reference.MOD_ID + ":pulling"), (p_210309_0_, p_210309_1_, p_210309_2_) ->
+        this.addPropertyOverride(new ResourceLocation("pulling"), (p_210309_0_, p_210309_1_, p_210309_2_) ->
         {
             return p_210309_2_ != null && p_210309_2_.isHandActive() && p_210309_2_.getActiveItemStack() == p_210309_0_ ? 1.0F : 0.0F;
         }
@@ -152,4 +151,6 @@ public class SlingshotItem extends BowItem
     {
         return BIRD_SHOTS;
     }
+    
+
 }

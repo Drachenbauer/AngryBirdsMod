@@ -19,16 +19,22 @@ import net.minecraft.world.World;
 
 public class SlingshotWoodBaseBlock extends Block
 {
-    protected static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
-    protected static final VoxelShape EAST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
-    protected static final VoxelShape WEST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
+    private String name;
+    private static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
+    private static final VoxelShape EAST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
+    private static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
+    private static final VoxelShape WEST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
+    private static final VoxelShape NORTH_2_AABB = Block.makeCuboidShape(0.0D, 4.0D, 8.0D, 16.0D, 16.0D, 12.0D);
+    private static final VoxelShape EAST_2_AABB = Block.makeCuboidShape(4.0D, 4.0D, 0.0D, 8.0D, 16.0D, 16.0D);
+    private static final VoxelShape SOUTH_2_AABB = Block.makeCuboidShape(0.0D, 4.0D, 4.0D, 16.0D, 16.0D, 8.0D);
+    private static final VoxelShape WEST_2_AABB = Block.makeCuboidShape(8.0D, 4.0D, 0.0D, 12.0D, 16.0D, 16.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     
     public SlingshotWoodBaseBlock(String name, Properties properties)
     {
         super(properties);
         setRegistryName(Reference.MOD_ID, name);
+        this.name = name;
     }
     
     @Override
@@ -40,63 +46,58 @@ public class SlingshotWoodBaseBlock extends Block
     @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        Direction facing = state.get(FACING);
-        
-        switch(facing)
-        {
-            default:
-            return NORTH_AABB;
-            
-            case EAST:
-            return EAST_AABB;
-            
-            case SOUTH:
-            return SOUTH_AABB;
-            
-            case WEST:
-            return WEST_AABB;
-        }
+        return getShapeByDirection(state);
     }
     
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        Direction facing = state.get(FACING);
-        
-        switch(facing)
-        {
-            default:
-            return NORTH_AABB;
-            
-            case EAST:
-            return EAST_AABB;
-            
-            case SOUTH:
-            return SOUTH_AABB;
-            
-            case WEST:
-            return WEST_AABB;
-        }
+        return getShapeByDirection(state);
     }
     
     @Override
     public VoxelShape getRenderShape(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
+        return getShapeByDirection(state);
+    }
+    
+    private VoxelShape getShapeByDirection(BlockState state)
+    {
         Direction facing = state.get(FACING);
         
-        switch(facing)
+        if(name.contains("2"))
         {
-            default:
-            return NORTH_AABB;
-            
-            case EAST:
-            return EAST_AABB;
-            
-            case SOUTH:
-            return SOUTH_AABB;
-            
-            case WEST:
-            return WEST_AABB;
+            switch(facing)
+            {
+                default:
+                return NORTH_2_AABB;
+                
+                case EAST:
+                return EAST_2_AABB;
+                
+                case SOUTH:
+                return SOUTH_2_AABB;
+                
+                case WEST:
+                return WEST_2_AABB;
+            }
+        }
+        else
+        {
+            switch(facing)
+            {
+                default:
+                return NORTH_AABB;
+                
+                case EAST:
+                return EAST_AABB;
+                
+                case SOUTH:
+                return SOUTH_AABB;
+                
+                case WEST:
+                return WEST_AABB;
+            }
         }
     }
     
@@ -123,41 +124,47 @@ public class SlingshotWoodBaseBlock extends Block
     {
         worldIn.setBlockState(pos.down(), Blocks.AIR.getDefaultState());
         
+        BlockPos pos1;
+        BlockPos pos2;
+        BlockPos pos3;
+        BlockPos pos4;
+        
         Direction facing = state.get(FACING);
         
         switch(facing)
         {
             default:
-            worldIn.setBlockState(pos.east(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west().down(), Blocks.AIR.getDefaultState());
-            super.onBlockHarvested(worldIn, pos, state, player);
-            return;
+            pos1 = pos.west();
+            pos2 = pos.east();
+            pos3 = pos.west().down();
+            pos4 = pos.east().down();
+            break;
             
             case EAST:
-            worldIn.setBlockState(pos.north(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().down(), Blocks.AIR.getDefaultState());
-            super.onBlockHarvested(worldIn, pos, state, player);
-            return;
+            pos1 = pos.north();
+            pos2 = pos.south();
+            pos3 = pos.north().down();
+            pos4 = pos.south().down();
+            break;
             
             case SOUTH:
-            worldIn.setBlockState(pos.east(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.east().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.west().down(), Blocks.AIR.getDefaultState());
-            super.onBlockHarvested(worldIn, pos, state, player);
-            return;
+            pos1 = pos.east();
+            pos2 = pos.west();
+            pos3 = pos.east().down();
+            pos4 = pos.west().down();
+            break;
             
             case WEST:
-            worldIn.setBlockState(pos.north(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.north().down(), Blocks.AIR.getDefaultState());
-            worldIn.setBlockState(pos.south().down(), Blocks.AIR.getDefaultState());
-            super.onBlockHarvested(worldIn, pos, state, player);
-            return;
+            pos1 = pos.south();
+            pos2 = pos.north();
+            pos3 = pos.south().down();
+            pos4 = pos.north().down();
         }
+        
+        worldIn.setBlockState(pos1, Blocks.AIR.getDefaultState());
+        worldIn.setBlockState(pos2, Blocks.AIR.getDefaultState());
+        worldIn.setBlockState(pos3, Blocks.AIR.getDefaultState());
+        worldIn.setBlockState(pos4, Blocks.AIR.getDefaultState());
+        super.onBlockHarvested(worldIn, pos, state, player);
     }
 }
