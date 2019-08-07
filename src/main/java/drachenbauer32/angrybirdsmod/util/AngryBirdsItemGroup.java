@@ -3,6 +3,7 @@ package drachenbauer32.angrybirdsmod.util;
 import java.util.Arrays;
 import java.util.List;
 
+import drachenbauer32.angrybirdsmod.AngryBirds;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -86,7 +87,10 @@ public class AngryBirdsItemGroup extends ItemGroup
         
         for (Item item : items)
         {
-            itemStacks.add(new ItemStack(item));
+            if(item.getCreativeTabs().contains(AngryBirds.RegistryEvents.ANGRY_BIRDS))
+            {
+                itemStacks.add(new ItemStack(item));
+            }
         }
     }
 }
