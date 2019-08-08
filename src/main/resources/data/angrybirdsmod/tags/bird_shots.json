@@ -1,7 +1,22 @@
 {
-  "replace": false,
-  "values": [
-    "angrybirdsmod:red_shot",
-    "angrybirdsmod:chuck_shot"
-  ]
+    "replace": false,
+    
+    "values":
+    [
+        "angrybirdsmod:red_shot",
+        "angrybirdsmod:chuck_shot",
+        "angrybirdsmod:blues_shot",
+        "angrybirdsmod:bomb_shot",
+        "angrybirdsmod:mathilda_shot",
+        "angrybirdsmod:terence_shot",
+        "angrybirdsmod:silver_shot",
+        "angrybirdsmod:bubbles_shot",
+        "angrybirdsmod:hal_shot",
+        "angrybirdsmod:stella_shot",
+        "angrybirdsmod:poppy_shot",
+        "angrybirdsmod:willow_shot",
+        "angrybirdsmod:dahlia_shot",
+        "angrybirdsmod:luca_shot",
+        "angrybirdsmod:ice_bird_shot"
+    ]
 }

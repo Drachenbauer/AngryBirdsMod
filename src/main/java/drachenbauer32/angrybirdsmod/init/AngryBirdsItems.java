@@ -23,7 +23,6 @@ public class AngryBirdsItems
                        luca_egg,
                        ice_bird_egg,
                        
-                       slingshot,
                        red_shot,
                        chuck_shot,
                        blues_shot,
@@ -39,6 +38,7 @@ public class AngryBirdsItems
                        dahlia_shot,
                        luca_shot,
                        ice_bird_shot,
+                       slingshot,
                        
                        balloon_block,
                        egg_block,

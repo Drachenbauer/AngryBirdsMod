@@ -44,7 +44,7 @@ public class RedEntity extends AnimalEntity
     @Override
     public float getEyeHeight(Pose p_213307_1_)
     {
-        return 0.25f;
+        return 1.0f;
     }
     
     @Override
