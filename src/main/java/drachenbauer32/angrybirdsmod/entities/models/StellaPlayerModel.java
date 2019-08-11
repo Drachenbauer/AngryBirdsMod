@@ -201,16 +201,7 @@ public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
             this.bipedLeftArm.rotateAngleY = 0.0F;
         }
         
-        if (this.isSneak)
-        {
-            this.bipedRightArm.rotateAngleX += 0.4F;
-            this.bipedLeftArm.rotateAngleX += 0.4F;
-            this.bipedHead.rotationPointY = 1.0F;
-        }
-        else
-        {
-            this.bipedHead.rotationPointY = 0.0F;
-        }
+        this.bipedHead.rotationPointY = 0.0F;
         
         this.bipedRightArm.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.bipedLeftArm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
@@ -230,45 +221,6 @@ public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
             this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY;
             this.bipedRightArm.rotateAngleX = (-(float)Math.PI / 2F) + this.bipedHead.rotateAngleX;
             this.bipedLeftArm.rotateAngleX = (-(float)Math.PI / 2F) + this.bipedHead.rotateAngleX;
-        }
-        
-        if (this.field_205061_a > 0.0F)
-        {
-            float f4 = limbSwing % 26.0F;
-            float f5 = this.swingProgress > 0.0F ? 0.0F : this.field_205061_a;
-            
-            if (f4 < 14.0F)
-            {
-                this.bipedLeftArm.rotateAngleX = this.func_205060_a(this.bipedLeftArm.rotateAngleX, 0.0F, this.field_205061_a);
-                this.bipedRightArm.rotateAngleX = this.func_205059_b(this.bipedRightArm.rotateAngleX, 0.0F, f5);
-                this.bipedLeftArm.rotateAngleY = this.func_205060_a(this.bipedLeftArm.rotateAngleY, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleY = this.func_205059_b(this.bipedRightArm.rotateAngleY, (float)Math.PI, f5);
-                this.bipedLeftArm.rotateAngleZ = this.func_205060_a(this.bipedLeftArm.rotateAngleZ, (float)Math.PI + 1.8707964F * this.func_203068_a(f4) / this.func_203068_a(14.0F), this.field_205061_a);
-                this.bipedRightArm.rotateAngleZ = this.func_205059_b(this.bipedRightArm.rotateAngleZ, (float)Math.PI - 1.8707964F * this.func_203068_a(f4) / this.func_203068_a(14.0F), f5);
-            }
-            else if (f4 >= 14.0F && f4 < 22.0F)
-            {
-                float f7 = (f4 - 14.0F) / 8.0F;
-                this.bipedLeftArm.rotateAngleX = this.func_205060_a(this.bipedLeftArm.rotateAngleX, ((float)Math.PI / 2F) * f7, this.field_205061_a);
-                this.bipedRightArm.rotateAngleX = this.func_205059_b(this.bipedRightArm.rotateAngleX, ((float)Math.PI / 2F) * f7, f5);
-                this.bipedLeftArm.rotateAngleY = this.func_205060_a(this.bipedLeftArm.rotateAngleY, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleY = this.func_205059_b(this.bipedRightArm.rotateAngleY, (float)Math.PI, f5);
-                this.bipedLeftArm.rotateAngleZ = this.func_205060_a(this.bipedLeftArm.rotateAngleZ, 5.012389F - 1.8707964F * f7, this.field_205061_a);
-                this.bipedRightArm.rotateAngleZ = this.func_205059_b(this.bipedRightArm.rotateAngleZ, 1.2707963F + 1.8707964F * f7, f5);
-            }
-            else if (f4 >= 22.0F && f4 < 26.0F)
-            {
-                float f6 = (f4 - 22.0F) / 4.0F;
-                this.bipedLeftArm.rotateAngleX = this.func_205060_a(this.bipedLeftArm.rotateAngleX, ((float)Math.PI / 2F) - ((float)Math.PI / 2F) * f6, this.field_205061_a);
-                this.bipedRightArm.rotateAngleX = this.func_205059_b(this.bipedRightArm.rotateAngleX, ((float)Math.PI / 2F) - ((float)Math.PI / 2F) * f6, f5);
-                this.bipedLeftArm.rotateAngleY = this.func_205060_a(this.bipedLeftArm.rotateAngleY, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleY = this.func_205059_b(this.bipedRightArm.rotateAngleY, (float)Math.PI, f5);
-                this.bipedLeftArm.rotateAngleZ = this.func_205060_a(this.bipedLeftArm.rotateAngleZ, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleZ = this.func_205059_b(this.bipedRightArm.rotateAngleZ, (float)Math.PI, f5);
-            }
-            
-            //float f8 = 0.3F;
-            //float f9 = 0.33333334F;
         }
     }
     
