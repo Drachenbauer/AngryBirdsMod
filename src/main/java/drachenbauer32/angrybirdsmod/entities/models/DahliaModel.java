@@ -23,8 +23,8 @@ public class DahliaModel extends EntityModel<DahliaEntity>
         bone.setRotationPoint(0.0F, 20.0F, 0.0F);
         bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 25, 6, -1.0F, 2.0F, -5.0F, 2, 1, 1, 0.0F, false));
-        bone.cubeList.add(new ModelBox(bone, 0, 2, -2.0F, -8.0F, 0.0F, 1, 6, 0, 0.0F, false));
-        bone.cubeList.add(new ModelBox(bone, 0, 2, 1.0F, -8.0F, 0.0F, 1, 6, 0, 0.0F, false));
+        bone.cubeList.add(new ModelBox(bone, 0, 2, -3.0F, -10.0F, 0.0F, 2, 6, 0, 0.0F, false));
+        bone.cubeList.add(new ModelBox(bone, 0, 2, 1.0F, -10.0F, 0.0F, 2, 6, 0, 0.0F, true));
         bone.cubeList.add(new ModelBox(bone, 24, 1, 0.0F, 1.0F, 4.0F, 0, 1, 4, 0.0F, false));
         
         bone2 = new RendererModel(this);

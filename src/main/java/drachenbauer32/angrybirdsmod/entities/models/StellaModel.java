@@ -25,20 +25,20 @@ public class StellaModel extends EntityModel<StellaEntity>
         bone.setRotationPoint(0.0F, 20.0F, 0.0F);
         bone.cubeList.add(new ModelBox(bone, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 25, 0, -1.0F, 2.0F, -5.0F, 2, 1, 1, 0.0F, false));
-        bone.cubeList.add(new ModelBox(bone, 0, 0, 0.0F, -10.0F, -2.0F, 0, 6, 2, 0.0F, false));
+        bone.cubeList.add(new ModelBox(bone, 10, 10, 0.0F, -6.0F, -8.0F, 0, 2, 6, 0.0F, false));
         bone.cubeList.add(new ModelBox(bone, 24, 3, 0.0F, 1.0F, 4.0F, 0, 1, 4, 0.0F, false));
         
         bone2 = new RendererModel(this);
         bone2.setRotationPoint(0.0F, -4.0F, -2.0F);
-        setRotationAngle(bone2, 0.7854F, 0.0F, 0.0F);
+        setRotationAngle(bone2, -0.5236F, 0.0F, 0.0F);
         bone.addChild(bone2);
-        bone2.cubeList.add(new ModelBox(bone2, 0, 0, 0.0F, -6.0F, 0.0F, 0, 6, 2, 0.0F, false));
-        
+        bone2.cubeList.add(new ModelBox(bone2, 10, 10, 0.0F, -2.0F, -6.0F, 0, 2, 6, 0.0F, false));
+
         bone3 = new RendererModel(this);
         bone3.setRotationPoint(0.0F, -4.0F, -2.0F);
-        setRotationAngle(bone3, 1.5708F, 0.0F, 0.0F);
+        setRotationAngle(bone3, -1.0472F, 0.0F, 0.0F);
         bone.addChild(bone3);
-        bone3.cubeList.add(new ModelBox(bone3, 0, 0, 0.0F, -6.0F, 0.0F, 0, 6, 2, 0.0F, false));
+        bone3.cubeList.add(new ModelBox(bone3, 8, 8, 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, false));
         
         bone4 = new RendererModel(this);
         bone4.setRotationPoint(0.0F, 1.0F, 4.0F);
