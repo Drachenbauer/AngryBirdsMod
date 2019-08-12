@@ -24,7 +24,6 @@ public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
     private final RendererModel bipedLeftArm;
     public StellaPlayerModel.ArmPose rightArmPose = StellaPlayerModel.ArmPose.EMPTY;
     public StellaPlayerModel.ArmPose leftArmPose = StellaPlayerModel.ArmPose.EMPTY;
-    public boolean isSneak;
     public float field_205061_a;
     
     public StellaPlayerModel()
@@ -226,7 +225,6 @@ public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
     
     public void setLivingAnimations(StellaPlayerEntity entity, float limbSwing, float limbSwingAmount, float partialTickTime) 
     {
-        this.field_205061_a = entity.getSwimAnimation(partialTickTime);
         super.setLivingAnimations(entity, limbSwing, limbSwingAmount, partialTickTime);
     }
     
@@ -246,16 +244,6 @@ public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
         return p_205060_1_ + p_205060_3_ * f;
     }
     
-    private float func_205059_b(float p_205059_1_, float p_205059_2_, float p_205059_3_)
-    {
-        return p_205059_1_ + (p_205059_2_ - p_205059_1_) * p_205059_3_;
-    }
-    
-    private float func_203068_a(float p_203068_1_)
-    {
-        return -65.0F * p_203068_1_ + p_203068_1_ * p_203068_1_;
-    }
-    
     public void setModelAttributes(EntityModel<StellaPlayerEntity> model)
     {
         super.setModelAttributes(model);
@@ -265,7 +253,6 @@ public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
             StellaPlayerModel modelbiped = (StellaPlayerModel)model;
             this.leftArmPose = modelbiped.leftArmPose;
             this.rightArmPose = modelbiped.rightArmPose;
-            this.isSneak = modelbiped.isSneak;
         }
     }
     

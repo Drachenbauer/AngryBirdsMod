@@ -32,9 +32,11 @@ import drachenbauer32.angrybirdsmod.entities.SilverEntity;
 import drachenbauer32.angrybirdsmod.entities.StellaEntity;
 import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
 import drachenbauer32.angrybirdsmod.entities.WillowEntity;
+import drachenbauer32.angrybirdsmod.entities.tile_entities.BlockColorsTileEntity;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsItems;
+import drachenbauer32.angrybirdsmod.init.AngryBirdsTileEntities;
 import drachenbauer32.angrybirdsmod.items.BalloonBlockItem;
 import drachenbauer32.angrybirdsmod.items.BirdShotItem;
 import drachenbauer32.angrybirdsmod.items.SlingshotBlockItem;
@@ -53,6 +55,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ScaffoldingItem;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
@@ -416,19 +419,60 @@ public class AngryBirds
         }
         
         @SubscribeEvent
+        public static void registerTE(RegistryEvent.Register<TileEntityType<?>> event)
+        {
+             AngryBirdsTileEntities.BLOCK_COLORS = TileEntityType.Builder.create(BlockColorsTileEntity::new, AngryBirdsBlocks.balloon_block,
+                                                                                                             AngryBirdsBlocks.balloon_block_top,
+                                                                                                             AngryBirdsBlocks.slingshot_acacia_block,
+                                                                                                             AngryBirdsBlocks.slingshot_acacia_2_block,
+                                                                                                             AngryBirdsBlocks.slingshot_birch_block,
+                                                                                                             AngryBirdsBlocks.slingshot_birch_2_block,
+                                                                                                             AngryBirdsBlocks.slingshot_dark_oak_block,
+                                                                                                             AngryBirdsBlocks.slingshot_dark_oak_2_block,
+                                                                                                             AngryBirdsBlocks.slingshot_jungle_block,
+                                                                                                             AngryBirdsBlocks.slingshot_jungle_2_block,
+                                                                                                             AngryBirdsBlocks.slingshot_oak_block,
+                                                                                                             AngryBirdsBlocks.slingshot_oak_2_block,
+                                                                                                             AngryBirdsBlocks.slingshot_spruce_block,
+                                                                                                             AngryBirdsBlocks.slingshot_spruce_2_block).build(null);
+             AngryBirdsTileEntities.BLOCK_COLORS.setRegistryName(Reference.MOD_ID, "block_colors");
+             event.getRegistry().register(AngryBirdsTileEntities.BLOCK_COLORS);
+        }
+        
+        @SubscribeEvent
         public static void registerItemColors(final ColorHandlerEvent.Item event)
         {
             event.getItemColors().register(itemColor, AngryBirdsItems.balloon_block,
+                                                      AngryBirdsItems.slingshot_acacia_block,
+                                                      AngryBirdsItems.slingshot_acacia_2_block,
                                                       AngryBirdsItems.slingshot_birch_block,
-                                                      AngryBirdsItems.slingshot_birch_2_block);
+                                                      AngryBirdsItems.slingshot_birch_2_block,
+                                                      AngryBirdsItems.slingshot_dark_oak_block,
+                                                      AngryBirdsItems.slingshot_dark_oak_2_block,
+                                                      AngryBirdsItems.slingshot_jungle_block,
+                                                      AngryBirdsItems.slingshot_jungle_2_block,
+                                                      AngryBirdsItems.slingshot_oak_block,
+                                                      AngryBirdsItems.slingshot_oak_2_block,
+                                                      AngryBirdsItems.slingshot_spruce_block,
+                                                      AngryBirdsItems.slingshot_spruce_2_block);
         }
         
         @SubscribeEvent
         public static void registerBlockColors(final ColorHandlerEvent.Block event)
         {
             event.getBlockColors().register(blockColor, AngryBirdsBlocks.balloon_block,
+                                                        AngryBirdsBlocks.slingshot_acacia_block,
+                                                        AngryBirdsBlocks.slingshot_acacia_2_block,
                                                         AngryBirdsBlocks.slingshot_birch_block,
-                                                        AngryBirdsBlocks.slingshot_birch_2_block);
+                                                        AngryBirdsBlocks.slingshot_birch_2_block,
+                                                        AngryBirdsBlocks.slingshot_dark_oak_block,
+                                                        AngryBirdsBlocks.slingshot_dark_oak_2_block,
+                                                        AngryBirdsBlocks.slingshot_jungle_block,
+                                                        AngryBirdsBlocks.slingshot_jungle_2_block,
+                                                        AngryBirdsBlocks.slingshot_oak_block,
+                                                        AngryBirdsBlocks.slingshot_oak_2_block,
+                                                        AngryBirdsBlocks.slingshot_spruce_block,
+                                                        AngryBirdsBlocks.slingshot_spruce_2_block);
         }
     }
 }

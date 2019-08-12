@@ -40,17 +40,11 @@ public class RedEntity extends AnimalEntity
     {
         return null;
     }
-    
+
     @Override
-    public Vec3d getEyePosition(float partialTicks)
+    public float getEyeHeight(Pose pose)
     {
-        return super.getEyePosition(partialTicks);
-    }
-    
-    @Override
-    public float getEyeHeight(Pose p_213307_1_)
-    {
-        return 1.0f;
+        return this.getSize(pose).height * 0.5f;
     }
     
     @Override

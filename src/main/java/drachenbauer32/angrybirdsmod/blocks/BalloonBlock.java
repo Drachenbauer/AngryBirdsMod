@@ -1,5 +1,6 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
+import drachenbauer32.angrybirdsmod.entities.tile_entities.BlockColorsTileEntity;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.util.Reference;
 
@@ -13,6 +14,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
@@ -88,5 +90,17 @@ public class BalloonBlock extends Block
     {
         worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
         super.onBlockHarvested(worldIn, pos, state, player);
+    }
+    
+    @Override
+    public boolean hasTileEntity(BlockState state)
+    {
+        return true;
+    }
+    
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world)
+    {
+        return new BlockColorsTileEntity();
     }
 }
