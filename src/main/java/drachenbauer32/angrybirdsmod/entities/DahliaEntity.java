@@ -28,9 +28,9 @@ public class DahliaEntity extends AnimalEntity
     }
     
     @Override
-    public float getEyeHeight(Pose p_213307_1_)
+    public float getEyeHeight(Pose pose)
     {
-        return 0.25f;
+        return this.getSize(pose).height * 0.5f;
     }
     
     @Override

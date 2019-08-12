@@ -28,9 +28,9 @@ public class BluesEntity extends AnimalEntity
     }
     
     @Override
-    public float getEyeHeight(Pose p_213307_1_)
+    public float getEyeHeight(Pose pose)
     {
-        return 0.65625f;
+        return this.getSize(pose).height * 0.875f;
     }
     
     @Override
