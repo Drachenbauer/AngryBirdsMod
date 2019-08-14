@@ -29,7 +29,6 @@ public class RedEntity extends AnimalEntity
     public RedEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.RED, worldIn);
-        //boundingbox = new AxisAlignedBB(0d, 0d, 0d, 0d, 0d, 0d);
         this.jumpController = new RedEntity.JumpHelperController(this);
         this.moveController = new RedEntity.MoveHelperController(this);
         this.setMovementSpeed(0.0D);
