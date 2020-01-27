@@ -4,6 +4,7 @@ import drachenbauer32.angrybirdsmod.entities.StellaMoviePlayerEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
+import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Hand;
@@ -15,22 +16,22 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class StellaMoviePlayerModel extends EntityModel<StellaMoviePlayerEntity>
 {
-    private final RendererModel bipedHead;
-    private final RendererModel bone2;
-    private final RendererModel bone3;
-    private final RendererModel bipedBody;
-    private final RendererModel bone5;
-    private final RendererModel bone6;
-    private final RendererModel bipedRightArm;
-    private final RendererModel bipedLeftArm;
-    private final RendererModel bipedRightLeg;
-    private final RendererModel bone10;
-    private final RendererModel bone11;
-    private final RendererModel bone12;
-    private final RendererModel bipedLeftLeg;
-    private final RendererModel bone14;
-    private final RendererModel bone15;
-    private final RendererModel bone16;
+    private final ModelRenderer bipedHead;
+    private final ModelRenderer bone2;
+    private final ModelRenderer bone3;
+    private final ModelRenderer bipedBody;
+    private final ModelRenderer bone5;
+    private final ModelRenderer bone6;
+    private final ModelRenderer bipedRightArm;
+    private final ModelRenderer bipedLeftArm;
+    private final ModelRenderer bipedRightLeg;
+    private final ModelRenderer bone10;
+    private final ModelRenderer bone11;
+    private final ModelRenderer bone12;
+    private final ModelRenderer bipedLeftLeg;
+    private final ModelRenderer bone14;
+    private final ModelRenderer bone15;
+    private final ModelRenderer bone16;
     public StellaMoviePlayerModel.ArmPose rightArmPose = StellaMoviePlayerModel.ArmPose.EMPTY;
     public StellaMoviePlayerModel.ArmPose leftArmPose = StellaMoviePlayerModel.ArmPose.EMPTY;
     public boolean isSneak;
@@ -41,90 +42,90 @@ public class StellaMoviePlayerModel extends EntityModel<StellaMoviePlayerEntity>
         textureWidth = 64;
         textureHeight = 32;
         
-        bipedHead = new RendererModel(this);
+        bipedHead = new ModelRenderer(this);
         bipedHead.setRotationPoint(0.0F, 0.0F, 0.0F);
         bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F, false));
         bipedHead.cubeList.add(new ModelBox(bipedHead, 25, 0, -1.0F, -2.0F, -5.0F, 2, 1, 1, 0.0F, false));
         bipedHead.cubeList.add(new ModelBox(bipedHead, 10, 10, 0.0F, -6.0F, -8.0F, 0, 2, 6, 0.0F, false));
         
-        bone2 = new RendererModel(this);
+        bone2 = new ModelRenderer(this);
         bone2.setRotationPoint(0.0F, -4.0F, -2.0F);
         setRotationAngle(bone2, -0.5236F, 0.0F, 0.0F);
         bipedHead.addChild(bone2);
         bone2.cubeList.add(new ModelBox(bone2, 10, 10, 0.0F, -2.0F, -6.0F, 0, 2, 6, 0.0F, false));
 
-        bone3 = new RendererModel(this);
+        bone3 = new ModelRenderer(this);
         bone3.setRotationPoint(0.0F, -4.0F, -2.0F);
         setRotationAngle(bone3, -1.0472F, 0.0F, 0.0F);
         bipedHead.addChild(bone3);
         bone3.cubeList.add(new ModelBox(bone3, 8, 8, 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, false));
         
-        bipedBody = new RendererModel(this);
+        bipedBody = new ModelRenderer(this);
         bipedBody.setRotationPoint(0.0F, 6.0F, 0.0F);
         bipedBody.cubeList.add(new ModelBox(bipedBody, 36, 0, -4.0F, -6.0F, -2.0F, 8, 12, 4, 0.0F, false));
         bipedBody.cubeList.add(new ModelBox(bipedBody, 24, 3, 0.0F, 3.0F, 2.0F, 0, 1, 4, 0.0F, false));
         
-        bone5 = new RendererModel(this);
+        bone5 = new ModelRenderer(this);
         bone5.setRotationPoint(0.0F, 3.0F, 2.0F);
         setRotationAngle(bone5, 0.5236F, 0.0F, 0.0F);
         bipedBody.addChild(bone5);
         bone5.cubeList.add(new ModelBox(bone5, 24, 3, 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, false));
         
-        bone6 = new RendererModel(this);
+        bone6 = new ModelRenderer(this);
         bone6.setRotationPoint(0.0F, 3.0F, 2.0F);
         setRotationAngle(bone6, -0.5236F, 0.0F, 0.0F);
         bipedBody.addChild(bone6);
         bone6.cubeList.add(new ModelBox(bone6, 24, 3, 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, false));
         
-        bipedRightArm = new RendererModel(this);
+        bipedRightArm = new ModelRenderer(this);
         bipedRightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
         bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 0, 16, -1.0F, -2.0F, -2.0F, 2, 12, 4, 0.0F, false));
         
-        bipedLeftArm = new RendererModel(this);
+        bipedLeftArm = new ModelRenderer(this);
         bipedLeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
         bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 12, 16, -1.0F, -2.0F, -2.0F, 2, 12, 4, 0.0F, false));
         
-        bipedRightLeg = new RendererModel(this);
+        bipedRightLeg = new ModelRenderer(this);
         bipedRightLeg.setRotationPoint(-2.0F, 12.0F, 0.0F);
         bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 36, 17, -1.0F, -1.0F, -1.0F, 2, 13, 2, 0.0F, false));
         bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 28, 28, -1.0F, 11.0F, -3.0F, 1, 1, 3, 0.0F, false));
         
-        bone10 = new RendererModel(this);
+        bone10 = new ModelRenderer(this);
         bone10.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone10, 0.0F, 3.1416F, 0.0F);
         bipedRightLeg.addChild(bone10);
         bone10.cubeList.add(new ModelBox(bone10, 28, 28, -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
         
-        bone11 = new RendererModel(this);
+        bone11 = new ModelRenderer(this);
         bone11.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone11, 0.0F, 0.7854F, 0.0F);
         bipedRightLeg.addChild(bone11);
         bone11.cubeList.add(new ModelBox(bone11, 28, 28, -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
         
-        bone12 = new RendererModel(this);
+        bone12 = new ModelRenderer(this);
         bone12.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone12, 0.0F, -0.7854F, 0.0F);
         bipedRightLeg.addChild(bone12);
         bone12.cubeList.add(new ModelBox(bone12, 28, 28, -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
         
-        bipedLeftLeg = new RendererModel(this);
+        bipedLeftLeg = new ModelRenderer(this);
         bipedLeftLeg.setRotationPoint(2.0F, 12.0F, 0.0F);
         bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 44, 17, -1.0F, -1.0F, -1.0F, 2, 13, 2, 0.0F, false));
         bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 52, 28, 0.0F, 11.0F, -3.0F, 1, 1, 3, 0.0F, false));
         
-        bone14 = new RendererModel(this);
+        bone14 = new ModelRenderer(this);
         bone14.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone14, 0.0F, 3.1416F, 0.0F);
         bipedLeftLeg.addChild(bone14);
         bone14.cubeList.add(new ModelBox(bone14, 52, 28, 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
         
-        bone15 = new RendererModel(this);
+        bone15 = new ModelRenderer(this);
         bone15.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone15, 0.0F, 0.7854F, 0.0F);
         bipedLeftLeg.addChild(bone15);
         bone15.cubeList.add(new ModelBox(bone15, 52, 28, 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
         
-        bone16 = new RendererModel(this);
+        bone16 = new ModelRenderer(this);
         bone16.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone16, 0.0F, -0.7854F, 0.0F);
         bipedLeftLeg.addChild(bone16);
@@ -142,7 +143,7 @@ public class StellaMoviePlayerModel extends EntityModel<StellaMoviePlayerEntity>
         bipedLeftLeg.render(scale);
     }
     
-    public void setRotationAngle(RendererModel model, float x, float y, float z)
+    public void setRotationAngle(ModelRenderer model, float x, float y, float z)
     {
         model.rotateAngleX = x;
         model.rotateAngleY = y;
@@ -277,7 +278,7 @@ public class StellaMoviePlayerModel extends EntityModel<StellaMoviePlayerEntity>
         if (this.swingProgress > 0.0F)
         {
             HandSide handside = this.getMainHand(entity);
-            RendererModel model = this.getArmForSide(handside);
+            ModelRenderer model = this.getArmForSide(handside);
             float f1 = this.swingProgress;
             this.bipedBody.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float)Math.PI * 2F)) * 0.2F;
             
@@ -447,7 +448,7 @@ public class StellaMoviePlayerModel extends EntityModel<StellaMoviePlayerEntity>
         this.getArmForSide(side).postRender(scale);
     }
     
-    protected RendererModel getArmForSide(HandSide side)
+    protected ModelRenderer getArmForSide(HandSide side)
     {
         return side == HandSide.LEFT ? this.bipedLeftArm : this.bipedRightArm;
     }

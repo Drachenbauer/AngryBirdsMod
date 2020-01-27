@@ -29,7 +29,7 @@ public class ChuckShotRenderer extends AbstractBirdStotRenderer<ChuckShotEntity,
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(ChuckShotEntity arg0)
+    public ResourceLocation getEntityTexture(ChuckShotEntity arg0)
     {
         return CHUCK_TEXTURE;
     }

@@ -22,7 +22,7 @@ public class SilverRenderer extends LivingRenderer<SilverEntity, SilverModel>
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(SilverEntity arg0)
+    public ResourceLocation getEntityTexture(SilverEntity arg0)
     {
         return SILVER_TEXTURE;
     }

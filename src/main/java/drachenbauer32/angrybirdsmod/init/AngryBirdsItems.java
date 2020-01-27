@@ -22,6 +22,7 @@ public class AngryBirdsItems
                        dahlia_egg,
                        luca_egg,
                        ice_bird_egg,
+                       coral_egg,
                        
                        red_shot,
                        chuck_shot,

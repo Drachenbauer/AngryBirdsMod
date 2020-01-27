@@ -13,12 +13,14 @@ import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class PoppyEntity extends AnimalEntity
+public class CoralEntity extends AnimalEntity
 {
-    public PoppyEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public CoralEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.POPPY, worldIn);
+        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.CORAL, worldIn);
     }
     
     @Override
@@ -30,7 +32,7 @@ public class PoppyEntity extends AnimalEntity
     @Override
     public float getEyeHeight(Pose pose)
     {
-        return this.getSize(pose).height * 0.8f;
+        return this.getSize(pose).height / 2 + getSize(pose).height / 14;
     }
     
     @Override
@@ -54,5 +56,11 @@ public class PoppyEntity extends AnimalEntity
     {
         super.registerAttributes();
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
+    }
+    
+    @OnlyIn(Dist.CLIENT)
+    public float getTailRotation()
+    {
+         return (0.55F - (this.getMaxHealth() - this.getHealth()) * 0.02F) * (float)Math.PI;
     }
 }

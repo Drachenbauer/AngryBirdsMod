@@ -4,6 +4,7 @@ import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.controller.JumpController;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.LookAtGoal;
@@ -25,7 +26,6 @@ public class RedEntity extends AnimalEntity
     private boolean wasOnGround;
     private int currentMoveTypeDuration;
     
-    @SuppressWarnings("unchecked")
     public RedEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.RED, worldIn);
@@ -57,9 +57,16 @@ public class RedEntity extends AnimalEntity
     }
     
     @Override
+    public boolean canBreatheUnderwater()
+    {
+        return true;
+    }
+    
+    @Override
     protected void registerAttributes()
     {
         super.registerAttributes();
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
     }
     
     /*@Override

@@ -121,7 +121,7 @@ public class BirdShotEntity extends AbstractArrowEntity
             
             for(int j = 0; j < particleCount; ++j)
             {
-                this.world.addParticle(ParticleTypes.ENTITY_EFFECT, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), this.posY + this.rand.nextDouble() * (double)this.getHeight(), this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), d0, d1, d2);
+                this.world.addParticle(ParticleTypes.ENTITY_EFFECT, this.prevPosX + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), this.prevPosY + this.rand.nextDouble() * (double)this.getHeight(), this.prevPosZ + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), d0, d1, d2);
             }
         }
     }
@@ -229,7 +229,7 @@ public class BirdShotEntity extends AbstractArrowEntity
                 double d2 = (double)(i >> 0 & 255) / 255.0D;
                 
                 for(int j = 0; j < 20; ++j) {
-                    this.world.addParticle(ParticleTypes.ENTITY_EFFECT, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), this.posY + this.rand.nextDouble() * (double)this.getHeight(), this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), d0, d1, d2);
+                    this.world.addParticle(ParticleTypes.ENTITY_EFFECT, this.prevPosX + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), this.prevPosY + this.rand.nextDouble() * (double)this.getHeight(), this.prevPosZ + (this.rand.nextDouble() - 0.5D) * (double)this.getWidth(), d0, d1, d2);
                 }
             }
         } else {

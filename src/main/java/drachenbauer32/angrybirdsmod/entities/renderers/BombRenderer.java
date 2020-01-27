@@ -1,38 +1,37 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
+import javax.annotation.Nonnull;
+
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.models.BombModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 
-@OnlyIn(Dist.CLIENT)
-public class BombRenderer extends LivingRenderer<BombEntity, BombModel>
+//@OnlyIn(Dist.CLIENT)
+public class BombRenderer extends MobRenderer<BombEntity, EntityModel<BombEntity>>
 {
     private static final ResourceLocation BOMB_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/bomb.png");
     
-    public BombRenderer(EntityRendererManager manager)
+    public BombRenderer(final EntityRendererManager manager)
     {
         super(manager, new BombModel(), 0.75f);
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(BombEntity arg0)
+    public ResourceLocation getEntityTexture(final BombEntity arg0)
     {
         return BOMB_TEXTURE;
     }
     
-    public static class RenderFactory implements IRenderFactory<BombEntity>
+    /*public static class RenderFactory implements IRenderFactory<BombEntity>
     {
         @Override
         public EntityRenderer<? super BombEntity> createRenderFor(EntityRendererManager manager)
         {
             return new BombRenderer(manager);
         }
-    }
+    }*/
 }

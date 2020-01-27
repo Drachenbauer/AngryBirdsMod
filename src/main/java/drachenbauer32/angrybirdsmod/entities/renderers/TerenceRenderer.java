@@ -22,7 +22,7 @@ public class TerenceRenderer extends LivingRenderer<TerenceEntity, TerenceModel>
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(TerenceEntity arg0)
+    public ResourceLocation getEntityTexture(TerenceEntity arg0)
     {
         return TERENCE_TEXTURE;
     }

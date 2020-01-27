@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class SilverEntity extends AnimalEntity
 {
-    @SuppressWarnings("unchecked")
     public SilverEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.SILVER, worldIn);
@@ -41,6 +40,12 @@ public class SilverEntity extends AnimalEntity
         this.goalSelector.addGoal(2, new RandomWalkingGoal(this, 0.2d));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+    }
+    
+    @Override
+    public boolean canBreatheUnderwater()
+    {
+        return true;
     }
     
     @Override

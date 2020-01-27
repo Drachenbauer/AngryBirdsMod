@@ -41,12 +41,6 @@ public class SlingshotBlock extends Block
     }
     
     @Override
-    public boolean isSolid(BlockState state)
-    {
-        return false;
-    }
-    
-    @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
         return getShapeByDirection(state);

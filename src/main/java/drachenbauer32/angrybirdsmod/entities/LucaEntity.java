@@ -4,6 +4,7 @@ import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
@@ -15,7 +16,6 @@ import net.minecraft.world.World;
 
 public class LucaEntity extends AnimalEntity
 {
-    @SuppressWarnings("unchecked")
     public LucaEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.LUCA, worldIn);
@@ -44,8 +44,15 @@ public class LucaEntity extends AnimalEntity
     }
     
     @Override
+    public boolean canBreatheUnderwater()
+    {
+        return true;
+    }
+    
+    @Override
     protected void registerAttributes()
     {
         super.registerAttributes();
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
     }
 }

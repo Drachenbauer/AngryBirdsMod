@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class StellaEntity extends AnimalEntity
 {
-    @SuppressWarnings("unchecked")
     public StellaEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.STELLA, worldIn);
@@ -30,7 +29,7 @@ public class StellaEntity extends AnimalEntity
     @Override
     public float getEyeHeight(Pose pose)
     {
-        return this.getSize(pose).height * 0.5f;
+        return this.getSize(pose).height / 2;
     }
     
     @Override
@@ -41,6 +40,12 @@ public class StellaEntity extends AnimalEntity
         this.goalSelector.addGoal(2, new RandomWalkingGoal(this, 0.2d));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+    }
+    
+    @Override
+    public boolean canBreatheUnderwater()
+    {
+        return true;
     }
     
     @Override

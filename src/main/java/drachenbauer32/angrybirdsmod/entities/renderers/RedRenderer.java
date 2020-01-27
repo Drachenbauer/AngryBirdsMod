@@ -22,7 +22,7 @@ public class RedRenderer extends LivingRenderer<RedEntity, RedModel>
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(RedEntity arg0)
+    public ResourceLocation getEntityTexture(RedEntity arg0)
     {
         return RED_TEXTURE;
     }

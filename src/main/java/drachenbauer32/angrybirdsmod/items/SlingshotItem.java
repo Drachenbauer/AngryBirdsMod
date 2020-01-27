@@ -124,7 +124,7 @@ public class SlingshotItem extends BowItem
                         worldIn.addEntity(abstractbirdshotentity);
                     }
                     
-                    worldIn.playSound((PlayerEntity)null, playerentity.posX, playerentity.posY, playerentity.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    worldIn.playSound((PlayerEntity)null, playerentity.func_226277_ct_(), playerentity.func_226278_cu_(), playerentity.func_226281_cx_(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
                     
                     if (!flag1 && !playerentity.abilities.isCreativeMode)
                     {

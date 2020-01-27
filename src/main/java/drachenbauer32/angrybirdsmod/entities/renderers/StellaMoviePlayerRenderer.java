@@ -22,7 +22,7 @@ public class StellaMoviePlayerRenderer extends LivingRenderer<StellaMoviePlayerE
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(StellaMoviePlayerEntity arg0)
+    public ResourceLocation getEntityTexture(StellaMoviePlayerEntity arg0)
     {
         return STELLA_MOVIE_PLAYER_TEXTURE;
     }

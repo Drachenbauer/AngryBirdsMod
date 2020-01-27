@@ -4,6 +4,7 @@ import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
@@ -18,7 +19,6 @@ public class BubblesEntity extends AnimalEntity
     private int timeUntilDeflating = 0;
     private BubblesInflatedEntity inflated = new BubblesInflatedEntity(AngryBirdsEntities.BUBBLES_INFLATED, world);
     
-    @SuppressWarnings("unchecked")
     public BubblesEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.BUBBLES, worldIn);
@@ -33,7 +33,7 @@ public class BubblesEntity extends AnimalEntity
     @Override
     public float getEyeHeight(Pose pose)
     {
-        return this.getSize(pose).height * 0.625f;
+        return this.getSize(pose).height / 8 * 5;
     }
     
     @Override
@@ -47,9 +47,16 @@ public class BubblesEntity extends AnimalEntity
     }
     
     @Override
+    public boolean canBreatheUnderwater()
+    {
+        return true;
+    }
+    
+    @Override
     protected void registerAttributes()
     {
         super.registerAttributes();
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
     }
     
     @Override

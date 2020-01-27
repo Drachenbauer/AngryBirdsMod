@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class WillowEntity extends AnimalEntity
 {
-    @SuppressWarnings("unchecked")
     public WillowEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
         super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.WILLOW, worldIn);
@@ -41,6 +40,12 @@ public class WillowEntity extends AnimalEntity
         this.goalSelector.addGoal(2, new RandomWalkingGoal(this, 0.2d));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+    }
+    
+    @Override
+    public boolean canBreatheUnderwater()
+    {
+        return true;
     }
     
     @Override

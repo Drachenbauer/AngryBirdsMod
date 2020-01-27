@@ -22,7 +22,7 @@ public class MathildaRenderer extends LivingRenderer<MathildaEntity, MathildaMod
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(MathildaEntity arg0)
+    public ResourceLocation getEntityTexture(MathildaEntity arg0)
     {
         return MATHILDA_TEXTURE;
     }

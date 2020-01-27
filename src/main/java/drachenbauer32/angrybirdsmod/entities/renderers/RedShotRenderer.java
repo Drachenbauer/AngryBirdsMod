@@ -29,7 +29,7 @@ public class RedShotRenderer extends AbstractBirdStotRenderer<RedShotEntity, Red
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(RedShotEntity arg0)
+    public ResourceLocation getEntityTexture(RedShotEntity arg0)
     {
         return RED_TEXTURE;
     }
