@@ -4,6 +4,7 @@ import drachenbauer32.angrybirdsmod.entities.StellaPlayerEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
+import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Hand;
@@ -15,13 +16,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
 {
-    private final RendererModel bipedHead;
-    private final RendererModel bone2;
-    private final RendererModel bone3;
-    private final RendererModel bone4;
-    private final RendererModel bone5;
-    private final RendererModel bipedRightArm;
-    private final RendererModel bipedLeftArm;
+    private final ModelRenderer bipedHead;
+    private final ModelRenderer bone2;
+    private final ModelRenderer bone3;
+    private final ModelRenderer bone4;
+    private final ModelRenderer bone5;
+    private final ModelRenderer bipedRightArm;
+    private final ModelRenderer bipedLeftArm;
     public StellaPlayerModel.ArmPose rightArmPose = StellaPlayerModel.ArmPose.EMPTY;
     public StellaPlayerModel.ArmPose leftArmPose = StellaPlayerModel.ArmPose.EMPTY;
     public float field_205061_a;
@@ -33,34 +34,34 @@ public class StellaPlayerModel extends EntityModel<StellaPlayerEntity>
         
         bipedHead = new RendererModel(this);
         bipedHead.setRotationPoint(0.0F, 20.0F, 0.0F);
-        bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, false));
-        bipedHead.cubeList.add(new ModelBox(bipedHead, 25, 0, -1.0F, 2.0F, -5.0F, 2, 1, 1, 0.0F, false));
-        bipedHead.cubeList.add(new ModelBox(bipedHead, 10, 10, 0.0F, -6.0F, -8.0F, 0, 2, 6, 0.0F, false));
-        bipedHead.cubeList.add(new ModelBox(bipedHead, 24, 3, 0.0F, 1.0F, 4.0F, 0, 1, 4, 0.0F, false));
+        bipedHead.func_217178_a("body", -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F, 0, 0);
+        bipedHead.func_217178_a("beak", -1.0F, 2.0F, -5.0F, 2, 1, 1, 0.0F, 25, 0);
+        bipedHead.func_217178_a("head_feather_1", 0.0F, -6.0F, -8.0F, 0, 2, 6, 0.0F, 10, 10);
+        bipedHead.func_217178_a("tail_feather_1", 0.0F, 1.0F, 4.0F, 0, 1, 4, 0.0F, 24, 3);
         
-        bone2 = new RendererModel(this);
+        bone2 = new ModelRenderer(this);
         bone2.setRotationPoint(0.0F, -4.0F, -2.0F);
         setRotationAngle(bone2, -0.5236F, 0.0F, 0.0F);
         bipedHead.addChild(bone2);
-        bone2.cubeList.add(new ModelBox(bone2, 10, 10, 0.0F, -2.0F, -6.0F, 0, 2, 6, 0.0F, false));
+        bone2.func_217178_a("head_feather_2", 0.0F, -2.0F, -6.0F, 0, 2, 6, 0.0F, 10, 10);
 
-        bone3 = new RendererModel(this);
+        bone3 = new ModelRenderer(this);
         bone3.setRotationPoint(0.0F, -4.0F, -2.0F);
         setRotationAngle(bone3, -1.0472F, 0.0F, 0.0F);
         bipedHead.addChild(bone3);
-        bone3.cubeList.add(new ModelBox(bone3, 8, 8, 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, false));
+        bone3.func_217178_a("head_feather_3", 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, 10, 10);
         
-        bone4 = new RendererModel(this);
+        bone4 = new ModelRenderer(this);
         bone4.setRotationPoint(0.0F, 1.0F, 4.0F);
         setRotationAngle(bone4, 0.5236F, 0.0F, 0.0F);
         bipedHead.addChild(bone4);
-        bone4.cubeList.add(new ModelBox(bone4, 24, 3, 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, false));
+        bone4.func_217178_a("tail_feather_2", 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, 24, 3);
         
-        bone5 = new RendererModel(this);
+        bone5 = new ModelRenderer(this);
         bone5.setRotationPoint(0.0F, 1.0F, 4.0F);
         setRotationAngle(bone5, -0.5236F, 0.0F, 0.0F);
         bipedHead.addChild(bone5);
-        bone5.cubeList.add(new ModelBox(bone5, 24, 3, 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, false));
+        bone5.func_217178_a("tail_feather_3", 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, 24, 3);
         
         bipedRightArm = new RendererModel(this);
         bipedRightArm.setRotationPoint(-6.0F, 22.0F, -4.0F);

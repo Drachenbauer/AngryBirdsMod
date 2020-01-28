@@ -1,17 +1,15 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
+import drachenbauer32.angrybirdsmod.entities.models.BubblesInflatedModel;
 import drachenbauer32.angrybirdsmod.entities.models.BubblesModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
@@ -23,10 +21,18 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<BubblesEntity>>
 {
     private static final ResourceLocation BUBBLES_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/bubbles.png");
+    private final BubblesModel<BubblesEntity> BUBBLES_MODEL= new BubblesModel<>();
+    private final BubblesInflatedModel<BubblesEntity> BUBBLES_INFLATED_MODEL= new BubblesInflatedModel<>();
     
     public BubblesRenderer(EntityRendererManager manager)
     {
-        super(manager, new BubblesModel(), 0.25f);
+        super(manager, new BubblesModel<>(), 0.25f);
+    }
+    
+    @Override
+    public ResourceLocation getEntityTexture(BubblesEntity arg0)
+    {
+        return BUBBLES_TEXTURE;
     }
     
     @Override
@@ -35,10 +41,16 @@ public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<Bubb
         RenderSystem.scalef(0.5f, 0.5f, 0.5f);
     }
     
-    @Override
-    public ResourceLocation getEntityTexture(BubblesEntity arg0)
+    public void setInflated(boolean inflated)
     {
-        return BUBBLES_TEXTURE;
+        if (inflated)
+        {
+            entityModel = BUBBLES_INFLATED_MODEL;
+        }
+        else
+        {
+            entityModel = BUBBLES_MODEL;
+        }
     }
     
     public static class RenderFactory implements IRenderFactory<BubblesEntity>
