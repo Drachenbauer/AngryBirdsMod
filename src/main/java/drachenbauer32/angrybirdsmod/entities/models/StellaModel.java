@@ -41,7 +41,7 @@ public class StellaModel<T extends StellaEntity> extends AgeableModel<T>
         bone3.setRotationPoint(0.0F, -4.0F, -2.0F);
         setRotationAngle(bone3, -1.0472F, 0.0F, 0.0F);
         bone.addChild(bone3);
-        bone3.func_217178_a("head_feather_3", 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, 10, 10);
+        bone3.func_217178_a("head_feather_3", 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, 8, 8);
         
         bone4 = new ModelRenderer(this);
         bone4.setRotationPoint(0.0F, 1.0F, 4.0F);

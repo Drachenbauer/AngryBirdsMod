@@ -1,146 +1,169 @@
 package drachenbauer32.angrybirdsmod.entities.models;
 
-import drachenbauer32.angrybirdsmod.entities.StellaMoviePlayerEntity;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.client.renderer.entity.model.RendererModel;
-import net.minecraft.client.renderer.model.ModelBox;
+import java.util.List;
+import java.util.Random;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StellaMoviePlayerModel extends EntityModel<StellaMoviePlayerEntity>
+public class StellaMoviePlayerModel<T extends LivingEntity> extends BipedModel<T>
 {
-    private final ModelRenderer bipedHead;
+    private List<ModelRenderer> field_228286_w_ = Lists.newArrayList();
+    
     private final ModelRenderer bone2;
-    private final ModelRenderer bone3;
-    private final ModelRenderer bipedBody;
+    private final ModelRenderer bone3;;
     private final ModelRenderer bone5;
     private final ModelRenderer bone6;
-    private final ModelRenderer bipedRightArm;
-    private final ModelRenderer bipedLeftArm;
-    private final ModelRenderer bipedRightLeg;
     private final ModelRenderer bone10;
     private final ModelRenderer bone11;
     private final ModelRenderer bone12;
-    private final ModelRenderer bipedLeftLeg;
     private final ModelRenderer bone14;
     private final ModelRenderer bone15;
     private final ModelRenderer bone16;
-    public StellaMoviePlayerModel.ArmPose rightArmPose = StellaMoviePlayerModel.ArmPose.EMPTY;
-    public StellaMoviePlayerModel.ArmPose leftArmPose = StellaMoviePlayerModel.ArmPose.EMPTY;
-    public boolean isSneak;
-    public float field_205061_a;
+    public ModelRenderer bipedHeadwear;
+    public final ModelRenderer bipedLeftArmwear;
+    public final ModelRenderer bipedRightArmwear;
+    public final ModelRenderer bipedLeftLegwear;
+    public final ModelRenderer bipedRightLegwear;
+    public final ModelRenderer bipedBodyWear;
+    private final ModelRenderer bipedCape;
     
-    public StellaMoviePlayerModel ()
+    public StellaMoviePlayerModel (float modelSize, boolean smallArmsIn)
     {
+        super(RenderType::func_228644_e_, modelSize, 0.0F, 64, 64);
+        
         textureWidth = 64;
         textureHeight = 32;
         
         bipedHead = new ModelRenderer(this);
         bipedHead.setRotationPoint(0.0F, 0.0F, 0.0F);
-        bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F, false));
-        bipedHead.cubeList.add(new ModelBox(bipedHead, 25, 0, -1.0F, -2.0F, -5.0F, 2, 1, 1, 0.0F, false));
-        bipedHead.cubeList.add(new ModelBox(bipedHead, 10, 10, 0.0F, -6.0F, -8.0F, 0, 2, 6, 0.0F, false));
+        bipedHead.func_217178_a("head", -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F, 0, 0);
+        bipedHead.func_217178_a("beak", -1.0F, -2.0F, -5.0F, 2, 1, 1, 0.0F, 25, 0);
+        bipedHead.func_217178_a("head_feather_1", 0.0F, -10.0F, -8.0F, 0, 2, 6, 0.0F, 10, 10);
         
         bone2 = new ModelRenderer(this);
         bone2.setRotationPoint(0.0F, -4.0F, -2.0F);
         setRotationAngle(bone2, -0.5236F, 0.0F, 0.0F);
         bipedHead.addChild(bone2);
-        bone2.cubeList.add(new ModelBox(bone2, 10, 10, 0.0F, -2.0F, -6.0F, 0, 2, 6, 0.0F, false));
-
+        bone2.func_217178_a("head_feather_2", 0.0F, -2.0F, -6.0F, 0, 2, 6, 0.0F, 10, 10);
+        
         bone3 = new ModelRenderer(this);
         bone3.setRotationPoint(0.0F, -4.0F, -2.0F);
         setRotationAngle(bone3, -1.0472F, 0.0F, 0.0F);
         bipedHead.addChild(bone3);
-        bone3.cubeList.add(new ModelBox(bone3, 8, 8, 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, false));
+        bone3.func_217178_a("head_feather_3", 0.0F, -2.0F, -6.0F, 0, 2, 8, 0.0F, 8, 8);
         
         bipedBody = new ModelRenderer(this);
         bipedBody.setRotationPoint(0.0F, 6.0F, 0.0F);
-        bipedBody.cubeList.add(new ModelBox(bipedBody, 36, 0, -4.0F, -6.0F, -2.0F, 8, 12, 4, 0.0F, false));
-        bipedBody.cubeList.add(new ModelBox(bipedBody, 24, 3, 0.0F, 3.0F, 2.0F, 0, 1, 4, 0.0F, false));
+        bipedBody.func_217178_a("body", -4.0F, -6.0F, -2.0F, 8, 12, 4, 0.0F, 36, 0);
+        bipedBody.func_217178_a("tail_feather_1", 0.0F, 3.0F, 2.0F, 0, 1, 4, 0.0F, 24, 3);
+        
+        this.bipedBodyWear = new ModelRenderer(this, 16, 32);
+        this.bipedBodyWear.func_228301_a_(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, modelSize + 0.25F);
+        this.bipedBodyWear.setRotationPoint(0.0F, 0.0F, 0.0F);
+        
+        this.bipedCape = new ModelRenderer(this, 0, 0);
+        this.bipedCape.setTextureSize(64, 32);
+        this.bipedCape.func_228301_a_(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, modelSize);
         
         bone5 = new ModelRenderer(this);
         bone5.setRotationPoint(0.0F, 3.0F, 2.0F);
         setRotationAngle(bone5, 0.5236F, 0.0F, 0.0F);
         bipedBody.addChild(bone5);
-        bone5.cubeList.add(new ModelBox(bone5, 24, 3, 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, false));
+        bone5.func_217178_a("tail_feather_2", 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, 24, 3);
         
         bone6 = new ModelRenderer(this);
         bone6.setRotationPoint(0.0F, 3.0F, 2.0F);
         setRotationAngle(bone6, -0.5236F, 0.0F, 0.0F);
         bipedBody.addChild(bone6);
-        bone6.cubeList.add(new ModelBox(bone6, 24, 3, 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, false));
+        bone6.func_217178_a("tail_feather_3", 0.0F, 0.0F, 0.0F, 0, 1, 4, 0.0F, 24, 3);
         
         bipedRightArm = new ModelRenderer(this);
         bipedRightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
-        bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 0, 16, -1.0F, -2.0F, -2.0F, 2, 12, 4, 0.0F, false));
+        bipedRightArm.func_217178_a("right_arm", -1.0F, -2.0F, -2.0F, 2, 12, 4, 0.0F, 0, 16);
+        
+        this.bipedRightArmwear = new ModelRenderer(this, 40, 32);
+        this.bipedRightArmwear.func_228301_a_(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, modelSize + 0.25F);
+        this.bipedRightArmwear.setRotationPoint(-5.0F, 2.5F, 10.0F);
         
         bipedLeftArm = new ModelRenderer(this);
         bipedLeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
-        bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 12, 16, -1.0F, -2.0F, -2.0F, 2, 12, 4, 0.0F, false));
+        bipedLeftArm.func_217178_a("left_arm", -1.0F, -2.0F, -2.0F, 2, 12, 4, 0.0F, 12, 16);
+        
+        this.bipedLeftArmwear = new ModelRenderer(this, 48, 48);
+        this.bipedLeftArmwear.func_228301_a_(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, modelSize + 0.25F);
+        this.bipedLeftArmwear.setRotationPoint(5.0F, 2.5F, 0.0F);
         
         bipedRightLeg = new ModelRenderer(this);
         bipedRightLeg.setRotationPoint(-2.0F, 12.0F, 0.0F);
-        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 36, 17, -1.0F, -1.0F, -1.0F, 2, 13, 2, 0.0F, false));
-        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 28, 28, -1.0F, 11.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bipedRightLeg.func_217178_a("right_leg", -1.0F, -1.0F, -1.0F, 2, 13, 2, 0.0F, 36, 17);
+        bipedRightLeg.func_217178_a("right_toe_1", -1.0F, 11.0F, -3.0F, 1, 1, 3, 0.0F, 28, 28);
         
         bone10 = new ModelRenderer(this);
         bone10.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone10, 0.0F, 3.1416F, 0.0F);
         bipedRightLeg.addChild(bone10);
-        bone10.cubeList.add(new ModelBox(bone10, 28, 28, -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bone10.func_217178_a("right_toe_2", -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, 28, 28);
         
         bone11 = new ModelRenderer(this);
         bone11.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone11, 0.0F, 0.7854F, 0.0F);
         bipedRightLeg.addChild(bone11);
-        bone11.cubeList.add(new ModelBox(bone11, 28, 28, -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bone11.func_217178_a("right_toe_3", -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, 28, 28);
         
         bone12 = new ModelRenderer(this);
         bone12.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone12, 0.0F, -0.7854F, 0.0F);
         bipedRightLeg.addChild(bone12);
-        bone12.cubeList.add(new ModelBox(bone12, 28, 28, -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bone12.func_217178_a("right_toe_4", -1.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, 28, 28);
+        
+        this.bipedRightLegwear = new ModelRenderer(this, 0, 32);
+        this.bipedRightLegwear.func_228301_a_(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, modelSize + 0.25F);
+        this.bipedRightLegwear.setRotationPoint(-1.9F, 12.0F, 0.0F);
         
         bipedLeftLeg = new ModelRenderer(this);
         bipedLeftLeg.setRotationPoint(2.0F, 12.0F, 0.0F);
-        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 44, 17, -1.0F, -1.0F, -1.0F, 2, 13, 2, 0.0F, false));
-        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 52, 28, 0.0F, 11.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bipedLeftLeg.func_217178_a("left_leg", -1.0F, -1.0F, -1.0F, 2, 13, 2, 0.0F, 44, 17);
+        bipedLeftLeg.func_217178_a("left_toe_1", 0.0F, 11.0F, -3.0F, 1, 1, 3, 0.0F, 52, 28);
         
         bone14 = new ModelRenderer(this);
         bone14.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone14, 0.0F, 3.1416F, 0.0F);
         bipedLeftLeg.addChild(bone14);
-        bone14.cubeList.add(new ModelBox(bone14, 52, 28, 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bone14.func_217178_a("left_toe_2", 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, 52, 28);
         
         bone15 = new ModelRenderer(this);
         bone15.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone15, 0.0F, 0.7854F, 0.0F);
         bipedLeftLeg.addChild(bone15);
-        bone15.cubeList.add(new ModelBox(bone15, 52, 28, 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bone15.func_217178_a("left_toe_3", 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, 52, 28);
         
         bone16 = new ModelRenderer(this);
         bone16.setRotationPoint(0.0F, 12.0F, 0.0F);
         setRotationAngle(bone16, 0.0F, -0.7854F, 0.0F);
         bipedLeftLeg.addChild(bone16);
-        bone16.cubeList.add(new ModelBox(bone16, 52, 28, 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, false));
+        bone16.func_217178_a("left_toe_4", 0.0F, -1.0F, -3.0F, 1, 1, 3, 0.0F, 52, 28);
+        
+        this.bipedLeftLegwear = new ModelRenderer(this, 0, 48);
+        this.bipedLeftLegwear.func_228301_a_(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, modelSize + 0.25F);
+        this.bipedLeftLegwear.setRotationPoint(1.9F, 12.0F, 0.0F);
     }
     
-    @Override
-    public void render(StellaMoviePlayerEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    protected Iterable<ModelRenderer> func_225600_b_()
     {
-        bipedHead.render(scale);
-        bipedBody.render(scale);
-        bipedRightArm.render(scale);
-        bipedLeftArm.render(scale);
-        bipedRightLeg.render(scale);
-        bipedLeftLeg.render(scale);
+        return Iterables.concat(super.func_225600_b_(), ImmutableList.of(this.bipedLeftLegwear, this.bipedRightLegwear, this.bipedLeftArmwear, this.bipedRightArmwear, this.bipedBodyWear));
     }
     
     public void setRotationAngle(ModelRenderer model, float x, float y, float z)
@@ -150,330 +173,62 @@ public class StellaMoviePlayerModel extends EntityModel<StellaMoviePlayerEntity>
         model.rotateAngleZ = z;
     }
     
-    @Override
-    public void setRotationAngles(StellaMoviePlayerEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
-                                  float headPitch, float scaleFactor)
+    public void func_228289_b_(MatrixStack p_228289_1_, IVertexBuilder p_228289_2_, int p_228289_3_, int p_228289_4_)
     {
-        boolean flag = entity instanceof LivingEntity && ((LivingEntity)entity).getTicksElytraFlying() > 4;
-        boolean flag1 = entity.isSwimming();
-        this.bipedHead.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
+        this.bipedCape.func_228308_a_(p_228289_1_, p_228289_2_, p_228289_3_, p_228289_4_);
+    }
+    
+    public void func_225597_a_(T p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_, float p_225597_5_, float p_225597_6_)
+    {
+        super.func_225597_a_(p_225597_1_, p_225597_2_, p_225597_3_, p_225597_4_, p_225597_5_, p_225597_6_);
+        this.bipedLeftLegwear.copyModelAngles(this.bipedLeftLeg);
+        this.bipedRightLegwear.copyModelAngles(this.bipedRightLeg);
+        this.bipedLeftArmwear.copyModelAngles(this.bipedLeftArm);
+        this.bipedRightArmwear.copyModelAngles(this.bipedRightArm);
+        this.bipedBodyWear.copyModelAngles(this.bipedBody);
         
-        if (flag)
+        if (p_225597_1_.isCrouching())
         {
-            this.bipedHead.rotateAngleX = (-(float)Math.PI / 4F);
-        }
-        else if (this.field_205061_a > 0.0F)
-        {
-            if (flag1)
-            {
-                this.bipedHead.rotateAngleX = this.func_205060_a(this.bipedHead.rotateAngleX, (-(float)Math.PI / 4F), this.field_205061_a);
-            }
-            else
-            {
-                this.bipedHead.rotateAngleX = this.func_205060_a(this.bipedHead.rotateAngleX, headPitch * ((float)Math.PI / 180F), this.field_205061_a);
-            }
+            this.bipedCape.rotationPointY = 2.0F;
         }
         else
         {
-            this.bipedHead.rotateAngleX = headPitch * ((float)Math.PI / 180F);
-        }
-        
-        this.bipedBody.rotateAngleY = 0.0F;
-        this.bipedRightArm.rotationPointZ = 0.0F;
-        this.bipedRightArm.rotationPointX = -5.0F;
-        this.bipedLeftArm.rotationPointZ = 0.0F;
-        this.bipedLeftArm.rotationPointX = 5.0F;
-        float f = 1.0F;
-        
-        if (flag)
-        {
-            f = (float)entity.getMotion().lengthSquared();
-            f = f / 0.2F;
-            f = f * f * f;
-        }
-        
-        if (f < 1.0F)
-        {
-            f = 1.0F;
-        }
-        
-        this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
-        this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
-        this.bipedRightArm.rotateAngleZ = 0.0F;
-        this.bipedLeftArm.rotateAngleZ = 0.0F;
-        this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-        this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
-        this.bipedRightLeg.rotateAngleY = 0.0F;
-        this.bipedLeftLeg.rotateAngleY = 0.0F;
-        this.bipedRightLeg.rotateAngleZ = 0.0F;
-        this.bipedLeftLeg.rotateAngleZ = 0.0F;
-        
-        if (this.isSitting)
-        {
-            this.bipedRightArm.rotateAngleX += (-(float)Math.PI / 5F);
-            this.bipedLeftArm.rotateAngleX += (-(float)Math.PI / 5F);
-            this.bipedRightLeg.rotateAngleX = -1.4137167F;
-            this.bipedRightLeg.rotateAngleY = ((float)Math.PI / 10F);
-            this.bipedRightLeg.rotateAngleZ = 0.07853982F;
-            this.bipedLeftLeg.rotateAngleX = -1.4137167F;
-            this.bipedLeftLeg.rotateAngleY = (-(float)Math.PI / 10F);
-            this.bipedLeftLeg.rotateAngleZ = -0.07853982F;
-        }
-        
-        this.bipedRightArm.rotateAngleY = 0.0F;
-        this.bipedRightArm.rotateAngleZ = 0.0F;
-        
-        switch(this.leftArmPose)
-        {
-            case EMPTY:
-            this.bipedLeftArm.rotateAngleY = 0.0F;
-            break;
-            
-            case BLOCK:
-            this.bipedLeftArm.rotateAngleX = this.bipedLeftArm.rotateAngleX * 0.5F - 0.9424779F;
-            this.bipedLeftArm.rotateAngleY = ((float)Math.PI / 6F);
-            break;
-            
-            case ITEM:
-            this.bipedLeftArm.rotateAngleX = this.bipedLeftArm.rotateAngleX * 0.5F - ((float)Math.PI / 10F);
-            this.bipedLeftArm.rotateAngleY = 0.0F;
-            break;
-            
-            case THROW_SPEAR:
-            break;
-            
-            case BOW_AND_ARROW:
-        }
-        
-        switch(this.rightArmPose)
-        {
-            case EMPTY:
-            this.bipedRightArm.rotateAngleY = 0.0F;
-            break;
-            
-            case BLOCK:
-            this.bipedRightArm.rotateAngleX = this.bipedRightArm.rotateAngleX * 0.5F - 0.9424779F;
-            this.bipedRightArm.rotateAngleY = (-(float)Math.PI / 6F);
-            break;
-            
-            case ITEM:
-            this.bipedRightArm.rotateAngleX = this.bipedRightArm.rotateAngleX * 0.5F - ((float)Math.PI / 10F);
-            this.bipedRightArm.rotateAngleY = 0.0F;
-            break;
-            
-            case THROW_SPEAR:
-            this.bipedRightArm.rotateAngleX = this.bipedRightArm.rotateAngleX * 0.5F - (float)Math.PI;
-            this.bipedRightArm.rotateAngleY = 0.0F;
-            break;
-            
-            case BOW_AND_ARROW:
-        }
-        
-        if (this.leftArmPose == StellaMoviePlayerModel.ArmPose.THROW_SPEAR && this.rightArmPose != StellaMoviePlayerModel.ArmPose.BLOCK && this.rightArmPose != StellaMoviePlayerModel.ArmPose.THROW_SPEAR && this.rightArmPose != StellaMoviePlayerModel.ArmPose.BOW_AND_ARROW)
-        {
-            this.bipedLeftArm.rotateAngleX = this.bipedLeftArm.rotateAngleX * 0.5F - (float)Math.PI;
-            this.bipedLeftArm.rotateAngleY = 0.0F;
-        }
-        
-        if (this.swingProgress > 0.0F)
-        {
-            HandSide handside = this.getMainHand(entity);
-            ModelRenderer model = this.getArmForSide(handside);
-            float f1 = this.swingProgress;
-            this.bipedBody.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float)Math.PI * 2F)) * 0.2F;
-            
-            if (handside == HandSide.LEFT)
-            {
-                this.bipedBody.rotateAngleY *= -1.0F;
-            }
-            
-            this.bipedRightArm.rotationPointZ = MathHelper.sin(this.bipedBody.rotateAngleY) * 5.0F;
-            this.bipedRightArm.rotationPointX = -MathHelper.cos(this.bipedBody.rotateAngleY) * 5.0F;
-            this.bipedLeftArm.rotationPointZ = -MathHelper.sin(this.bipedBody.rotateAngleY) * 5.0F;
-            this.bipedLeftArm.rotationPointX = MathHelper.cos(this.bipedBody.rotateAngleY) * 5.0F;
-            this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY;
-            this.bipedLeftArm.rotateAngleY += this.bipedBody.rotateAngleY;
-            this.bipedLeftArm.rotateAngleX += this.bipedBody.rotateAngleY;
-            f1 = 1.0F - this.swingProgress;
-            f1 = f1 * f1;
-            f1 = f1 * f1;
-            f1 = 1.0F - f1;
-            float f2 = MathHelper.sin(f1 * (float)Math.PI);
-            float f3 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
-            model.rotateAngleX = (float)((double)model.rotateAngleX - ((double)f2 * 1.2D + (double)f3));
-            model.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
-            model.rotateAngleZ += MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F;
-        }
-        
-        if (this.isSneak)
-        {
-            this.bipedBody.rotateAngleX = 0.5F;
-            this.bipedRightArm.rotateAngleX += 0.4F;
-            this.bipedLeftArm.rotateAngleX += 0.4F;
-            this.bipedRightLeg.rotationPointZ = 4.0F;
-            this.bipedLeftLeg.rotationPointZ = 4.0F;
-            this.bipedRightLeg.rotationPointY = 9.0F;
-            this.bipedLeftLeg.rotationPointY = 9.0F;
-            this.bipedHead.rotationPointY = 1.0F;
-        }
-        else
-        {
-            this.bipedBody.rotateAngleX = 0.0F;
-            this.bipedRightLeg.rotationPointZ = 0.1F;
-            this.bipedLeftLeg.rotationPointZ = 0.1F;
-            this.bipedRightLeg.rotationPointY = 12.0F;
-            this.bipedLeftLeg.rotationPointY = 12.0F;
-            this.bipedHead.rotationPointY = 0.0F;
-        }
-        
-        this.bipedRightArm.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
-        this.bipedLeftArm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
-        this.bipedRightArm.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
-        this.bipedLeftArm.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
-        
-        if (this.rightArmPose == StellaMoviePlayerModel.ArmPose.BOW_AND_ARROW)
-        {
-            this.bipedRightArm.rotateAngleY = -0.1F + this.bipedHead.rotateAngleY;
-            this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY + 0.4F;
-            this.bipedRightArm.rotateAngleX = (-(float)Math.PI / 2F) + this.bipedHead.rotateAngleX;
-            this.bipedLeftArm.rotateAngleX = (-(float)Math.PI / 2F) + this.bipedHead.rotateAngleX;
-        }
-        else if (this.leftArmPose == StellaMoviePlayerModel.ArmPose.BOW_AND_ARROW && this.rightArmPose != StellaMoviePlayerModel.ArmPose.THROW_SPEAR && this.rightArmPose != StellaMoviePlayerModel.ArmPose.BLOCK)
-        {
-            this.bipedRightArm.rotateAngleY = -0.1F + this.bipedHead.rotateAngleY - 0.4F;
-            this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY;
-            this.bipedRightArm.rotateAngleX = (-(float)Math.PI / 2F) + this.bipedHead.rotateAngleX;
-            this.bipedLeftArm.rotateAngleX = (-(float)Math.PI / 2F) + this.bipedHead.rotateAngleX;
-        }
-        
-        if (this.field_205061_a > 0.0F)
-        {
-            float f4 = limbSwing % 26.0F;
-            float f5 = this.swingProgress > 0.0F ? 0.0F : this.field_205061_a;
-            
-            if (f4 < 14.0F)
-            {
-                this.bipedLeftArm.rotateAngleX = this.func_205060_a(this.bipedLeftArm.rotateAngleX, 0.0F, this.field_205061_a);
-                this.bipedRightArm.rotateAngleX = this.func_205059_b(this.bipedRightArm.rotateAngleX, 0.0F, f5);
-                this.bipedLeftArm.rotateAngleY = this.func_205060_a(this.bipedLeftArm.rotateAngleY, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleY = this.func_205059_b(this.bipedRightArm.rotateAngleY, (float)Math.PI, f5);
-                this.bipedLeftArm.rotateAngleZ = this.func_205060_a(this.bipedLeftArm.rotateAngleZ, (float)Math.PI + 1.8707964F * this.func_203068_a(f4) / this.func_203068_a(14.0F), this.field_205061_a);
-                this.bipedRightArm.rotateAngleZ = this.func_205059_b(this.bipedRightArm.rotateAngleZ, (float)Math.PI - 1.8707964F * this.func_203068_a(f4) / this.func_203068_a(14.0F), f5);
-            }
-            else if (f4 >= 14.0F && f4 < 22.0F)
-            {
-                float f7 = (f4 - 14.0F) / 8.0F;
-                this.bipedLeftArm.rotateAngleX = this.func_205060_a(this.bipedLeftArm.rotateAngleX, ((float)Math.PI / 2F) * f7, this.field_205061_a);
-                this.bipedRightArm.rotateAngleX = this.func_205059_b(this.bipedRightArm.rotateAngleX, ((float)Math.PI / 2F) * f7, f5);
-                this.bipedLeftArm.rotateAngleY = this.func_205060_a(this.bipedLeftArm.rotateAngleY, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleY = this.func_205059_b(this.bipedRightArm.rotateAngleY, (float)Math.PI, f5);
-                this.bipedLeftArm.rotateAngleZ = this.func_205060_a(this.bipedLeftArm.rotateAngleZ, 5.012389F - 1.8707964F * f7, this.field_205061_a);
-                this.bipedRightArm.rotateAngleZ = this.func_205059_b(this.bipedRightArm.rotateAngleZ, 1.2707963F + 1.8707964F * f7, f5);
-            }
-            else if (f4 >= 22.0F && f4 < 26.0F)
-            {
-                float f6 = (f4 - 22.0F) / 4.0F;
-                this.bipedLeftArm.rotateAngleX = this.func_205060_a(this.bipedLeftArm.rotateAngleX, ((float)Math.PI / 2F) - ((float)Math.PI / 2F) * f6, this.field_205061_a);
-                this.bipedRightArm.rotateAngleX = this.func_205059_b(this.bipedRightArm.rotateAngleX, ((float)Math.PI / 2F) - ((float)Math.PI / 2F) * f6, f5);
-                this.bipedLeftArm.rotateAngleY = this.func_205060_a(this.bipedLeftArm.rotateAngleY, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleY = this.func_205059_b(this.bipedRightArm.rotateAngleY, (float)Math.PI, f5);
-                this.bipedLeftArm.rotateAngleZ = this.func_205060_a(this.bipedLeftArm.rotateAngleZ, (float)Math.PI, this.field_205061_a);
-                this.bipedRightArm.rotateAngleZ = this.func_205059_b(this.bipedRightArm.rotateAngleZ, (float)Math.PI, f5);
-            }
-            
-            //float f8 = 0.3F;
-            //float f9 = 0.33333334F;
-            this.bipedLeftLeg.rotateAngleX = this.func_205059_b(this.bipedLeftLeg.rotateAngleX, 0.3F * MathHelper.cos(limbSwing * 0.33333334F + (float)Math.PI), this.field_205061_a);
-            this.bipedRightLeg.rotateAngleX = this.func_205059_b(this.bipedRightLeg.rotateAngleX, 0.3F * MathHelper.cos(limbSwing * 0.33333334F), this.field_205061_a);
-        }
-    }
-    
-    public void setLivingAnimations(StellaMoviePlayerEntity entity, float limbSwing, float limbSwingAmount, float partialTickTime) 
-    {
-        this.field_205061_a = entity.getSwimAnimation(partialTickTime);
-        super.setLivingAnimations(entity, limbSwing, limbSwingAmount, partialTickTime);
-    }
-    
-    protected float func_205060_a(float p_205060_1_, float p_205060_2_, float p_205060_3_)
-    {
-        float f;
-        for(f = p_205060_2_ - p_205060_1_; f < -(float)Math.PI; f += ((float)Math.PI * 2F))
-        {
-            ;
-        }
-        
-        while(f >= (float)Math.PI)
-        {
-            f -= ((float)Math.PI * 2F);
-        }
-        
-        return p_205060_1_ + p_205060_3_ * f;
-    }
-    
-    private float func_205059_b(float p_205059_1_, float p_205059_2_, float p_205059_3_)
-    {
-        return p_205059_1_ + (p_205059_2_ - p_205059_1_) * p_205059_3_;
-    }
-    
-    private float func_203068_a(float p_203068_1_)
-    {
-        return -65.0F * p_203068_1_ + p_203068_1_ * p_203068_1_;
-    }
-    
-    public void setModelAttributes(EntityModel<StellaMoviePlayerEntity> model)
-    {
-        super.setModelAttributes(model);
-        
-        if (model instanceof StellaMoviePlayerModel)
-        {
-            StellaMoviePlayerModel modelbiped = (StellaMoviePlayerModel)model;
-            this.leftArmPose = modelbiped.leftArmPose;
-            this.rightArmPose = modelbiped.rightArmPose;
-            this.isSneak = modelbiped.isSneak;
+            this.bipedCape.rotationPointY = 0.0F;
         }
     }
     
     public void setVisible(boolean visible)
     {
-        this.bipedHead.showModel = visible;
-        this.bipedBody.showModel = visible;
-        this.bipedRightArm.showModel = visible;
-        this.bipedLeftArm.showModel = visible;
-        this.bipedRightLeg.showModel = visible;
-        this.bipedLeftLeg.showModel = visible;
+        super.setVisible(visible);
+        this.bipedLeftArmwear.showModel = visible;
+        this.bipedRightArmwear.showModel = visible;
+        this.bipedLeftLegwear.showModel = visible;
+        this.bipedRightLegwear.showModel = visible;
+        this.bipedBodyWear.showModel = visible;
+        this.bipedCape.showModel = visible;
     }
     
-    public void postRenderArm(float scale, HandSide side)
+    public void func_225599_a_(HandSide p_225599_1_, MatrixStack p_225599_2_)
     {
-        this.getArmForSide(side).postRender(scale);
+        ModelRenderer modelrenderer = this.getArmForSide(p_225599_1_);
+        float f = 0.5F * (float)(p_225599_1_ == HandSide.RIGHT ? 1 : -1);
+        modelrenderer.rotationPointX += f;
+        modelrenderer.func_228307_a_(p_225599_2_);
+        modelrenderer.rotationPointX -= f;
     }
     
-    protected ModelRenderer getArmForSide(HandSide side)
+    public ModelRenderer func_228288_a_(Random p_228288_1_)
     {
-        return side == HandSide.LEFT ? this.bipedLeftArm : this.bipedRightArm;
+        return this.field_228286_w_.get(p_228288_1_.nextInt(this.field_228286_w_.size()));
     }
     
-    protected HandSide getMainHand(Entity entityIn)
+    public void accept(ModelRenderer p_accept_1_)
     {
-        if (entityIn instanceof LivingEntity)
+        if (this.field_228286_w_ == null)
         {
-            LivingEntity entitylivingbase = (LivingEntity)entityIn;
-            HandSide enumhandside = entitylivingbase.getPrimaryHand();
-            return entitylivingbase.swingingHand == Hand.MAIN_HAND ? enumhandside : enumhandside.opposite();
+            this.field_228286_w_ = Lists.newArrayList();
         }
-        else
-        {
-            return HandSide.RIGHT;
-        }
-    }
-    
-    @OnlyIn(Dist.CLIENT)
-    public static enum ArmPose
-    {
-        EMPTY,
-        ITEM,
-        BLOCK,
-        BOW_AND_ARROW,
-        THROW_SPEAR;
+        
+        this.field_228286_w_.add(p_accept_1_);
     }
 }
