@@ -1,30 +1,29 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import drachenbauer32.angrybirdsmod.entities.LucaEntity;
 import drachenbauer32.angrybirdsmod.entities.WillowEntity;
 import drachenbauer32.angrybirdsmod.entities.models.WillowModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
-public class WillowRenderer extends LivingRenderer<WillowEntity, WillowModel>
+public class WillowRenderer extends MobRenderer<WillowEntity, EntityModel<WillowEntity>>
 {
     private static final ResourceLocation WILLOW_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/willow.png");
     
     public WillowRenderer(EntityRendererManager manager)
     {
-        super(manager, new WillowModel(), 0.5f);
+        super(manager, new WillowModel<>(), 0.5f);
     }
     
     @Override

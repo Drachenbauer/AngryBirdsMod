@@ -19,7 +19,7 @@ public class StellaRenderer extends MobRenderer<StellaEntity, EntityModel<Stella
     
     public StellaRenderer(EntityRendererManager manager)
     {
-        super(manager, new StellaModel(), 0.5f);
+        super(manager, new StellaModel<>(), 0.5f);
     }
     
     @Override

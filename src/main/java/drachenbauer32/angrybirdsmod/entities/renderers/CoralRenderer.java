@@ -14,7 +14,7 @@ public class CoralRenderer extends MobRenderer<CoralEntity, EntityModel<CoralEnt
     
     public CoralRenderer(final EntityRendererManager manager)
     {
-        super(manager, new CoralModel(), 0.625f);
+        super(manager, new CoralModel<>(), 0.625f);
     }
     
     @Override

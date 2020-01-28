@@ -23,7 +23,7 @@ public class LucaRenderer extends MobRenderer<LucaEntity, EntityModel<LucaEntity
     
     public LucaRenderer(EntityRendererManager manager)
     {
-        super(manager, new LucaModel(), 0.25f);
+        super(manager, new LucaModel<>(), 0.25f);
     }
     
     @Override

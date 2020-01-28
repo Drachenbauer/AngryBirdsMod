@@ -19,7 +19,7 @@ public class ChuckRenderer extends MobRenderer<ChuckEntity, EntityModel<ChuckEnt
     
     public ChuckRenderer(EntityRendererManager manager)
     {
-        super(manager, new ChuckModel(), 0.5f);
+        super(manager, new ChuckModel<>(), 0.5f);
         // TODO Auto-generated constructor stub
     }
     

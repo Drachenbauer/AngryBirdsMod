@@ -1,7 +1,6 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
@@ -10,10 +9,8 @@ import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.entity.monster.PhantomEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -26,7 +23,7 @@ public class BluesRenderer extends MobRenderer<BluesEntity, EntityModel<BluesEnt
     
     public BluesRenderer(EntityRendererManager manager)
     {
-        super(manager, new BluesModel(), 0.25f);
+        super(manager, new BluesModel<>(), 0.25f);
     }
     
     @Override

@@ -19,7 +19,7 @@ public class DahliaRenderer extends MobRenderer<DahliaEntity, EntityModel<Dahlia
     
     public DahliaRenderer(EntityRendererManager manager)
     {
-        super(manager, new DahliaModel(), 0.5f);
+        super(manager, new DahliaModel<>(), 0.5f);
     }
     
     @Override

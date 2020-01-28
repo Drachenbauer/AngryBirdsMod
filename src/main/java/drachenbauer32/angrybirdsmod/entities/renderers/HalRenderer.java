@@ -1,12 +1,10 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
-import drachenbauer32.angrybirdsmod.entities.DahliaEntity;
 import drachenbauer32.angrybirdsmod.entities.HalEntity;
 import drachenbauer32.angrybirdsmod.entities.models.HalModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +19,7 @@ public class HalRenderer extends MobRenderer<HalEntity, EntityModel<HalEntity>>
     
     public HalRenderer(EntityRendererManager manager)
     {
-        super(manager, new HalModel(), 0.5f);
+        super(manager, new HalModel<>(), 0.5f);
     }
     
     @Override

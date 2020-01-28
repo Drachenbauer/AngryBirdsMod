@@ -1,7 +1,5 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
-import javax.annotation.Nonnull;
-
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.models.BombModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
@@ -17,7 +15,7 @@ public class BombRenderer extends MobRenderer<BombEntity, EntityModel<BombEntity
     
     public BombRenderer(final EntityRendererManager manager)
     {
-        super(manager, new BombModel(), 0.75f);
+        super(manager, new BombModel<>(), 0.75f);
     }
     
     @Override

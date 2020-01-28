@@ -5,20 +5,21 @@ import drachenbauer32.angrybirdsmod.entities.models.IceBirdModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
-public class IceBirdRenderer extends LivingRenderer<IceBirdEntity, IceBirdModel>
+public class IceBirdRenderer extends MobRenderer<IceBirdEntity, EntityModel<IceBirdEntity>>
 {
     private static final ResourceLocation ICE_BIRD_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/ice_bird.png");
     
     public IceBirdRenderer(EntityRendererManager manager)
     {
-        super(manager, new IceBirdModel(), 0.5f);
+        super(manager, new IceBirdModel<>(), 0.5f);
     }
     
     @Override

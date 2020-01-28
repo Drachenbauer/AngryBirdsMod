@@ -23,7 +23,7 @@ public class BluesTrioRenderer extends MobRenderer<BluesEntity, EntityModel<Blue
     
     public BluesTrioRenderer(EntityRendererManager manager)
     {
-        super(manager, new BluesTrioModel(), 0.25f);
+        super(manager, new BluesTrioModel<>(), 0.25f);
     }
     
     @Override
