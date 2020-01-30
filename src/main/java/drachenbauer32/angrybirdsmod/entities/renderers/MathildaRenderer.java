@@ -23,7 +23,7 @@ public class MathildaRenderer extends MobRenderer<MathildaEntity, EntityModel<Ma
     }
     
     @Override
-    public ResourceLocation getEntityTexture(MathildaEntity arg0)
+    public ResourceLocation getEntityTexture(MathildaEntity mathilda)
     {
         return MATHILDA_TEXTURE;
     }

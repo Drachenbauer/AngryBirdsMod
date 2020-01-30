@@ -23,7 +23,7 @@ public class RedRenderer extends MobRenderer<RedEntity, EntityModel<RedEntity>>
     }
     
     @Override
-    public ResourceLocation getEntityTexture(RedEntity arg0)
+    public ResourceLocation getEntityTexture(RedEntity red)
     {
         return RED_TEXTURE;
     }

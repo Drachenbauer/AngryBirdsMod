@@ -27,15 +27,15 @@ public class LucaRenderer extends MobRenderer<LucaEntity, EntityModel<LucaEntity
     }
     
     @Override
-    protected void func_225629_a_(LucaEntity p_225629_1_, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
+    public ResourceLocation getEntityTexture(LucaEntity luca)
     {
-        RenderSystem.scalef(0.5f, 0.5f, 0.5f);
+        return LUCA_TEXTURE;
     }
     
     @Override
-    public ResourceLocation getEntityTexture(LucaEntity arg0)
+    protected void func_225629_a_(LucaEntity luca, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
     {
-        return LUCA_TEXTURE;
+        RenderSystem.scalef(0.5f, 0.5f, 0.5f);
     }
     
     public static class RenderFactory implements IRenderFactory<LucaEntity>

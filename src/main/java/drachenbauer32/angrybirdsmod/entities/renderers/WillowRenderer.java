@@ -27,15 +27,15 @@ public class WillowRenderer extends MobRenderer<WillowEntity, EntityModel<Willow
     }
     
     @Override
-    protected void func_225629_a_(WillowEntity p_225629_1_, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
+    public ResourceLocation getEntityTexture(WillowEntity arg0willow)
     {
-        RenderSystem.scalef(0.5f, 0.5f, 0.5f);
+        return WILLOW_TEXTURE;
     }
     
     @Override
-    public ResourceLocation getEntityTexture(WillowEntity arg0)
+    protected void func_225629_a_(WillowEntity willow, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
     {
-        return WILLOW_TEXTURE;
+        RenderSystem.scalef(0.5f, 0.5f, 0.5f);
     }
     
     public static class RenderFactory implements IRenderFactory<WillowEntity>

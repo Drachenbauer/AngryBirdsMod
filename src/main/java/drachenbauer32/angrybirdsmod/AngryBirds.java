@@ -18,7 +18,6 @@ import drachenbauer32.angrybirdsmod.blocks.SlingshotWoodBaseBlock;
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
-import drachenbauer32.angrybirdsmod.entities.BubblesInflatedEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
 import drachenbauer32.angrybirdsmod.entities.CoralEntity;
 import drachenbauer32.angrybirdsmod.entities.DahliaEntity;
@@ -273,8 +272,6 @@ public class AngryBirds
             AngryBirdsEntities.LUCA = (EntityType<LucaEntity>) EntityType.Builder.create(LucaEntity::new, EntityClassification.CREATURE).size(0.25F, 0.25F).build(Reference.MOD_ID + ".luca").setRegistryName("luca");
             AngryBirdsEntities.ICE_BIRD = (EntityType<IceBirdEntity>) EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
             AngryBirdsEntities.CORAL = (EntityType<CoralEntity>) EntityType.Builder.create(CoralEntity::new, EntityClassification.CREATURE).size(0.625F, 0.875F).build(Reference.MOD_ID + ".coral").setRegistryName("coral");
-            
-            AngryBirdsEntities.BUBBLES_INFLATED = (EntityType<BubblesInflatedEntity>) EntityType.Builder.create(BubblesInflatedEntity::new, EntityClassification.MISC).size(1.25F, 1.25F).build(Reference.MOD_ID + ".bubbles_inflated").setRegistryName("bubbles_inflated");
             
             //AngryBirdsEntities.RED_SHOT = EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F);
             

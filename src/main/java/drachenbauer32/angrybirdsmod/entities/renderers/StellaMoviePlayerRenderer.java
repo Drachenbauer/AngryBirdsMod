@@ -18,7 +18,7 @@ public class StellaMoviePlayerRenderer extends LivingRenderer<StellaMoviePlayerE
     
     public StellaMoviePlayerRenderer(EntityRendererManager manager)
     {
-        super(manager, new StellaMoviePlayerModel(), 0.5f);
+        super(manager, new StellaMoviePlayerModel(shadowOpaque, false), 0.5f);
     }
     
     @Override

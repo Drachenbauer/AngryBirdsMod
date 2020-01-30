@@ -19,7 +19,7 @@ public class BombRenderer extends MobRenderer<BombEntity, EntityModel<BombEntity
     }
     
     @Override
-    public ResourceLocation getEntityTexture(final BombEntity arg0)
+    public ResourceLocation getEntityTexture(final BombEntity bomb)
     {
         return BOMB_TEXTURE;
     }

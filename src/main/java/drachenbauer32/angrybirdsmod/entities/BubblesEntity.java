@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 public class BubblesEntity extends AnimalEntity
 {
     private int timeUntilDeflating = 0;
+    public boolean isInflated = false;
     
     public BubblesEntity(EntityType<? extends AnimalEntity> type, World worldIn)
     {
@@ -67,6 +68,7 @@ public class BubblesEntity extends AnimalEntity
             
             if (timeUntilDeflating == 0)
             {
+                isInflated = false;
                 //method-call for deflate
             }
         }
@@ -82,6 +84,7 @@ public class BubblesEntity extends AnimalEntity
         if (timeUntilDeflating == 0)
         {
             timeUntilDeflating = 80;
+            isInflated = true;
             //method-call for inflate
         }
     }

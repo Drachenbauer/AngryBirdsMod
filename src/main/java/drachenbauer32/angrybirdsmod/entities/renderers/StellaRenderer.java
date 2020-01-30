@@ -23,7 +23,7 @@ public class StellaRenderer extends MobRenderer<StellaEntity, EntityModel<Stella
     }
     
     @Override
-    public ResourceLocation getEntityTexture(StellaEntity arg0)
+    public ResourceLocation getEntityTexture(StellaEntity stella)
     {
         return STELLA_TEXTURE;
     }

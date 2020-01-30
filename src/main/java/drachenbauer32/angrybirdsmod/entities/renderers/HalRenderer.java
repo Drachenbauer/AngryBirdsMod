@@ -23,7 +23,7 @@ public class HalRenderer extends MobRenderer<HalEntity, EntityModel<HalEntity>>
     }
     
     @Override
-    public ResourceLocation getEntityTexture(HalEntity arg0)
+    public ResourceLocation getEntityTexture(HalEntity hal)
     {
         return HAL_TEXTURE;
     }

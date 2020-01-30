@@ -23,7 +23,7 @@ public class TerenceRenderer extends MobRenderer<TerenceEntity, EntityModel<Tere
     }
     
     @Override
-    public ResourceLocation getEntityTexture(TerenceEntity arg0)
+    public ResourceLocation getEntityTexture(TerenceEntity terence)
     {
         return TERENCE_TEXTURE;
     }

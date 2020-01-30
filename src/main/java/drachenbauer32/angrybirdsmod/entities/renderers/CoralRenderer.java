@@ -18,22 +18,23 @@ public class CoralRenderer extends MobRenderer<CoralEntity, EntityModel<CoralEnt
     }
     
     @Override
-    public ResourceLocation getEntityTexture(final CoralEntity arg0)
+    public ResourceLocation getEntityTexture(CoralEntity coral)
     {
         return CORAL_TEXTURE;
     }
     
     @Override
-    protected float handleRotationFloat(CoralEntity livingBase, float partialTicks) {
-        return livingBase.getTailRotation();
+    protected float handleRotationFloat(CoralEntity coral, float partialTicks)
+    {
+        return coral.getTailRotation();
     }
     
-    /*public static class RenderFactory implements IRenderFactory<BombEntity>
+    /*public static class RenderFactory implements IRenderFactory<CoralEntity>
     {
         @Override
-        public EntityRenderer<? super BombEntity> createRenderFor(EntityRendererManager manager)
+        public EntityRenderer<? super CoralEntity> createRenderFor(EntityRendererManager manager)
         {
-            return new BombRenderer(manager);
+            return new CoralRenderer(manager);
         }
     }*/
 }

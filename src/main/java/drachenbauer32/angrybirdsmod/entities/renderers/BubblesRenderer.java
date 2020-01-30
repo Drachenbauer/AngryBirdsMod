@@ -21,8 +21,8 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<BubblesEntity>>
 {
     private static final ResourceLocation BUBBLES_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/bubbles.png");
-    private final BubblesModel<BubblesEntity> BUBBLES_MODEL= new BubblesModel<>();
-    private final BubblesInflatedModel<BubblesEntity> BUBBLES_INFLATED_MODEL= new BubblesInflatedModel<>();
+    private static final BubblesModel<BubblesEntity> BUBBLES_MODEL= new BubblesModel<>();
+    private static final BubblesInflatedModel<BubblesEntity> BUBBLES_INFLATED_MODEL= new BubblesInflatedModel<>();
     
     public BubblesRenderer(EntityRendererManager manager)
     {
@@ -30,20 +30,22 @@ public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<Bubb
     }
     
     @Override
-    public ResourceLocation getEntityTexture(BubblesEntity arg0)
+    public ResourceLocation getEntityTexture(BubblesEntity bubbles)
     {
         return BUBBLES_TEXTURE;
     }
     
     @Override
-    protected void func_225629_a_(BubblesEntity p_225629_1_, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
+    protected void func_225629_a_(BubblesEntity bubbles, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
     {
         RenderSystem.scalef(0.5f, 0.5f, 0.5f);
     }
     
-    public void setInflated(boolean inflated)
+    @Override
+    public void func_225623_a_(BubblesEntity bubbles, float p_225623_2_, float p_225623_3_,
+                               MatrixStack p_225623_4_, IRenderTypeBuffer p_225623_5_, int p_225623_6_)
     {
-        if (inflated)
+        if (bubbles.isInflated)
         {
             entityModel = BUBBLES_INFLATED_MODEL;
         }

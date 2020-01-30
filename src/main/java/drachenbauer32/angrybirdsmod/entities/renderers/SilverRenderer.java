@@ -23,7 +23,7 @@ public class SilverRenderer extends MobRenderer<SilverEntity, EntityModel<Silver
     }
     
     @Override
-    public ResourceLocation getEntityTexture(SilverEntity arg0)
+    public ResourceLocation getEntityTexture(SilverEntity silver)
     {
         return SILVER_TEXTURE;
     }

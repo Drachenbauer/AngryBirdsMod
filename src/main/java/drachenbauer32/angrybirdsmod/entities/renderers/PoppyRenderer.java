@@ -23,7 +23,7 @@ public class PoppyRenderer extends MobRenderer<PoppyEntity, EntityModel<PoppyEnt
     }
     
     @Override
-    public ResourceLocation getEntityTexture(PoppyEntity arg0)
+    public ResourceLocation getEntityTexture(PoppyEntity poppy)
     {
         return POPPY_TEXTURE;
     }

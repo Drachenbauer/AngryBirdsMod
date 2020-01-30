@@ -23,7 +23,7 @@ public class IceBirdRenderer extends MobRenderer<IceBirdEntity, EntityModel<IceB
     }
     
     @Override
-    public ResourceLocation getEntityTexture(IceBirdEntity arg0)
+    public ResourceLocation getEntityTexture(IceBirdEntity ice_bird)
     {
         return ICE_BIRD_TEXTURE;
     }

@@ -23,7 +23,7 @@ public class DahliaRenderer extends MobRenderer<DahliaEntity, EntityModel<Dahlia
     }
     
     @Override
-    public ResourceLocation getEntityTexture(DahliaEntity arg0)
+    public ResourceLocation getEntityTexture(DahliaEntity dahlia)
     {
         return DAHLIA_TEXTURE;
     }
