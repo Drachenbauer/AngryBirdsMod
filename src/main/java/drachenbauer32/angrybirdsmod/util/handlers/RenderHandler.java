@@ -27,9 +27,6 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 @OnlyIn(Dist.CLIENT)
 public class RenderHandler 
 {
-    //public static final BubblesRenderer BUBBLES_RENDERER = new BubblesRenderer(null);
-    //public static final IRenderFactory<?> BUBBLES_RENDERER = BubblesRenderer::new;
-    
     public static void regigisterEntityRenders()
     {
         RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.RED, RedRenderer::new);

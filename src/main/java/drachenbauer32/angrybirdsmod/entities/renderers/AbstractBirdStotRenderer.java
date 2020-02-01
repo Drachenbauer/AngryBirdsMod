@@ -1,17 +1,9 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
-import java.nio.FloatBuffer;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import drachenbauer32.angrybirdsmod.entities.BirdShotEntity;
-import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.Matrix3f;
 import net.minecraft.client.renderer.Matrix4f;
@@ -19,16 +11,10 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 
-public abstract class AbstractBirdStotRenderer<T extends BirdShotEntity> extends EntityRenderer<T> 
+public abstract class AbstractBirdStotRenderer<T extends BirdShotEntity, M> extends EntityRenderer<T> 
 {
     protected M entityModel;
     protected boolean renderMarker;
@@ -47,16 +33,6 @@ public abstract class AbstractBirdStotRenderer<T extends BirdShotEntity> extends
       p_225623_4_.func_227860_a_();
       p_225623_4_.func_227863_a_(Vector3f.field_229181_d_.func_229187_a_(MathHelper.lerp(p_225623_3_, p_225623_1_.prevRotationYaw, p_225623_1_.rotationYaw) - 90.0F));
       p_225623_4_.func_227863_a_(Vector3f.field_229183_f_.func_229187_a_(MathHelper.lerp(p_225623_3_, p_225623_1_.prevRotationPitch, p_225623_1_.rotationPitch)));
-      int i = 0;
-      float f = 0.0F;
-      float f1 = 0.5F;
-      float f2 = 0.0F;
-      float f3 = 0.15625F;
-      float f4 = 0.0F;
-      float f5 = 0.15625F;
-      float f6 = 0.15625F;
-      float f7 = 0.3125F;
-      float f8 = 0.05625F;
       float f9 = (float)p_225623_1_.arrowShake - p_225623_3_;
       if (f9 > 0.0F) {
          float f10 = -MathHelper.sin(f9 * 3.0F) * f9;

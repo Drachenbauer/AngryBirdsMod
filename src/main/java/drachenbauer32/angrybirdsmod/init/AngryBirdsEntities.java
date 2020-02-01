@@ -3,7 +3,6 @@ package drachenbauer32.angrybirdsmod.init;
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.BombEntity;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
-import drachenbauer32.angrybirdsmod.entities.BubblesInflatedEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckShotEntity;
 import drachenbauer32.angrybirdsmod.entities.CoralEntity;
@@ -42,8 +41,6 @@ public class AngryBirdsEntities
     public static EntityType<LucaEntity> LUCA;
     public static EntityType<IceBirdEntity> ICE_BIRD;
     public static EntityType<CoralEntity> CORAL;
-    
-    public static EntityType<BubblesInflatedEntity> BUBBLES_INFLATED;
     
     //public static EntityType<?> RED_SHOT;
     public static EntityType<RedShotEntity> RED_SHOT = register("red_shot", EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));

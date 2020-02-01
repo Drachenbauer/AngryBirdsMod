@@ -23,93 +23,93 @@ public class BirdShotItem extends Item
     
     public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter)
     {
-        BirdShotEntity birdshotentity;
+        BirdShotEntity bird_shot_entity;
         
         if(name.equals("ice_bird_shot"))
         {
-            birdshotentity = new ChuckShotEntity(worldIn, shooter);
+            bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
         }
         else
         {
             if(name.equals("luca_shot"))
             {
-                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
             }
             else
             {
                 if(name.equals("dahlia_shot"))
                 {
-                    birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                    bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                 }
                 else
                 {
                     if(name.equals("willow_shot"))
                     {
-                        birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                        bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                     }
                     else
                     {
                         if(name.equals("poppy_shot"))
                         {
-                            birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                            bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                         }
                         else
                         {
                             if(name.equals("stella_shot"))
                             {
-                                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                             }
                             else
                             {
                                 if(name.equals("hal_shot"))
                                 {
-                                    birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                    bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                 }
                                 else
                                 {
                                     if(name.equals("bubbles_shot"))
                                     {
-                                        birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                        bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                     }
                                     else
                                     {
                                         if(name.equals("silver_shot"))
                                         {
-                                            birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                            bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                         }
                                         else
                                         {
                                             if(name.equals("terence_shot"))
                                             {
-                                                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                             }
                                             else
                                             {
                                                 if(name.equals("mathilda_shot"))
                                                 {
-                                                    birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                    bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                                 }
                                                 else
                                                 {
                                                     if(name.equals("bomb_shot"))
                                                     {
-                                                        birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                        bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                                     }
                                                     else
                                                     {
                                                         if(name.equals("blues_shot"))
                                                         {
-                                                            birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                            bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                                         }
                                                         else
                                                         {
                                                             if(name.equals("chuck_shot"))
                                                             {
-                                                                birdshotentity = new ChuckShotEntity(worldIn, shooter);
+                                                                bird_shot_entity = new ChuckShotEntity(worldIn, shooter);
                                                             }
                                                             else
                                                             {
-                                                                birdshotentity = new RedShotEntity(worldIn, shooter);
+                                                                bird_shot_entity = new RedShotEntity(worldIn, shooter);
                                                             }
                                                         }
                                                     }
@@ -125,8 +125,8 @@ public class BirdShotItem extends Item
             }
         }
         
-        birdshotentity.setPotionEffect(stack);
-        return birdshotentity;
+        bird_shot_entity.setPotionEffect(stack);
+        return bird_shot_entity;
     }
     
     public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.PlayerEntity player)

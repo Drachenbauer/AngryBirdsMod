@@ -69,7 +69,6 @@ public class BubblesEntity extends AnimalEntity
             if (timeUntilDeflating == 0)
             {
                 isInflated = false;
-                //method-call for deflate
             }
         }
         else
@@ -85,7 +84,6 @@ public class BubblesEntity extends AnimalEntity
         {
             timeUntilDeflating = 80;
             isInflated = true;
-            //method-call for inflate
         }
     }
 }

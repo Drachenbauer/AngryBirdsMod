@@ -1,6 +1,8 @@
-/*This is Coral, an angler-fish-character from a not so well known Rovio-game called "Fruit-Nibblers".
- *I added her here, because her game is from the creators of Angry Birds.
- *I like her look and I think, it maybe a good idea to make her best friends with Stella*/
+/** 
+ ** This is Coral, an angler-fish-character from a not so well known Rovio-game called "Fruit-Nibblers".
+ ** I added her here, because her game is from the creators of Angry Birds, too.
+ ** I like her look and I think, it maybe a good idea to make her best friends with Stella
+ **/
 
 package drachenbauer32.angrybirdsmod.entities;
 
