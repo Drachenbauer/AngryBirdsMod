@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 
 public class SlingshotBlock extends Block
 {
-    private String name;
+    private final String NAME;
     private static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     private static final VoxelShape EAST_AABB = Block.makeCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
     private static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
@@ -36,7 +36,7 @@ public class SlingshotBlock extends Block
     {
         super(properties);
         setRegistryName(Reference.MOD_ID, name);
-        this.name = name;
+        this.NAME = name;
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
     
@@ -100,112 +100,112 @@ public class SlingshotBlock extends Block
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer,
                                 ItemStack stack)
     {
-        if (name.contains("acacia"))
+        if (NAME.contains("acacia"))
         {
-            if (name.contains("2"))
+            if (NAME.contains("2"))
             {
                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                        AngryBirdsBlocks.slingshot_acacia_2_wood_base_block, AngryBirdsBlocks.slingshot_acacia_block_side, AngryBirdsBlocks.slingshot_acacia_block_side_top);
+                                        AngryBirdsBlocks.slingshot_acacia_2_wood_base, AngryBirdsBlocks.slingshot_acacia_side, AngryBirdsBlocks.slingshot_acacia_side_top);
             }
             else
             {
                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                        AngryBirdsBlocks.slingshot_acacia_wood_base_block, AngryBirdsBlocks.slingshot_acacia_block_side, AngryBirdsBlocks.slingshot_acacia_block_side_top);
+                                        AngryBirdsBlocks.slingshot_acacia_wood_base, AngryBirdsBlocks.slingshot_acacia_side, AngryBirdsBlocks.slingshot_acacia_side_top);
             }
         }
         else
         {
-            if (name.contains("birch"))
+            if (NAME.contains("birch"))
             {
-                if (name.contains("2"))
+                if (NAME.contains("2"))
                 {
                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                            AngryBirdsBlocks.slingshot_birch_2_wood_base_block,
-                                            AngryBirdsBlocks.slingshot_acacia_block_side,
-                                            AngryBirdsBlocks.slingshot_birch_block_side_top);
+                                            AngryBirdsBlocks.slingshot_birch_2_wood_base,
+                                            AngryBirdsBlocks.slingshot_acacia_side,
+                                            AngryBirdsBlocks.slingshot_birch_side_top);
                 }
                 else
                 {
                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                            AngryBirdsBlocks.slingshot_birch_wood_base_block,
-                                            AngryBirdsBlocks.slingshot_birch_block_side,
-                                            AngryBirdsBlocks.slingshot_birch_block_side_top);
+                                            AngryBirdsBlocks.slingshot_birch_wood_base,
+                                            AngryBirdsBlocks.slingshot_birch_side,
+                                            AngryBirdsBlocks.slingshot_birch_side_top);
                 }
             }
             else
             {
-                if (name.contains("dark_oak"))
+                if (NAME.contains("dark_oak"))
                 {
-                    if (name.contains("2"))
+                    if (NAME.contains("2"))
                     {
                         replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                AngryBirdsBlocks.slingshot_dark_oak_2_wood_base_block,
-                                                AngryBirdsBlocks.slingshot_dark_oak_block_side,
-                                                AngryBirdsBlocks.slingshot_dark_oak_block_side_top);
+                                                AngryBirdsBlocks.slingshot_dark_oak_2_wood_base,
+                                                AngryBirdsBlocks.slingshot_dark_oak_side,
+                                                AngryBirdsBlocks.slingshot_dark_oak_side_top);
                     }
                     else
                     {
                         replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                AngryBirdsBlocks.slingshot_dark_oak_wood_base_block,
-                                                AngryBirdsBlocks.slingshot_dark_oak_block_side,
-                                                AngryBirdsBlocks.slingshot_dark_oak_block_side_top);
+                                                AngryBirdsBlocks.slingshot_dark_oak_wood_base,
+                                                AngryBirdsBlocks.slingshot_dark_oak_side,
+                                                AngryBirdsBlocks.slingshot_dark_oak_side_top);
                     }
                 }
                 else
                 {
-                    if (name.contains("jungle"))
+                    if (NAME.contains("jungle"))
                     {
-                        if (name.contains("2"))
+                        if (NAME.contains("2"))
                         {
                             replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                    AngryBirdsBlocks.slingshot_jungle_2_wood_base_block,
-                                                    AngryBirdsBlocks.slingshot_jungle_block_side,
-                                                    AngryBirdsBlocks.slingshot_jungle_block_side_top);
+                                                    AngryBirdsBlocks.slingshot_jungle_2_wood_base,
+                                                    AngryBirdsBlocks.slingshot_jungle_side,
+                                                    AngryBirdsBlocks.slingshot_jungle_side_top);
                         }
                         else
                         {
                             replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                    AngryBirdsBlocks.slingshot_jungle_wood_base_block,
-                                                    AngryBirdsBlocks.slingshot_jungle_block_side,
-                                                    AngryBirdsBlocks.slingshot_jungle_block_side_top);
+                                                    AngryBirdsBlocks.slingshot_jungle_wood_base,
+                                                    AngryBirdsBlocks.slingshot_jungle_side,
+                                                    AngryBirdsBlocks.slingshot_jungle_side_top);
                         }
                     }
                     else
                     {
-                        if (name.contains("oak"))
+                        if (NAME.contains("oak"))
                         {
-                            if (name.contains("2"))
+                            if (NAME.contains("2"))
                             {
                                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                        AngryBirdsBlocks.slingshot_oak_2_wood_base_block,
-                                                        AngryBirdsBlocks.slingshot_oak_block_side,
-                                                        AngryBirdsBlocks.slingshot_oak_block_side_top);
+                                                        AngryBirdsBlocks.slingshot_oak_2_wood_base,
+                                                        AngryBirdsBlocks.slingshot_oak_side,
+                                                        AngryBirdsBlocks.slingshot_oak_side_top);
                             }
                             else
                             {
                                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                        AngryBirdsBlocks.slingshot_oak_wood_base_block,
-                                                        AngryBirdsBlocks.slingshot_oak_block_side,
-                                                        AngryBirdsBlocks.slingshot_oak_block_side_top);
+                                                        AngryBirdsBlocks.slingshot_oak_wood_base,
+                                                        AngryBirdsBlocks.slingshot_oak_side,
+                                                        AngryBirdsBlocks.slingshot_oak_side_top);
                             }
                         }
                         else
                         {
-                            if (name.contains("spruce"))
+                            if (NAME.contains("spruce"))
                             {
-                                if (name.contains("2"))
+                                if (NAME.contains("2"))
                                 {
                                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                            AngryBirdsBlocks.slingshot_spruce_2_wood_base_block,
-                                                            AngryBirdsBlocks.slingshot_spruce_block_side,
-                                                            AngryBirdsBlocks.slingshot_spruce_block_side_top);
+                                                            AngryBirdsBlocks.slingshot_spruce_2_wood_base,
+                                                            AngryBirdsBlocks.slingshot_spruce_side,
+                                                            AngryBirdsBlocks.slingshot_spruce_side_top);
                                 }
                                 else
                                 {
                                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                            AngryBirdsBlocks.slingshot_spruce_wood_base_block,
-                                                            AngryBirdsBlocks.slingshot_spruce_block_side,
-                                                            AngryBirdsBlocks.slingshot_spruce_block_side_top);
+                                                            AngryBirdsBlocks.slingshot_spruce_wood_base,
+                                                            AngryBirdsBlocks.slingshot_spruce_side,
+                                                            AngryBirdsBlocks.slingshot_spruce_side_top);
                                 }
                             }
                         }

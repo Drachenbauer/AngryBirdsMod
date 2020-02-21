@@ -1,7 +1,5 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
-import drachenbauer32.angrybirdsmod.util.Reference;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.BlockState;
@@ -20,10 +18,9 @@ public class NestBlock extends Block
     protected static final VoxelShape NEST_BLOCK_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     
-    public NestBlock(String name, Properties properties) 
+    public NestBlock(Properties properties) 
     {
         super(properties);
-        setRegistryName(Reference.MOD_ID, name);
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
     

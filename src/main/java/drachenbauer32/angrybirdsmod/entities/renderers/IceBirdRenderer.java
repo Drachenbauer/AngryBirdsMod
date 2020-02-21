@@ -3,14 +3,12 @@ package drachenbauer32.angrybirdsmod.entities.renderers;
 import drachenbauer32.angrybirdsmod.entities.IceBirdEntity;
 import drachenbauer32.angrybirdsmod.entities.models.IceBirdModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
 public class IceBirdRenderer extends MobRenderer<IceBirdEntity, EntityModel<IceBirdEntity>>
@@ -28,12 +26,12 @@ public class IceBirdRenderer extends MobRenderer<IceBirdEntity, EntityModel<IceB
         return ICE_BIRD_TEXTURE;
     }
     
-    public static class RenderFactory implements IRenderFactory<IceBirdEntity>
+    /*public static class RenderFactory implements IRenderFactory<IceBirdEntity>
     {
         @Override
         public EntityRenderer<? super IceBirdEntity> createRenderFor(EntityRendererManager manager)
         {
             return new IceBirdRenderer(manager);
         }
-    }
+    }*/
 }

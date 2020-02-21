@@ -21,7 +21,6 @@ import drachenbauer32.angrybirdsmod.entities.renderers.WillowRenderer;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 @OnlyIn(Dist.CLIENT)
@@ -46,7 +45,7 @@ public class RenderHandler
         RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.ICE_BIRD, IceBirdRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CORAL, CoralRenderer::new);
                 
-      /*RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.RED_SHOT, RedShotRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CHUCK_SHOT, ChuckShotRenderer::new);*/
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.RED_SHOT, RedShotRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CHUCK_SHOT, ChuckShotRenderer::new);
     }
 }

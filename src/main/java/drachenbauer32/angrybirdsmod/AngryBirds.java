@@ -32,6 +32,8 @@ import drachenbauer32.angrybirdsmod.entities.SilverEntity;
 import drachenbauer32.angrybirdsmod.entities.StellaEntity;
 import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
 import drachenbauer32.angrybirdsmod.entities.WillowEntity;
+import drachenbauer32.angrybirdsmod.entities.renderers.StellaMoviePlayerRenderer;
+import drachenbauer32.angrybirdsmod.entities.renderers.StellaPlayerRenderer;
 import drachenbauer32.angrybirdsmod.entities.tile_entities.BlockColorsTileEntity;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
@@ -58,9 +60,11 @@ import net.minecraft.item.SpawnEggItem;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 //import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -74,6 +78,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class AngryBirds
 {   
     public static Comparator<ItemStack> itemSorter;
+    private static StellaPlayerRenderer stella_player_renderer = new StellaPlayerRenderer(null);
+    private static StellaMoviePlayerRenderer stella_movie_player_renderer = new StellaMoviePlayerRenderer(null);
     
     public AngryBirds() 
     {
@@ -117,30 +123,48 @@ public class AngryBirds
                                          AngryBirdsItems.luca_shot,
                                          AngryBirdsItems.ice_bird_shot,
                                          AngryBirdsItems.slingshot,
-                                           
-                                         AngryBirdsItems.balloon_block,
+                                         
                                          AngryBirdsItems.egg_block,
-                                         AngryBirdsItems.nest_block,
-                                         AngryBirdsItems.slingshot_acacia_block,
-                                         AngryBirdsItems.slingshot_acacia_2_block,
-                                         AngryBirdsItems.slingshot_birch_block,
-                                         AngryBirdsItems.slingshot_birch_2_block,
-                                         AngryBirdsItems.slingshot_dark_oak_block,
-                                         AngryBirdsItems.slingshot_dark_oak_2_block,
-                                         AngryBirdsItems.slingshot_jungle_block,
-                                         AngryBirdsItems.slingshot_jungle_2_block,
-                                         AngryBirdsItems.slingshot_oak_block,
-                                         AngryBirdsItems.slingshot_oak_2_block,
-                                         AngryBirdsItems.slingshot_spruce_block,
-                                         AngryBirdsItems.slingshot_spruce_2_block,
-                                         AngryBirdsItems.acacia_planks_frame_block,
-                                         AngryBirdsItems.birch_planks_frame_block,
-                                         AngryBirdsItems.dark_oak_planks_frame_block,
-                                         AngryBirdsItems.jungle_planks_frame_block,
-                                         AngryBirdsItems.oak_planks_frame_block,
-                                         AngryBirdsItems.spruce_planks_frame_block,
-                                         AngryBirdsItems.stone_frame_block,
-                                         AngryBirdsItems.blue_ice_frame_block);
+                                         AngryBirdsItems.nest,
+                                         
+                                         AngryBirdsItems.slingshot_acacia,
+                                         AngryBirdsItems.slingshot_acacia_2,
+                                         AngryBirdsItems.slingshot_birch,
+                                         AngryBirdsItems.slingshot_birch_2,
+                                         AngryBirdsItems.slingshot_dark_oak,
+                                         AngryBirdsItems.slingshot_dark_oak_2,
+                                         AngryBirdsItems.slingshot_jungle,
+                                         AngryBirdsItems.slingshot_jungle_2,
+                                         AngryBirdsItems.slingshot_oak,
+                                         AngryBirdsItems.slingshot_oak_2,
+                                         AngryBirdsItems.slingshot_spruce,
+                                         AngryBirdsItems.slingshot_spruce_2,
+                                         
+                                         AngryBirdsItems.acacia_planks_frame,
+                                         AngryBirdsItems.birch_planks_frame,
+                                         AngryBirdsItems.dark_oak_planks_frame,
+                                         AngryBirdsItems.jungle_planks_frame,
+                                         AngryBirdsItems.oak_planks_frame,
+                                         AngryBirdsItems.spruce_planks_frame,
+                                         AngryBirdsItems.stone_frame,
+                                         AngryBirdsItems.blue_ice_frame,
+                                         
+                                         AngryBirdsItems.red_balloon,
+                                         AngryBirdsItems.orange_balloon,
+                                         AngryBirdsItems.yellow_balloon,
+                                         AngryBirdsItems.lime_balloon,
+                                         AngryBirdsItems.cyan_balloon,
+                                         AngryBirdsItems.blue_balloon,
+                                         AngryBirdsItems.purple_balloon,
+                                         AngryBirdsItems.magenta_balloon,
+                                         AngryBirdsItems.pink_balloon,
+                                         AngryBirdsItems.light_blue_balloon,
+                                         AngryBirdsItems.green_balloon,
+                                         AngryBirdsItems.brown_balloon,
+                                         AngryBirdsItems.black_balloon,
+                                         AngryBirdsItems.gray_balloon,
+                                         AngryBirdsItems.light_gray_balloon,
+                                         AngryBirdsItems.white_balloon);
         
         itemSorter = Ordering.explicit(items).onResultOf(ItemStack::getItem);
     }
@@ -159,13 +183,17 @@ public class AngryBirds
         
         public static IItemColor itemColor;
         
-        /*@SubscribeEvent
+        @SubscribeEvent
 		public static void onRenderPlayer(RenderPlayerEvent.Pre event)
 		{
 			event.setCanceled(true);
+			//event.getRenderer().render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
+			
+			//stella_movie_player_renderer.render((AbstractClientPlayerEntity) event.getPlayer(), event.getX(), event.getY(), event.getZ(), event.getEntity().rotationYaw, event.getPartialRenderTick());
+			//StellaMoviePlayerRenderer.render(null, 0, 0, null, null, 0);
 		}
         
-        @SubscribeEvent(priority=normal)*/
+        //@SubscribeEvent(priority=normal)
         
         @SubscribeEvent
         public static void registerItems(final RegistryEvent.Register<Item> event)
@@ -205,52 +233,123 @@ public class AngryBirds
                                             AngryBirdsItems.slingshot = new SlingshotItem(new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
                                                 maxStackSize(1).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot"),
                                             
-                                            AngryBirdsItems.balloon_block = new BalloonBlockItem(AngryBirdsBlocks.balloon_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.balloon_block.getRegistryName()),
-                                            AngryBirdsItems.egg_block = new BlockItem(AngryBirdsBlocks.egg_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.egg_block.getRegistryName()),
-                                            AngryBirdsItems.nest_block = new BlockItem(AngryBirdsBlocks.nest_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.nest_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_acacia_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_acacia_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_acacia_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_acacia_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_acacia_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_acacia_2_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_birch_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_birch_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_birch_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_birch_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_birch_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_birch_2_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_dark_oak_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_dark_oak_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_dark_oak_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_dark_oak_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_dark_oak_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_dark_oak_2_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_jungle_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_jungle_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_jungle_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_jungle_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_jungle_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_jungle_2_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_oak_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_oak_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_oak_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_oak_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_oak_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_oak_2_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_spruce_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_spruce_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_spruce_block.getRegistryName()),
-                                            AngryBirdsItems.slingshot_spruce_2_block = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_spruce_2_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.slingshot_spruce_2_block.getRegistryName()),
-                                            AngryBirdsItems.acacia_planks_frame_block = new ScaffoldingItem(AngryBirdsBlocks.acacia_planks_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.acacia_planks_frame_block.getRegistryName()),
-                                            AngryBirdsItems.birch_planks_frame_block = new ScaffoldingItem(AngryBirdsBlocks.birch_planks_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.birch_planks_frame_block.getRegistryName()),
-                                            AngryBirdsItems.dark_oak_planks_frame_block = new ScaffoldingItem(AngryBirdsBlocks.dark_oak_planks_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.dark_oak_planks_frame_block.getRegistryName()),
-                                            AngryBirdsItems.jungle_planks_frame_block = new ScaffoldingItem(AngryBirdsBlocks.jungle_planks_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.jungle_planks_frame_block.getRegistryName()),
-                                            AngryBirdsItems.oak_planks_frame_block = new ScaffoldingItem(AngryBirdsBlocks.oak_planks_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.oak_planks_frame_block.getRegistryName()),
-                                            AngryBirdsItems.spruce_planks_frame_block = new ScaffoldingItem(AngryBirdsBlocks.spruce_planks_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.spruce_planks_frame_block.getRegistryName()),
-                                            AngryBirdsItems.stone_frame_block = new ScaffoldingItem(AngryBirdsBlocks.stone_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.stone_frame_block.getRegistryName()),
-                                            AngryBirdsItems.blue_ice_frame_block = new ScaffoldingItem(AngryBirdsBlocks.blue_ice_frame_block, new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
-                                                maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName(AngryBirdsBlocks.blue_ice_frame_block.getRegistryName()));
+                                            AngryBirdsItems.egg_block = new BlockItem(AngryBirdsBlocks.egg_block,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("egg_block"),
+                                            AngryBirdsItems.nest = new BlockItem(AngryBirdsBlocks.nest,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("nest"),
+                                            
+                                            AngryBirdsItems.slingshot_acacia = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_acacia,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_acacia"),
+                                            AngryBirdsItems.slingshot_acacia_2 = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_acacia_2,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_acacia_2"),
+                                            AngryBirdsItems.slingshot_birch = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_birch,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_birch"),
+                                            AngryBirdsItems.slingshot_birch_2 = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_birch_2,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_birch_2"),
+                                            AngryBirdsItems.slingshot_dark_oak = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_dark_oak,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_dark_oak"),
+                                            AngryBirdsItems.slingshot_dark_oak_2 = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_dark_oak_2,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_dark_oak_2"),
+                                            AngryBirdsItems.slingshot_jungle = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_jungle,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_jungle"),
+                                            AngryBirdsItems.slingshot_jungle_2 = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_jungle_2,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_jungle_2"),
+                                            AngryBirdsItems.slingshot_oak = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_oak,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_oak"),
+                                            AngryBirdsItems.slingshot_oak_2 = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_oak_2,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_oak_2"),
+                                            AngryBirdsItems.slingshot_spruce = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_spruce,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_spruce"),
+                                            AngryBirdsItems.slingshot_spruce_2 = new SlingshotBlockItem(AngryBirdsBlocks.slingshot_spruce_2,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("slingshot_spruce_2"),
+                                            
+                                            AngryBirdsItems.acacia_planks_frame = new ScaffoldingItem(AngryBirdsBlocks.acacia_planks_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("acacia_planks_frame"),
+                                            AngryBirdsItems.birch_planks_frame = new ScaffoldingItem(AngryBirdsBlocks.birch_planks_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("birch_planks_frame"),
+                                            AngryBirdsItems.dark_oak_planks_frame = new ScaffoldingItem(AngryBirdsBlocks.dark_oak_planks_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("dark_oak_planks_frame"),
+                                            AngryBirdsItems.jungle_planks_frame = new ScaffoldingItem(AngryBirdsBlocks.jungle_planks_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("jungle_planks_frame"),
+                                            AngryBirdsItems.oak_planks_frame = new ScaffoldingItem(AngryBirdsBlocks.oak_planks_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("oak_planks_frame"),
+                                            AngryBirdsItems.spruce_planks_frame = new ScaffoldingItem(AngryBirdsBlocks.spruce_planks_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("spruce_planks_frame"),
+                                            AngryBirdsItems.stone_frame = new ScaffoldingItem(AngryBirdsBlocks.stone_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("stone_frame"),
+                                            AngryBirdsItems.blue_ice_frame = new ScaffoldingItem(AngryBirdsBlocks.blue_ice_frame,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("blue_ice_frame"),
+                                            
+                                            AngryBirdsItems.black_balloon = new BalloonBlockItem(AngryBirdsBlocks.black_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("black_balloon"),
+                                            AngryBirdsItems.blue_balloon = new BalloonBlockItem(AngryBirdsBlocks.blue_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("blue_balloon"),
+                                            AngryBirdsItems.brown_balloon = new BalloonBlockItem(AngryBirdsBlocks.brown_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("brown_balloon"),
+                                            AngryBirdsItems.cyan_balloon = new BalloonBlockItem(AngryBirdsBlocks.cyan_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("cyan_balloon"),
+                                            AngryBirdsItems.gray_balloon = new BalloonBlockItem(AngryBirdsBlocks.gray_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("gray_balloon"),
+                                            AngryBirdsItems.green_balloon = new BalloonBlockItem(AngryBirdsBlocks.green_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("green_balloon"),
+                                            AngryBirdsItems.light_blue_balloon = new BalloonBlockItem(AngryBirdsBlocks.light_blue_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("light_blue_balloon"),
+                                            AngryBirdsItems.light_gray_balloon = new BalloonBlockItem(AngryBirdsBlocks.light_gray_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("light_gray_balloon"),
+                                            AngryBirdsItems.lime_balloon = new BalloonBlockItem(AngryBirdsBlocks.lime_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("lime_balloon"),
+                                            AngryBirdsItems.magenta_balloon = new BalloonBlockItem(AngryBirdsBlocks.magenta_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("magenta_balloon"),
+                                            AngryBirdsItems.orange_balloon = new BalloonBlockItem(AngryBirdsBlocks.orange_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("orange_balloon"),
+                                            AngryBirdsItems.pink_balloon = new BalloonBlockItem(AngryBirdsBlocks.pink_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("pink_balloon"),
+                                            AngryBirdsItems.purple_balloon = new BalloonBlockItem(AngryBirdsBlocks.purple_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("purple_balloon"),
+                                            AngryBirdsItems.red_balloon = new BalloonBlockItem(AngryBirdsBlocks.red_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("red_balloon"),
+                                            AngryBirdsItems.white_balloon = new BalloonBlockItem(AngryBirdsBlocks.white_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("white_balloon"),
+                                            AngryBirdsItems.yellow_balloon = new BalloonBlockItem(AngryBirdsBlocks.yellow_balloon,
+                                            new Item.Properties().defaultMaxDamage(0).group(ANGRY_BIRDS).
+                                            maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()).setRegistryName("yellow_balloon"));
         }
         
         @SuppressWarnings("unchecked")
@@ -271,7 +370,7 @@ public class AngryBirds
             AngryBirdsEntities.DAHLIA = (EntityType<DahliaEntity>) EntityType.Builder.create(DahliaEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".dahlia").setRegistryName("dahlia");
             AngryBirdsEntities.LUCA = (EntityType<LucaEntity>) EntityType.Builder.create(LucaEntity::new, EntityClassification.CREATURE).size(0.25F, 0.25F).build(Reference.MOD_ID + ".luca").setRegistryName("luca");
             AngryBirdsEntities.ICE_BIRD = (EntityType<IceBirdEntity>) EntityType.Builder.create(IceBirdEntity::new, EntityClassification.CREATURE).size(0.5F, 0.5F).build(Reference.MOD_ID + ".ice_bird").setRegistryName("ice_bird");
-            AngryBirdsEntities.CORAL = (EntityType<CoralEntity>) EntityType.Builder.create(CoralEntity::new, EntityClassification.CREATURE).size(0.625F, 0.875F).build(Reference.MOD_ID + ".coral").setRegistryName("coral");
+            AngryBirdsEntities.CORAL = (EntityType<CoralEntity>) EntityType.Builder.create(CoralEntity::new, EntityClassification.CREATURE).size(0.5F, 0.875F).build(Reference.MOD_ID + ".coral").setRegistryName("coral");
             
             //AngryBirdsEntities.RED_SHOT = EntityType.Builder.<RedShotEntity>create(RedShotEntity::new, EntityClassification.MISC).size(0.5F, 0.5F);
             
@@ -324,121 +423,264 @@ public class AngryBirds
         @SubscribeEvent
         public static void registerBlocks(final RegistryEvent.Register<Block> event)
         {
-            event.getRegistry().registerAll(AngryBirdsBlocks.balloon_block = new BalloonBlock("balloon_block", Block.Properties.create(Material.WOOL, MaterialColor.SNOW).func_226896_b_().sound(SoundType.CLOTH).
-                                                lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
-                                            AngryBirdsBlocks.balloon_block_top = new BalloonBlockTop("balloon_block_top", Block.Properties.create(Material.WOOL, MaterialColor.SNOW).func_226896_b_().sound(SoundType.CLOTH).
-                                                lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()),
-                                            AngryBirdsBlocks.egg_block = new EggBlock("egg_block", Block.Properties.create(Material.CLAY, MaterialColor.SNOW).func_226896_b_().sound(SoundType.STONE).
-                                                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
-                                            AngryBirdsBlocks.nest_block = new NestBlock("nest_block", Block.Properties.create(Material.PLANTS, MaterialColor.GOLD).func_226896_b_().sound(SoundType.PLANT).
-                                                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_acacia_block = new SlingshotBlock("slingshot_acacia_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_acacia_wood_base_block = new SlingshotWoodBaseBlock("slingshot_acacia_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_acacia_2_block = new SlingshotBlock("slingshot_acacia_2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_acacia_2_wood_base_block = new SlingshotWoodBaseBlock("slingshot_acacia_2_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_acacia_block_side = new SlingshotBlockSide("slingshot_acacia_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_acacia_block_side_top = new SlingshotBlockSideTop("slingshot_acacia_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_birch_block = new SlingshotBlock("slingshot_birch_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_birch_wood_base_block = new SlingshotWoodBaseBlock("slingshot_birch_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_birch_2_block = new SlingshotBlock("slingshot_birch_2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_birch_2_wood_base_block = new SlingshotWoodBaseBlock("slingshot_birch_2_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_birch_block_side = new SlingshotBlockSide("slingshot_birch_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_birch_block_side_top = new SlingshotBlockSideTop("slingshot_birch_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_dark_oak_block = new SlingshotBlock("slingshot_dark_oak_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_dark_oak_wood_base_block = new SlingshotWoodBaseBlock("slingshot_dark_oak_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_dark_oak_2_block = new SlingshotBlock("slingshot_dark_oak_2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_dark_oak_2_wood_base_block = new SlingshotWoodBaseBlock("slingshot_dark_oak_2_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_dark_oak_block_side = new SlingshotBlockSide("slingshot_dark_oak_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_dark_oak_block_side_top = new SlingshotBlockSideTop("slingshot_dark_oak_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_jungle_block = new SlingshotBlock("slingshot_jungle_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_jungle_wood_base_block = new SlingshotWoodBaseBlock("slingshot_jungle_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_jungle_2_block = new SlingshotBlock("slingshot_jungle_2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_jungle_2_wood_base_block = new SlingshotWoodBaseBlock("slingshot_jungle_2_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_jungle_block_side = new SlingshotBlockSide("slingshot_jungle_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_jungle_block_side_top = new SlingshotBlockSideTop("slingshot_jungle_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_oak_block = new SlingshotBlock("slingshot_oak_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_oak_wood_base_block = new SlingshotWoodBaseBlock("slingshot_oak_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_oak_2_block = new SlingshotBlock("slingshot_oak_2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_oak_2_wood_base_block = new SlingshotWoodBaseBlock("slingshot_oak_2_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_oak_block_side = new SlingshotBlockSide("slingshot_oak_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_oak_block_side_top = new SlingshotBlockSideTop("slingshot_oak_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_spruce_block = new SlingshotBlock("slingshot_spruce_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_spruce_wood_base_block = new SlingshotWoodBaseBlock("slingshot_spruce_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_spruce_2_block = new SlingshotBlock("slingshot_spruce_2_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_spruce_2_wood_base_block = new SlingshotWoodBaseBlock("slingshot_spruce_2_wood_base_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_spruce_block_side = new SlingshotBlockSide("slingshot_spruce_block_side", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.slingshot_spruce_block_side_top = new SlingshotBlockSideTop("slingshot_spruce_block_side_top", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.acacia_planks_frame_block = new FrameBlock("acacia_planks_frame_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.birch_planks_frame_block = new FrameBlock("birch_planks_frame_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.dark_oak_planks_frame_block = new FrameBlock("dark_oak_planks_frame_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.jungle_planks_frame_block = new FrameBlock("jungle_planks_frame_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.oak_planks_frame_block = new FrameBlock("oak_planks_frame_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.spruce_planks_frame_block = new FrameBlock("spruce_planks_frame_block", Block.Properties.create(Material.WOOD, MaterialColor.WOOD).func_226896_b_().sound(SoundType.WOOD).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.stone_frame_block = new FrameBlock("stone_frame_block", Block.Properties.create(Material.ROCK, MaterialColor.STONE).func_226896_b_().sound(SoundType.STONE).
-                                                lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
-                                            AngryBirdsBlocks.blue_ice_frame_block = new FrameBlock("blue_ice_frame_block", Block.Properties.create(Material.ICE, MaterialColor.ICE).func_226896_b_().sound(SoundType.GLASS).
-                                                lightValue(0).hardnessAndResistance(1.0f, 2.0f).variableOpacity()));
+            event.getRegistry().registerAll(AngryBirdsBlocks.egg_block = new EggBlock(Block.Properties.create(Material.CLAY, MaterialColor.SNOW).notSolid().sound(SoundType.STONE).
+                                                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()).setRegistryName("egg_block"),
+                                            AngryBirdsBlocks.nest = new NestBlock(Block.Properties.create(Material.PLANTS, MaterialColor.GOLD).notSolid().sound(SoundType.PLANT).
+                                                lightValue(0).hardnessAndResistance(0.2f, 1.0f).variableOpacity()).setRegistryName("nest"),
+                                            
+                                            AngryBirdsBlocks.slingshot_acacia = new SlingshotBlock("slingshot_acacia",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.ADOBE).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_acacia_wood_base = new SlingshotWoodBaseBlock("slingshot_acacia_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.ADOBE).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_acacia_2 = new SlingshotBlock("slingshot_acacia_2",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.ADOBE).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_acacia_2_wood_base = new SlingshotWoodBaseBlock("slingshot_acacia_2_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.ADOBE).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_acacia_side = new SlingshotBlockSide(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.ADOBE).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_acacia_side"),
+                                            AngryBirdsBlocks.slingshot_acacia_side_top = new SlingshotBlockSideTop(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.ADOBE).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_acacia_side_top"),
+                                            
+                                            AngryBirdsBlocks.slingshot_birch = new SlingshotBlock("slingshot_birch",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.SAND).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_wood_base = new SlingshotWoodBaseBlock("slingshot_birch_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.SAND).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_2 = new SlingshotBlock("slingshot_birch_2",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.SAND).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_2_wood_base = new SlingshotWoodBaseBlock("slingshot_birch_2_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.SAND).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_birch_side = new SlingshotBlockSide(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.SAND).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_birch_side"),
+                                            AngryBirdsBlocks.slingshot_birch_side_top = new SlingshotBlockSideTop(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.SAND).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_birch_side_top"),
+                                            
+                                            AngryBirdsBlocks.slingshot_dark_oak = new SlingshotBlock("slingshot_dark_oak",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.BROWN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_dark_oak_wood_base = new SlingshotWoodBaseBlock("slingshot_dark_oak_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.BROWN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_dark_oak_2 = new SlingshotBlock("slingshot_dark_oak_2",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.BROWN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_dark_oak_2_wood_base = new SlingshotWoodBaseBlock("slingshot_dark_oak_2_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.BROWN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_dark_oak_side = new SlingshotBlockSide(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.BROWN).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_dark_oak_side"),
+                                            AngryBirdsBlocks.slingshot_dark_oak_side_top = new SlingshotBlockSideTop(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.BROWN).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_dark_oak_side_top"),
+                                            
+                                            AngryBirdsBlocks.slingshot_jungle = new SlingshotBlock("slingshot_jungle",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.DIRT).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_jungle_wood_base = new SlingshotWoodBaseBlock("slingshot_jungle_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.DIRT).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_jungle_2 = new SlingshotBlock("slingshot_jungle_2",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.DIRT).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_jungle_2_wood_base = new SlingshotWoodBaseBlock("slingshot_jungle_2_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.DIRT).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_jungle_side = new SlingshotBlockSide(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.DIRT).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_jungle_side"),
+                                            AngryBirdsBlocks.slingshot_jungle_side_top = new SlingshotBlockSideTop(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.DIRT).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_jungle_side_top"),
+                                            
+                                            AngryBirdsBlocks.slingshot_oak = new SlingshotBlock("slingshot_oak",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.WOOD).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_oak_wood_base = new SlingshotWoodBaseBlock("slingshot_oak_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.WOOD).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_oak_2 = new SlingshotBlock("slingshot_oak_2",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.WOOD).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_oak_2_wood_base = new SlingshotWoodBaseBlock("slingshot_oak_2_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.WOOD).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_oak_side = new SlingshotBlockSide(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.WOOD).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_oak_side"),
+                                            AngryBirdsBlocks.slingshot_oak_side_top = new SlingshotBlockSideTop(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.WOOD).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_oak_side_top"),
+                                            
+                                            AngryBirdsBlocks.slingshot_spruce = new SlingshotBlock("slingshot_spruce",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_spruce_wood_base = new SlingshotWoodBaseBlock("slingshot_spruce_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_spruce_2 = new SlingshotBlock("slingshot_spruce_2",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_spruce_2_wood_base = new SlingshotWoodBaseBlock("slingshot_spruce_2_wood_base",
+                                            Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).notSolid().
+                                            sound(SoundType.WOOD).lightValue(0).hardnessAndResistance(2.0f, 3.0f).variableOpacity()),
+                                            AngryBirdsBlocks.slingshot_spruce_side = new SlingshotBlockSide(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.OBSIDIAN).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_spruce_side"),
+                                            AngryBirdsBlocks.slingshot_spruce_side_top = new SlingshotBlockSideTop(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.OBSIDIAN).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("slingshot_spruce_side_top"),
+                                            
+                                            AngryBirdsBlocks.acacia_planks_frame = new FrameBlock(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.ADOBE).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("acacia_planks_frame"),
+                                            AngryBirdsBlocks.birch_planks_frame = new FrameBlock(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.SAND).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("birch_planks_frame"),
+                                            AngryBirdsBlocks.dark_oak_planks_frame = new FrameBlock(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.BROWN).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("dark_oak_planks_frame"),
+                                            AngryBirdsBlocks.jungle_planks_frame = new FrameBlock(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.DIRT).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("jungle_planks_frame"),
+                                            AngryBirdsBlocks.oak_planks_frame = new FrameBlock(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.WOOD).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("oak_planks_frame"),
+                                            AngryBirdsBlocks.spruce_planks_frame = new FrameBlock(Block.Properties.create(
+                                            Material.WOOD, MaterialColor.OBSIDIAN).notSolid().sound(SoundType.WOOD).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("spruce_planks_frame"),
+                                            AngryBirdsBlocks.stone_frame = new FrameBlock(Block.Properties.create(
+                                            Material.ROCK, MaterialColor.STONE).notSolid().sound(SoundType.STONE).lightValue(0).
+                                            hardnessAndResistance(2.0f, 3.0f).variableOpacity()).setRegistryName("stone_frame"),
+                                            AngryBirdsBlocks.blue_ice_frame = new FrameBlock(Block.Properties.create(
+                                            Material.ICE, MaterialColor.ICE).notSolid().sound(SoundType.GLASS).lightValue(0).
+                                            hardnessAndResistance(1.0f, 2.0f).variableOpacity()).setRegistryName("blue_ice_frame"),
+                                            
+                                            AngryBirdsBlocks.black_balloon_top = new BalloonBlockTop(AngryBirdsItems.black_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.BLACK).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("black_balloon_top"),
+                                            AngryBirdsBlocks.blue_balloon_top = new BalloonBlockTop(AngryBirdsItems.blue_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.BLUE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("blue_balloon_top"),
+                                            AngryBirdsBlocks.brown_balloon_top = new BalloonBlockTop(AngryBirdsItems.brown_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.BROWN).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("brown_balloon_top"),
+                                            AngryBirdsBlocks.cyan_balloon_top = new BalloonBlockTop(AngryBirdsItems.cyan_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.CYAN).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("cyan_balloon_top"),
+                                            AngryBirdsBlocks.gray_balloon_top = new BalloonBlockTop(AngryBirdsItems.gray_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.GRAY).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("gray_balloon_top"),
+                                            AngryBirdsBlocks.green_balloon_top = new BalloonBlockTop(AngryBirdsItems.green_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.GREEN).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("green_balloon_top"),
+                                            AngryBirdsBlocks.light_blue_balloon_top = new BalloonBlockTop(AngryBirdsItems.light_blue_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.LIGHT_BLUE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("light_blue_balloon_top"),
+                                            AngryBirdsBlocks.light_gray_balloon_top = new BalloonBlockTop(AngryBirdsItems.light_gray_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.LIGHT_GRAY).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("light_gray_balloon_top"),
+                                            AngryBirdsBlocks.lime_balloon_top = new BalloonBlockTop(AngryBirdsItems.lime_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.LIME).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("lime_balloon_top"),
+                                            AngryBirdsBlocks.magenta_balloon_top = new BalloonBlockTop(AngryBirdsItems.magenta_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.MAGENTA).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("magenta_balloon_top"),
+                                            AngryBirdsBlocks.orange_balloon_top = new BalloonBlockTop(AngryBirdsItems.orange_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.ADOBE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("orange_balloon_top"),
+                                            AngryBirdsBlocks.pink_balloon_top = new BalloonBlockTop(AngryBirdsItems.pink_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.PINK).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("pink_balloon_top"),
+                                            AngryBirdsBlocks.purple_balloon_top = new BalloonBlockTop(AngryBirdsItems.purple_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.PURPLE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("purple_balloon_top"),
+                                            AngryBirdsBlocks.red_balloon_top = new BalloonBlockTop(AngryBirdsItems.red_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.RED).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("red_balloon_top"),
+                                            AngryBirdsBlocks.white_balloon_top = new BalloonBlockTop(AngryBirdsItems.white_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.SNOW).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("white_balloon_top"),
+                                            AngryBirdsBlocks.yellow_balloon_top = new BalloonBlockTop(AngryBirdsItems.yellow_balloon,
+                                            Block.Properties.create(Material.WOOL,MaterialColor.YELLOW).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("yellow_balloon_top"),
+                                            
+                                            AngryBirdsBlocks.black_balloon = new BalloonBlock(DyeColor.BLACK, AngryBirdsBlocks.black_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.BLACK).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("black_balloon"),
+                                            AngryBirdsBlocks.blue_balloon = new BalloonBlock(DyeColor.BLUE, AngryBirdsBlocks.blue_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.BLUE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("blue_balloon"),
+                                            AngryBirdsBlocks.brown_balloon = new BalloonBlock(DyeColor.BROWN, AngryBirdsBlocks.brown_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.BROWN).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("brown_balloon"),
+                                            AngryBirdsBlocks.cyan_balloon = new BalloonBlock(DyeColor.CYAN, AngryBirdsBlocks.cyan_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.CYAN).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("cyan_balloon"),
+                                            AngryBirdsBlocks.gray_balloon = new BalloonBlock(DyeColor.GRAY, AngryBirdsBlocks.gray_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.GRAY).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("gray_balloon"),
+                                            AngryBirdsBlocks.green_balloon = new BalloonBlock(DyeColor.GREEN, AngryBirdsBlocks.green_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.GREEN).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("green_balloon"),
+                                            AngryBirdsBlocks.light_blue_balloon = new BalloonBlock(DyeColor.LIGHT_BLUE, AngryBirdsBlocks.light_blue_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.LIGHT_BLUE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("light_blue_balloon"),
+                                            AngryBirdsBlocks.light_gray_balloon = new BalloonBlock(DyeColor.LIGHT_GRAY, AngryBirdsBlocks.light_gray_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.LIGHT_GRAY).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("light_gray_balloon"),
+                                            AngryBirdsBlocks.lime_balloon = new BalloonBlock(DyeColor.LIME, AngryBirdsBlocks.lime_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.LIME).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("lime_balloon"),
+                                            AngryBirdsBlocks.magenta_balloon = new BalloonBlock(DyeColor.MAGENTA, AngryBirdsBlocks.magenta_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.MAGENTA).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("magenta_balloon"),
+                                            AngryBirdsBlocks.orange_balloon = new BalloonBlock(DyeColor.ORANGE, AngryBirdsBlocks.orange_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.ADOBE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("orange_balloon"),
+                                            AngryBirdsBlocks.pink_balloon = new BalloonBlock(DyeColor.PINK, AngryBirdsBlocks.pink_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.PINK).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("pink_balloon"),
+                                            AngryBirdsBlocks.purple_balloon = new BalloonBlock(DyeColor.PURPLE, AngryBirdsBlocks.purple_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.PURPLE).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("purple_balloon"),
+                                            AngryBirdsBlocks.red_balloon = new BalloonBlock(DyeColor.RED, AngryBirdsBlocks.red_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.RED).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("red_balloon"),
+                                            AngryBirdsBlocks.white_balloon = new BalloonBlock(DyeColor.WHITE, AngryBirdsBlocks.white_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.SNOW).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("white_balloon"),
+                                            AngryBirdsBlocks.yellow_balloon = new BalloonBlock(DyeColor.YELLOW, AngryBirdsBlocks.yellow_balloon_top,
+                                            Block.Properties.create(Material.WOOL, MaterialColor.YELLOW).notSolid().sound(SoundType.CLOTH).
+                                            lightValue(0).hardnessAndResistance(0.1f, 0.5f).variableOpacity()).setRegistryName("yellow_balloon"));
         }
         
         @SubscribeEvent
         public static void registerTE(RegistryEvent.Register<TileEntityType<?>> event)
         {
-             AngryBirdsTileEntities.BLOCK_COLORS = TileEntityType.Builder.create(BlockColorsTileEntity::new, AngryBirdsBlocks.balloon_block,
-                                                                                                             AngryBirdsBlocks.balloon_block_top,
-                                                                                                             AngryBirdsBlocks.slingshot_acacia_block,
-                                                                                                             AngryBirdsBlocks.slingshot_acacia_2_block,
-                                                                                                             AngryBirdsBlocks.slingshot_birch_block,
-                                                                                                             AngryBirdsBlocks.slingshot_birch_2_block,
-                                                                                                             AngryBirdsBlocks.slingshot_dark_oak_block,
-                                                                                                             AngryBirdsBlocks.slingshot_dark_oak_2_block,
-                                                                                                             AngryBirdsBlocks.slingshot_jungle_block,
-                                                                                                             AngryBirdsBlocks.slingshot_jungle_2_block,
-                                                                                                             AngryBirdsBlocks.slingshot_oak_block,
-                                                                                                             AngryBirdsBlocks.slingshot_oak_2_block,
-                                                                                                             AngryBirdsBlocks.slingshot_spruce_block,
-                                                                                                             AngryBirdsBlocks.slingshot_spruce_2_block).build(null);
+             AngryBirdsTileEntities.BLOCK_COLORS = TileEntityType.Builder.create(BlockColorsTileEntity::new, AngryBirdsBlocks.slingshot_acacia,
+                                                                                                             AngryBirdsBlocks.slingshot_acacia_2,
+                                                                                                             AngryBirdsBlocks.slingshot_birch,
+                                                                                                             AngryBirdsBlocks.slingshot_birch_2,
+                                                                                                             AngryBirdsBlocks.slingshot_dark_oak,
+                                                                                                             AngryBirdsBlocks.slingshot_dark_oak_2,
+                                                                                                             AngryBirdsBlocks.slingshot_jungle,
+                                                                                                             AngryBirdsBlocks.slingshot_jungle_2,
+                                                                                                             AngryBirdsBlocks.slingshot_oak,
+                                                                                                             AngryBirdsBlocks.slingshot_oak_2,
+                                                                                                             AngryBirdsBlocks.slingshot_spruce,
+                                                                                                             AngryBirdsBlocks.slingshot_spruce_2).build(null);
              AngryBirdsTileEntities.BLOCK_COLORS.setRegistryName(Reference.MOD_ID, "block_colors");
              event.getRegistry().register(AngryBirdsTileEntities.BLOCK_COLORS);
         }
@@ -446,37 +688,35 @@ public class AngryBirds
         @SubscribeEvent
         public static void registerItemColors(final ColorHandlerEvent.Item event)
         {
-            event.getItemColors().register(itemColor, AngryBirdsItems.balloon_block,
-                                                      AngryBirdsItems.slingshot_acacia_block,
-                                                      AngryBirdsItems.slingshot_acacia_2_block,
-                                                      AngryBirdsItems.slingshot_birch_block,
-                                                      AngryBirdsItems.slingshot_birch_2_block,
-                                                      AngryBirdsItems.slingshot_dark_oak_block,
-                                                      AngryBirdsItems.slingshot_dark_oak_2_block,
-                                                      AngryBirdsItems.slingshot_jungle_block,
-                                                      AngryBirdsItems.slingshot_jungle_2_block,
-                                                      AngryBirdsItems.slingshot_oak_block,
-                                                      AngryBirdsItems.slingshot_oak_2_block,
-                                                      AngryBirdsItems.slingshot_spruce_block,
-                                                      AngryBirdsItems.slingshot_spruce_2_block);
+            event.getItemColors().register(itemColor, AngryBirdsItems.slingshot_acacia,
+                                                      AngryBirdsItems.slingshot_acacia_2,
+                                                      AngryBirdsItems.slingshot_birch,
+                                                      AngryBirdsItems.slingshot_birch_2,
+                                                      AngryBirdsItems.slingshot_dark_oak,
+                                                      AngryBirdsItems.slingshot_dark_oak_2,
+                                                      AngryBirdsItems.slingshot_jungle,
+                                                      AngryBirdsItems.slingshot_jungle_2,
+                                                      AngryBirdsItems.slingshot_oak,
+                                                      AngryBirdsItems.slingshot_oak_2,
+                                                      AngryBirdsItems.slingshot_spruce,
+                                                      AngryBirdsItems.slingshot_spruce_2);
         }
         
         @SubscribeEvent
         public static void registerBlockColors(final ColorHandlerEvent.Block event)
         {
-            event.getBlockColors().register(blockColor, AngryBirdsBlocks.balloon_block,
-                                                        AngryBirdsBlocks.slingshot_acacia_block,
-                                                        AngryBirdsBlocks.slingshot_acacia_2_block,
-                                                        AngryBirdsBlocks.slingshot_birch_block,
-                                                        AngryBirdsBlocks.slingshot_birch_2_block,
-                                                        AngryBirdsBlocks.slingshot_dark_oak_block,
-                                                        AngryBirdsBlocks.slingshot_dark_oak_2_block,
-                                                        AngryBirdsBlocks.slingshot_jungle_block,
-                                                        AngryBirdsBlocks.slingshot_jungle_2_block,
-                                                        AngryBirdsBlocks.slingshot_oak_block,
-                                                        AngryBirdsBlocks.slingshot_oak_2_block,
-                                                        AngryBirdsBlocks.slingshot_spruce_block,
-                                                        AngryBirdsBlocks.slingshot_spruce_2_block);
+            event.getBlockColors().register(blockColor, AngryBirdsBlocks.slingshot_acacia,
+                                                        AngryBirdsBlocks.slingshot_acacia_2,
+                                                        AngryBirdsBlocks.slingshot_birch,
+                                                        AngryBirdsBlocks.slingshot_birch_2,
+                                                        AngryBirdsBlocks.slingshot_dark_oak,
+                                                        AngryBirdsBlocks.slingshot_dark_oak_2,
+                                                        AngryBirdsBlocks.slingshot_jungle,
+                                                        AngryBirdsBlocks.slingshot_jungle_2,
+                                                        AngryBirdsBlocks.slingshot_oak,
+                                                        AngryBirdsBlocks.slingshot_oak_2,
+                                                        AngryBirdsBlocks.slingshot_spruce,
+                                                        AngryBirdsBlocks.slingshot_spruce_2);
         }
     }
 }

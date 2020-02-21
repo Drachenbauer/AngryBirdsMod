@@ -1,0 +1,9 @@
+{
+    "variants":
+    {
+        "facing=north": { "model": "angrybirdsmod:block/lime_balloon" },
+        "facing=east":  { "model": "angrybirdsmod:block/lime_balloon", "y": 90 },
+        "facing=south": { "model": "angrybirdsmod:block/lime_balloon", "y": 180 },
+        "facing=west":  { "model": "angrybirdsmod:block/lime_balloon", "y": 270 }
+    }
+}

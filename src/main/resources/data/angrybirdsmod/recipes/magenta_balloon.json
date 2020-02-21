@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " d ",
+        " p ",
+        " s "
+    ],
+    
+    "key":
+    {
+        "d":
+        {
+            "item": "minecraft:magenta_dye"
+        },
+        
+        "p":
+        {
+            "item": "minecraft:phantom_membrane"
+        },
+        
+        "s":
+        {
+            "item": "minecraft:string"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:magenta_balloon",
+        "count": 1
+    },
+    
+    "group": "balloon"
+}

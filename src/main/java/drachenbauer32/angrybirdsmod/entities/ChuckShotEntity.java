@@ -7,18 +7,18 @@ import net.minecraft.world.World;
 
 public class ChuckShotEntity extends BirdShotEntity
 {
-    public ChuckShotEntity(EntityType<? extends BirdShotEntity> type, World worldIn)
+    public ChuckShotEntity(EntityType<? extends ChuckShotEntity> type, World worldIn)
     {
-        super((EntityType<? extends BirdShotEntity>)AngryBirdsEntities.CHUCK_SHOT, worldIn);
+        super(type, worldIn);
     }
     
     public ChuckShotEntity(World worldIn, double x, double y, double z)
     {
-        super((EntityType<? extends BirdShotEntity>)AngryBirdsEntities.CHUCK_SHOT,worldIn, x, y, z);
+        super(AngryBirdsEntities.CHUCK_SHOT,worldIn, x, y, z);
     }
     
     public ChuckShotEntity(World worldIn, LivingEntity shooter)
     {
-        super((EntityType<? extends BirdShotEntity>)AngryBirdsEntities.CHUCK_SHOT,worldIn, shooter);
+        super(AngryBirdsEntities.CHUCK_SHOT,worldIn, shooter);
     }
 }

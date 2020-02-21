@@ -1,6 +1,5 @@
 package drachenbauer32.angrybirdsmod.entities;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
@@ -16,9 +15,9 @@ import net.minecraft.world.World;
 
 public class PoppyEntity extends AnimalEntity
 {
-    public PoppyEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public PoppyEntity(EntityType<? extends PoppyEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.POPPY, worldIn);
+        super(type, worldIn);
     }
     
     @Override

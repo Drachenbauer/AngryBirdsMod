@@ -1,6 +1,5 @@
 package drachenbauer32.angrybirdsmod.entities;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
@@ -19,9 +18,9 @@ public class MathildaEntity extends AnimalEntity
 {
     public int timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
     
-    public MathildaEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public MathildaEntity(EntityType<? extends MathildaEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.MATHILDA, worldIn);
+        super(type, worldIn);
     }
     
     @Override

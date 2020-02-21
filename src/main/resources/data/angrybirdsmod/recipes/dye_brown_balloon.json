@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " d ",
+        " b ",
+        "   "
+    ],
+    
+    "key":
+    {
+        "d":
+        {
+            "item": "minecraft:brown_dye"
+        },
+        
+        "b":
+        {
+            "item": "angrybirdsmod:white_balloon"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:brown_balloon",
+        "count": 1
+    },
+    
+    "group": "balloon"
+}

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "sss",
+        "s s",
+        "sss"
+    ],
+    
+    "key":
+    {
+    	"s":
+        {
+            "item": "minecraft:stone"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:stone_frame",
+        "count": 1
+    },
+    
+    "group": "frame"
+}

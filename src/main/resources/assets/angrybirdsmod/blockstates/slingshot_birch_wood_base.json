@@ -1,0 +1,9 @@
+{
+    "variants":
+    {
+        "facing=north": { "model": "angrybirdsmod:block/slingshot_birch_wood_base" },
+        "facing=east":  { "model": "angrybirdsmod:block/slingshot_birch_wood_base" , "y": 90 },
+        "facing=south": { "model": "angrybirdsmod:block/slingshot_birch_wood_base" , "y": 180 },
+        "facing=west":  { "model": "angrybirdsmod:block/slingshot_birch_wood_base" , "y": 270 }
+    }
+}

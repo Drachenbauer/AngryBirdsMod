@@ -1,0 +1,9 @@
+{
+    "parent": "angrybirdsmod:block/slingshot_wood_base",
+    
+    "textures":
+    {
+        "0": "angrybirdsmod:block/slingshot_acacia_wood_base",
+        "particle": "minecraft:block/stripped_acacia_log"
+    }
+}

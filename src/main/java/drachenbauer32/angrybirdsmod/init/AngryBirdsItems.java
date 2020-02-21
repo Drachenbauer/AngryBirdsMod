@@ -41,33 +41,52 @@ public class AngryBirdsItems
                        ice_bird_shot,
                        slingshot,
                        
-                       balloon_block,
                        egg_block,
-                       nest_block,
-                       slingshot_acacia_block,
-                       slingshot_acacia_2_block,
-                       slingshot_birch_block,
-                       slingshot_birch_2_block,
-                       slingshot_dark_oak_block,
-                       slingshot_dark_oak_2_block,
-                       slingshot_jungle_block,
-                       slingshot_jungle_2_block,
-                       slingshot_oak_block,
-                       slingshot_oak_2_block,
-                       slingshot_spruce_block,
-                       slingshot_spruce_2_block,
-                       acacia_planks_frame_block,
-                       birch_planks_frame_block,
-                       dark_oak_planks_frame_block,
-                       jungle_planks_frame_block,
-                       oak_planks_frame_block,
-                       spruce_planks_frame_block,
-                       stone_frame_block,
-                       blue_ice_frame_block;
+                       nest,
+                       
+                       slingshot_acacia,
+                       slingshot_acacia_2,
+                       slingshot_birch,
+                       slingshot_birch_2,
+                       slingshot_dark_oak,
+                       slingshot_dark_oak_2,
+                       slingshot_jungle,
+                       slingshot_jungle_2,
+                       slingshot_oak,
+                       slingshot_oak_2,
+                       slingshot_spruce,
+                       slingshot_spruce_2,
+                       
+                       acacia_planks_frame,
+                       birch_planks_frame,
+                       dark_oak_planks_frame,
+                       jungle_planks_frame,
+                       oak_planks_frame,
+                       spruce_planks_frame,
+                       stone_frame,
+                       blue_ice_frame,
+                       
+                       black_balloon,
+                       blue_balloon,
+                       brown_balloon,
+                       cyan_balloon,
+                       gray_balloon,
+                       green_balloon,
+                       light_blue_balloon,
+                       light_gray_balloon,
+                       lime_balloon,
+                       magenta_balloon,
+                       orange_balloon,
+                       pink_balloon,
+                       purple_balloon,
+                       red_balloon,
+                       white_balloon,
+                       yellow_balloon;
     
     public static final Tag<Item> BIRD_SHOTS = makeWrapperTag("bird_shots");
     
-    private static Tag<Item> makeWrapperTag(String p_199901_0_) {
+    private static Tag<Item> makeWrapperTag(String p_199901_0_)
+    {
         return new ItemTags.Wrapper(new ResourceLocation(p_199901_0_));
-     }
+    }
 }

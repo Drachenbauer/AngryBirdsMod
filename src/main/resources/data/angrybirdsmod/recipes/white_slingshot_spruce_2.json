@@ -1,0 +1,36 @@
+{
+    "type": "crafting_shaped",
+    
+    "pattern":
+    [
+        "lpl",
+        "sls",
+        "sls"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "minecraft:string"
+        },
+        
+        "l":
+        {
+            "item": "minecraft:stripped_spruce_log"
+        },
+        
+        "p":
+        {
+            "item": "minecraft:phantom_membrane"
+        }
+    },
+    
+    "result":
+    {
+    	"item": "angrybirdsmod:slingshot_spruce_2",
+        "count": 1
+    },
+    
+    "group": "slingshot"
+}

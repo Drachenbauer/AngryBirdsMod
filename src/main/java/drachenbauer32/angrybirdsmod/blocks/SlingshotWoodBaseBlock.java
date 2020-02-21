@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 public class SlingshotWoodBaseBlock extends Block
 {
-    private String name;
+    private final String NAME;
     private static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
     private static final VoxelShape EAST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
     private static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
@@ -34,7 +34,7 @@ public class SlingshotWoodBaseBlock extends Block
     {
         super(properties);
         setRegistryName(Reference.MOD_ID, name);
-        this.name = name;
+        this.NAME = name;
     }
     
     @Override
@@ -59,7 +59,7 @@ public class SlingshotWoodBaseBlock extends Block
     {
         Direction facing = state.get(FACING);
         
-        if(name.contains("2"))
+        if(NAME.contains("2"))
         {
             switch(facing)
             {

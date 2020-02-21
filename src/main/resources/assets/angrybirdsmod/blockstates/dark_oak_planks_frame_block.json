@@ -1,7 +1,0 @@
-{
-    "variants":
-    {
-        "bottom=true": { "model": "angrybirdsmod:block/dark_oak_planks_frame_block" },
-        "bottom=false": { "model": "angrybirdsmod:block/dark_oak_planks_frame_block" }
-    }
-}

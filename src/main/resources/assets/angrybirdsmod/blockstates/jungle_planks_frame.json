@@ -1,0 +1,7 @@
+{
+    "variants":
+    {
+        "bottom=true": { "model": "angrybirdsmod:block/jungle_planks_frame" },
+        "bottom=false": { "model": "angrybirdsmod:block/jungle_planks_frame" }
+    }
+}

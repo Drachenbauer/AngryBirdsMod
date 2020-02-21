@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[27,)" #mandatory (27 is current forge version)
+loaderVersion="[31,)" #mandatory (31 is current forge version)
 credits="Drachenbauer" #optional
 authors="Drachenbauer" #optional
 
@@ -15,7 +15,7 @@ Get the Angry Birds into Minecraft
 [[dependencies.angrybirdsmod]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[27,)" #mandatory
+    versionRange="[31,)" #mandatory
     ordering="NONE"
     side="BOTH"
     
@@ -23,6 +23,6 @@ Get the Angry Birds into Minecraft
 [[dependencies.angrybirdsmod]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.3]"
+    versionRange="[1.15.2]"
     ordering="NONE"
 	side="BOTH"

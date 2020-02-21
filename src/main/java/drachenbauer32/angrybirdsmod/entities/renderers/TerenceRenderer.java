@@ -3,14 +3,12 @@ package drachenbauer32.angrybirdsmod.entities.renderers;
 import drachenbauer32.angrybirdsmod.entities.TerenceEntity;
 import drachenbauer32.angrybirdsmod.entities.models.TerenceModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
 public class TerenceRenderer extends MobRenderer<TerenceEntity, EntityModel<TerenceEntity>>
@@ -28,12 +26,12 @@ public class TerenceRenderer extends MobRenderer<TerenceEntity, EntityModel<Tere
         return TERENCE_TEXTURE;
     }
     
-    public static class RenderFactory implements IRenderFactory<TerenceEntity>
+    /*public static class RenderFactory implements IRenderFactory<TerenceEntity>
     {
         @Override
         public EntityRenderer<? super TerenceEntity> createRenderFor(EntityRendererManager manager)
         {
             return new TerenceRenderer(manager);
         }
-    }
+    }*/
 }

@@ -1,0 +1,23 @@
+{
+    "replace": false,
+    
+    "values":
+    [
+        "angrybirdsmod:black_balloon",
+        "angrybirdsmod:blue_balloon",
+        "angrybirdsmod:brown_balloon",
+        "angrybirdsmod:cyan_balloon",
+        "angrybirdsmod:gray_balloon",
+        "angrybirdsmod:green_balloon",
+        "angrybirdsmod:light_blue_balloon",
+        "angrybirdsmod:light_gray_balloon",
+        "angrybirdsmod:lime_balloon",
+        "angrybirdsmod:magenta_balloon",
+        "angrybirdsmod:orange_balloon",
+        "angrybirdsmod:pink_balloon",
+        "angrybirdsmod:purple_balloon",
+        "angrybirdsmod:red_balloon",
+        "angrybirdsmod:white_balloon",
+        "angrybirdsmod:yellow_balloon"
+    ]
+}

@@ -1,21 +1,17 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.systems.RenderSystem;
-
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
 import drachenbauer32.angrybirdsmod.entities.models.BubblesInflatedModel;
 import drachenbauer32.angrybirdsmod.entities.models.BubblesModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
 public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<BubblesEntity>>
@@ -36,14 +32,15 @@ public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<Bubb
     }
     
     @Override
-    protected void func_225629_a_(BubblesEntity bubbles, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
+    protected void preRenderCallback(BubblesEntity bubbles, MatrixStack matrixStackIn, float partialTickTime)
     {
-        RenderSystem.scalef(0.5f, 0.5f, 0.5f);
+        float f = 0.5F;
+        matrixStackIn.scale(f, f, f);
     }
     
     @Override
-    public void func_225623_a_(BubblesEntity bubbles, float p_225623_2_, float p_225623_3_,
-                               MatrixStack p_225623_4_, IRenderTypeBuffer p_225623_5_, int p_225623_6_)
+    public void render(BubblesEntity bubbles, float entityYaw, float partialTicks,
+                       MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
     {
         if (bubbles.isInflated)
         {
@@ -53,14 +50,15 @@ public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<Bubb
         {
             entityModel = BUBBLES_MODEL;
         }
+        super.render(bubbles, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
     
-    public static class RenderFactory implements IRenderFactory<BubblesEntity>
+    /*public static class RenderFactory implements IRenderFactory<BubblesEntity>
     {
         @Override
         public EntityRenderer<? super BubblesEntity> createRenderFor(EntityRendererManager manager)
         {
             return new BubblesRenderer(manager);
         }
-    }
+    }*/
 }

@@ -1,7 +1,0 @@
-{
-    "variants":
-    {
-        "bottom=true": { "model": "angrybirdsmod:block/blue_ice_frame_block" },
-        "bottom=false": { "model": "angrybirdsmod:block/blue_ice_frame_block" }
-    }
-}

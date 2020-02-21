@@ -1,8 +1,0 @@
-{
-    "parent": "angrybirdsmod:block/slingshot_block",
-    
-    "textures":
-    {
-        "particle": "minecraft:block/stripped_jungle_log"
-    }
-}

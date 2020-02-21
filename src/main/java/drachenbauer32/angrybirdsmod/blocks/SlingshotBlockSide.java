@@ -1,6 +1,5 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
-import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -25,10 +24,9 @@ public class SlingshotBlockSide extends Block
     private static final VoxelShape WEST_AABB = Block.makeCuboidShape(7.0D, 14.0D, 0.0D, 9.0D, 16.0D, 6.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     
-    public SlingshotBlockSide(String name, Properties properties) 
+    public SlingshotBlockSide(Properties properties) 
     {
         super(properties);
-        setRegistryName(Reference.MOD_ID, name);
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
     

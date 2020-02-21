@@ -18,9 +18,9 @@
     
     "result":
     {
-        "item": "angrybirdsmod:blue_ice_frame_block",
+        "item": "angrybirdsmod:blue_ice_frame",
         "count": 1
     },
     
-    "group": "frame_block"
+    "group": "frame"
 }

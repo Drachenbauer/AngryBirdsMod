@@ -1,7 +1,0 @@
-{
-    "variants":
-    {
-        "bottom=true": { "model": "angrybirdsmod:block/stone_frame_block" },
-        "bottom=false": { "model": "angrybirdsmod:block/stone_frame_block" }
-    }
-}

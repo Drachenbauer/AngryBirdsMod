@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        "eee",
+        "hhh"
+    ],
+    
+    "key":
+    {
+        "e":
+        {
+            "item": "angrybirdsmod:egg_block"
+        },
+        
+        "h":
+        {
+            "item": "minecraft:hay_block"
+        }
+    },
+    
+    "result":
+    {
+        "item": "angrybirdsmod:nest",
+        "count": 1
+    }
+}

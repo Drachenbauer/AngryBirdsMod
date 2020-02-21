@@ -1,8 +1,0 @@
-{
-    "parent": "angrybirdsmod:item/slingshot_2_block",
-    
-    "textures":
-    {
-        "1": "angrybirdsmod:block/slingshot_block_birch_wood_base"
-    }
-}

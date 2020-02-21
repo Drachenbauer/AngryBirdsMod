@@ -1,12 +1,9 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.systems.RenderSystem;
-
 import drachenbauer32.angrybirdsmod.entities.BluesEntity;
 import drachenbauer32.angrybirdsmod.entities.models.BluesModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
@@ -31,9 +28,10 @@ public class BluesRenderer extends MobRenderer<BluesEntity, EntityModel<BluesEnt
     }
     
     @Override
-    protected void func_225629_a_(BluesEntity blues, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
+    protected void preRenderCallback(BluesEntity blues, MatrixStack matrixStackIn, float partialTickTime)
     {
-        RenderSystem.scalef(0.5f, 0.5f, 0.5f);
+        float f = 0.5F;
+        matrixStackIn.scale(f, f, f);
     }
     
     /*public static class RenderFactory implements IRenderFactory<BluesEntity>

@@ -6,7 +6,6 @@
 
 package drachenbauer32.angrybirdsmod.entities;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
@@ -24,9 +23,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class CoralEntity extends AnimalEntity
 {
-    public CoralEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public CoralEntity(EntityType<? extends CoralEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.CORAL, worldIn);
+        super(type, worldIn);
     }
     
     @Override

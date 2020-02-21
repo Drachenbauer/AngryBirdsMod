@@ -1,6 +1,5 @@
 package drachenbauer32.angrybirdsmod.entities;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
@@ -26,9 +25,9 @@ public class RedEntity extends AnimalEntity
     private boolean wasOnGround;
     private int currentMoveTypeDuration;
     
-    public RedEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public RedEntity(EntityType<? extends RedEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.RED, worldIn);
+        super(type, worldIn);
         this.jumpController = new RedEntity.JumpHelperController(this);
         this.moveController = new RedEntity.MoveHelperController(this);
         this.setMovementSpeed(0.0D);
@@ -82,7 +81,7 @@ public class RedEntity extends AnimalEntity
         
         if (d0 > 0.0D)
         {
-            double d1 = func_213296_b(this.getMotion());
+            double d1 = horizontalMag(this.getMotion());
             
             if (d1 < 0.01D)
             {

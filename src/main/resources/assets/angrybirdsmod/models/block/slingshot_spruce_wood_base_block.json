@@ -1,9 +1,0 @@
-{
-    "parent": "angrybirdsmod:block/slingshot_wood_base_block",
-    
-    "textures":
-    {
-        "0": "angrybirdsmod:block/slingshot_block_spruce_wood_base",
-        "particle": "minecraft:block/stripped_spruce_log"
-    }
-}

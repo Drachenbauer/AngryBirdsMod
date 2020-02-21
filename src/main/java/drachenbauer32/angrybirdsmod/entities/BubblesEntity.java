@@ -1,6 +1,5 @@
 package drachenbauer32.angrybirdsmod.entities;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
@@ -12,16 +11,19 @@ import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class BubblesEntity extends AnimalEntity
 {
     private int timeUntilDeflating = 0;
     public boolean isInflated = false;
+    protected static final AxisAlignedBB BBUBBLES_AABB = new AxisAlignedBB(6.0D, 0.0D, 6.0D, 12.0D, 4.0D, 12.0D);
+    protected static final AxisAlignedBB BBUBBLES_INFLATED_AABB = new AxisAlignedBB(-2.0D, 0.0D, -2.0D, 18.0D, 20.0D, 18.0D);
     
-    public BubblesEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public BubblesEntity(EntityType<? extends BubblesEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.BUBBLES, worldIn);
+        super(type, worldIn);
     }
     
     @Override
@@ -69,6 +71,8 @@ public class BubblesEntity extends AnimalEntity
             if (timeUntilDeflating == 0)
             {
                 isInflated = false;
+                setBoundingBox(BBUBBLES_AABB);
+                
             }
         }
         else
@@ -84,6 +88,7 @@ public class BubblesEntity extends AnimalEntity
         {
             timeUntilDeflating = 80;
             isInflated = true;
+            setBoundingBox(BBUBBLES_INFLATED_AABB);
         }
     }
 }

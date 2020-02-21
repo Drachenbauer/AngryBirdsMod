@@ -4,6 +4,7 @@ import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
@@ -13,11 +14,12 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
+@SuppressWarnings("unused")
 public class TerenceEntity extends AnimalEntity
 {
-    public TerenceEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public TerenceEntity(EntityType<? extends TerenceEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.TERENCE, worldIn);
+        super(type, worldIn);
     }
     
     @Override
@@ -52,5 +54,6 @@ public class TerenceEntity extends AnimalEntity
     protected void registerAttributes()
     {
         super.registerAttributes();
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
     }
 }

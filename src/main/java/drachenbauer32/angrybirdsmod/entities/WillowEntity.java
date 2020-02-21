@@ -1,9 +1,9 @@
 package drachenbauer32.angrybirdsmod.entities;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
@@ -15,9 +15,9 @@ import net.minecraft.world.World;
 
 public class WillowEntity extends AnimalEntity
 {
-    public WillowEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public WillowEntity(EntityType<? extends WillowEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.WILLOW, worldIn);
+        super(type, worldIn);
     }
     
     @Override
@@ -52,5 +52,6 @@ public class WillowEntity extends AnimalEntity
     protected void registerAttributes()
     {
         super.registerAttributes();
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
     }
 }

@@ -1,6 +1,5 @@
 package drachenbauer32.angrybirdsmod.entities;
 
-import drachenbauer32.angrybirdsmod.init.AngryBirdsEntities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
@@ -16,9 +15,9 @@ import net.minecraft.world.World;
 
 public class HalEntity extends AnimalEntity
 {
-    public HalEntity(EntityType<? extends AnimalEntity> type, World worldIn)
+    public HalEntity(EntityType<? extends HalEntity> type, World worldIn)
     {
-        super((EntityType<? extends AnimalEntity>) AngryBirdsEntities.HAL, worldIn);
+        super(type, worldIn);
     }
     
     @Override

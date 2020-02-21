@@ -7,12 +7,10 @@ import drachenbauer32.angrybirdsmod.entities.ChuckShotEntity;
 import drachenbauer32.angrybirdsmod.entities.models.ChuckShotModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 @OnlyIn(Dist.CLIENT)
 public class ChuckShotRenderer extends AbstractBirdStotRenderer<ChuckShotEntity, ChuckShotModel<?>>
@@ -30,18 +28,27 @@ public class ChuckShotRenderer extends AbstractBirdStotRenderer<ChuckShotEntity,
         return CHUCK_TEXTURE;
     }
     
+    @SuppressWarnings("rawtypes")
     @Override
-    protected void func_225629_a_(ChuckShotEntity chuck_shot, String p_225629_2_, MatrixStack p_225629_3_, IRenderTypeBuffer p_225629_4_, int p_225629_5_)
+    public ChuckShotModel<?> getEntityModel()
     {
-        RenderSystem.scalef(0.25F, 0.25F, 0.25F);
+        return new ChuckShotModel();
     }
     
-    public static class RenderFactory implements IRenderFactory<ChuckShotEntity>
+    @Override
+    public void render(ChuckShotEntity chuck_shot, float entityYaw, float partialTicks,
+                       MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
+    {
+        RenderSystem.scalef(0.25F, 0.25F, 0.25F);
+        super.render(chuck_shot, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
+    }
+    
+    /*public static class RenderFactory implements IRenderFactory<ChuckShotEntity>
     {
         @Override
         public EntityRenderer<? super ChuckShotEntity> createRenderFor(EntityRendererManager manager)
         {
             return new ChuckShotRenderer(manager);
         }
-    }
+    }*/
 }

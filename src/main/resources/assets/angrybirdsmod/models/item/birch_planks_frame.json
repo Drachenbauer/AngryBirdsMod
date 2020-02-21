@@ -1,0 +1,8 @@
+{
+    "parent": "angrybirdsmod:item/frame",
+    
+    "textures":
+    {
+        "0": "minecraft:block/birch_planks"
+    }
+}

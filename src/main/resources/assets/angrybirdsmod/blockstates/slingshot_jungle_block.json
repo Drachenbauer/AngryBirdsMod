@@ -1,9 +1,0 @@
-{
-    "variants":
-    {
-        "facing=north": { "model": "angrybirdsmod:block/slingshot_jungle_block" },
-        "facing=east":  { "model": "angrybirdsmod:block/slingshot_jungle_block" , "y": 90 },
-        "facing=south": { "model": "angrybirdsmod:block/slingshot_jungle_block" , "y": 180 },
-        "facing=west":  { "model": "angrybirdsmod:block/slingshot_jungle_block" , "y": 270 }
-    }
-}
