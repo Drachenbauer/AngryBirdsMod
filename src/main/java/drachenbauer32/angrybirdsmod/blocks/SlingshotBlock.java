@@ -2,9 +2,8 @@ package drachenbauer32.angrybirdsmod.blocks;
 
 import drachenbauer32.angrybirdsmod.entities.tile_entities.BlockColorsTileEntity;
 import drachenbauer32.angrybirdsmod.init.AngryBirdsBlocks;
-import drachenbauer32.angrybirdsmod.util.Reference;
-
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,18 +24,17 @@ import net.minecraft.world.World;
 
 public class SlingshotBlock extends Block
 {
-    private final String NAME;
     private static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     private static final VoxelShape EAST_AABB = Block.makeCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
     private static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     private static final VoxelShape WEST_AABB = Block.makeCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     
-    public SlingshotBlock(String name, Properties properties) 
+    public ItemStack pick_block_item;
+    
+    public SlingshotBlock(Properties properties) 
     {
         super(properties);
-        setRegistryName(Reference.MOD_ID, name);
-        this.NAME = name;
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
     
@@ -96,116 +94,130 @@ public class SlingshotBlock extends Block
         return state.with(FACING, rot.rotate(state.get(FACING)));
     }
     
+    public BlockRenderType getRenderType(BlockState state)
+    {
+        return BlockRenderType.MODEL;
+    }
+    
+    @SuppressWarnings("deprecation")
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer,
                                 ItemStack stack)
     {
-        if (NAME.contains("acacia"))
+        pick_block_item = getItem(worldIn, pos, state);
+        
+        String name = this.getRegistryName().toString();
+        
+        if (name.contains("acacia"))
         {
-            if (NAME.contains("2"))
+            if (name.contains("2"))
             {
                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                        AngryBirdsBlocks.slingshot_acacia_2_wood_base, AngryBirdsBlocks.slingshot_acacia_side, AngryBirdsBlocks.slingshot_acacia_side_top);
+                                        AngryBirdsBlocks.SLINGSHOT_ACACIA_WOOD_BASE.get(),
+                                        AngryBirdsBlocks.SLINGSHOT_ACACIA_SIDE.get(),
+                                        AngryBirdsBlocks.SLINGSHOT_ACACIA_SIDE_TOP.get());
             }
             else
             {
                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                        AngryBirdsBlocks.slingshot_acacia_wood_base, AngryBirdsBlocks.slingshot_acacia_side, AngryBirdsBlocks.slingshot_acacia_side_top);
+                                        AngryBirdsBlocks.SLINGSHOT_ACACIA_WOOD_BASE.get(),
+                                        AngryBirdsBlocks.SLINGSHOT_ACACIA_SIDE.get(),
+                                        AngryBirdsBlocks.SLINGSHOT_ACACIA_SIDE_TOP.get());
             }
         }
         else
         {
-            if (NAME.contains("birch"))
+            if (name.contains("birch"))
             {
-                if (NAME.contains("2"))
+                if (name.contains("2"))
                 {
                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                            AngryBirdsBlocks.slingshot_birch_2_wood_base,
-                                            AngryBirdsBlocks.slingshot_acacia_side,
-                                            AngryBirdsBlocks.slingshot_birch_side_top);
+                                            AngryBirdsBlocks.SLINGSHOT_BIRCH_WOOD_BASE.get(),
+                                            AngryBirdsBlocks.SLINGSHOT_BIRCH_SIDE.get(),
+                                            AngryBirdsBlocks.SLINGSHOT_BIRCH_SIDE_TOP.get());
                 }
                 else
                 {
                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                            AngryBirdsBlocks.slingshot_birch_wood_base,
-                                            AngryBirdsBlocks.slingshot_birch_side,
-                                            AngryBirdsBlocks.slingshot_birch_side_top);
+                                            AngryBirdsBlocks.SLINGSHOT_BIRCH_WOOD_BASE.get(),
+                                            AngryBirdsBlocks.SLINGSHOT_BIRCH_SIDE.get(),
+                                            AngryBirdsBlocks.SLINGSHOT_BIRCH_SIDE_TOP.get());
                 }
             }
             else
             {
-                if (NAME.contains("dark_oak"))
+                if (name.contains("dark_oak"))
                 {
-                    if (NAME.contains("2"))
+                    if (name.contains("2"))
                     {
                         replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                AngryBirdsBlocks.slingshot_dark_oak_2_wood_base,
-                                                AngryBirdsBlocks.slingshot_dark_oak_side,
-                                                AngryBirdsBlocks.slingshot_dark_oak_side_top);
+                                                AngryBirdsBlocks.SLINGSHOT_DARK_OAK_WOOD_BASE.get(),
+                                                AngryBirdsBlocks.SLINGSHOT_DARK_OAK_SIDE.get(),
+                                                AngryBirdsBlocks.SLINGSHOT_DARK_OAK_SIDE_TOP.get());
                     }
                     else
                     {
                         replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                AngryBirdsBlocks.slingshot_dark_oak_wood_base,
-                                                AngryBirdsBlocks.slingshot_dark_oak_side,
-                                                AngryBirdsBlocks.slingshot_dark_oak_side_top);
+                                                AngryBirdsBlocks.SLINGSHOT_DARK_OAK_WOOD_BASE.get(),
+                                                AngryBirdsBlocks.SLINGSHOT_DARK_OAK_SIDE.get(),
+                                                AngryBirdsBlocks.SLINGSHOT_DARK_OAK_SIDE_TOP.get());
                     }
                 }
                 else
                 {
-                    if (NAME.contains("jungle"))
+                    if (name.contains("jungle"))
                     {
-                        if (NAME.contains("2"))
+                        if (name.contains("2"))
                         {
                             replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                    AngryBirdsBlocks.slingshot_jungle_2_wood_base,
-                                                    AngryBirdsBlocks.slingshot_jungle_side,
-                                                    AngryBirdsBlocks.slingshot_jungle_side_top);
+                                                    AngryBirdsBlocks.SLINGSHOT_JUNGLE_WOOD_BASE.get(),
+                                                    AngryBirdsBlocks.SLINGSHOT_JUNGLE_SIDE.get(),
+                                                    AngryBirdsBlocks.SLINGSHOT_JUNGLE_SIDE_TOP.get());
                         }
                         else
                         {
                             replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                    AngryBirdsBlocks.slingshot_jungle_wood_base,
-                                                    AngryBirdsBlocks.slingshot_jungle_side,
-                                                    AngryBirdsBlocks.slingshot_jungle_side_top);
+                                                    AngryBirdsBlocks.SLINGSHOT_JUNGLE_WOOD_BASE.get(),
+                                                    AngryBirdsBlocks.SLINGSHOT_JUNGLE_SIDE.get(),
+                                                    AngryBirdsBlocks.SLINGSHOT_JUNGLE_SIDE_TOP.get());
                         }
                     }
                     else
                     {
-                        if (NAME.contains("oak"))
+                        if (name.contains("oak"))
                         {
-                            if (NAME.contains("2"))
+                            if (name.contains("2"))
                             {
                                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                        AngryBirdsBlocks.slingshot_oak_2_wood_base,
-                                                        AngryBirdsBlocks.slingshot_oak_side,
-                                                        AngryBirdsBlocks.slingshot_oak_side_top);
+                                                        AngryBirdsBlocks.SLINGSHOT_OAK_WOOD_BASE.get(),
+                                                        AngryBirdsBlocks.SLINGSHOT_OAK_SIDE.get(),
+                                                        AngryBirdsBlocks.SLINGSHOT_OAK_SIDE_TOP.get());
                             }
                             else
                             {
                                 replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                        AngryBirdsBlocks.slingshot_oak_wood_base,
-                                                        AngryBirdsBlocks.slingshot_oak_side,
-                                                        AngryBirdsBlocks.slingshot_oak_side_top);
+                                                        AngryBirdsBlocks.SLINGSHOT_OAK_WOOD_BASE.get(),
+                                                        AngryBirdsBlocks.SLINGSHOT_OAK_SIDE.get(),
+                                                        AngryBirdsBlocks.SLINGSHOT_OAK_SIDE_TOP.get());
                             }
                         }
                         else
                         {
-                            if (NAME.contains("spruce"))
+                            if (name.contains("spruce"))
                             {
-                                if (NAME.contains("2"))
+                                if (name.contains("2"))
                                 {
                                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                            AngryBirdsBlocks.slingshot_spruce_2_wood_base,
-                                                            AngryBirdsBlocks.slingshot_spruce_side,
-                                                            AngryBirdsBlocks.slingshot_spruce_side_top);
+                                                            AngryBirdsBlocks.SLINGSHOT_SPRUCE_WOOD_BASE.get(),
+                                                            AngryBirdsBlocks.SLINGSHOT_SPRUCE_SIDE.get(),
+                                                            AngryBirdsBlocks.SLINGSHOT_SPRUCE_SIDE_TOP.get());
                                 }
                                 else
                                 {
                                     replaceBlockByDirection(worldIn, pos, state, placer, stack,
-                                                            AngryBirdsBlocks.slingshot_spruce_wood_base,
-                                                            AngryBirdsBlocks.slingshot_spruce_side,
-                                                            AngryBirdsBlocks.slingshot_spruce_side_top);
+                                                            AngryBirdsBlocks.SLINGSHOT_SPRUCE_WOOD_BASE.get(),
+                                                            AngryBirdsBlocks.SLINGSHOT_SPRUCE_SIDE.get(),
+                                                            AngryBirdsBlocks.SLINGSHOT_SPRUCE_SIDE_TOP.get());
                                 }
                             }
                         }
@@ -324,4 +336,10 @@ public class SlingshotBlock extends Block
     {
         return new BlockColorsTileEntity();
     }
+    
+    /*@Override
+    public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
+    {
+        return.pick_block_item;
+    }*/
 }

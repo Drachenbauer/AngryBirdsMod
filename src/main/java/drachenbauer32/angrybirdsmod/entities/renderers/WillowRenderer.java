@@ -33,13 +33,4 @@ public class WillowRenderer extends MobRenderer<WillowEntity, EntityModel<Willow
         float f = 0.5F;
         matrixStackIn.scale(f, f, f);
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<WillowEntity>
-    {
-        @Override
-        public EntityRenderer<? super WillowEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new WillowRenderer(manager);
-        }
-    }*/
 }

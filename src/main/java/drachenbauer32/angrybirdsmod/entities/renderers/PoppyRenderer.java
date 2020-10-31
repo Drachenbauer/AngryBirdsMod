@@ -25,13 +25,4 @@ public class PoppyRenderer extends MobRenderer<PoppyEntity, EntityModel<PoppyEnt
     {
         return POPPY_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<PoppyEntity>
-    {
-        @Override
-        public EntityRenderer<? super PoppyEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new PoppyRenderer(manager);
-        }
-    }*/
 }

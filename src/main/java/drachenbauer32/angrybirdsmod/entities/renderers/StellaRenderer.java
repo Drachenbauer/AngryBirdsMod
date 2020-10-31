@@ -25,13 +25,4 @@ public class StellaRenderer extends MobRenderer<StellaEntity, EntityModel<Stella
     {
         return STELLA_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<StellaEntity>
-    {
-        @Override
-        public EntityRenderer<? super StellaEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new StellaRenderer(manager);
-        }
-    }*/
 }

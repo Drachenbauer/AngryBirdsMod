@@ -16,7 +16,7 @@ public class AngryBirdsItemGroup extends ItemGroup
     @Override
     public ItemStack createIcon()
     {
-        return new ItemStack(AngryBirdsItems.nest);
+        return new ItemStack(AngryBirdsItems.NEST.get());
     }
     
     @Override

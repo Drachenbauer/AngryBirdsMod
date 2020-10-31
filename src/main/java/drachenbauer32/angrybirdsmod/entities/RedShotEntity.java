@@ -14,11 +14,11 @@ public class RedShotEntity extends BirdShotEntity
     
     public RedShotEntity(World worldIn, double x, double y, double z)
     {
-        super(AngryBirdsEntities.RED_SHOT,worldIn, x, y, z);
+        super(AngryBirdsEntities.RED_SHOT.get(),worldIn, x, y, z);
     }
     
     public RedShotEntity(World worldIn, LivingEntity shooter)
     {
-        super(AngryBirdsEntities.RED_SHOT,worldIn, shooter);
+        super(AngryBirdsEntities.RED_SHOT.get(),worldIn, shooter);
     }
 }

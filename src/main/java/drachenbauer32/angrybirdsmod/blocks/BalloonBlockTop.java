@@ -12,16 +12,17 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.RegistryObject;
 
 public class BalloonBlockTop extends Block
 {
     protected static final VoxelShape BALLOON_BLOCK_AABB = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
-    private final Item ITEM;
+    private RegistryObject<? extends Item> supplier;
     
-    public BalloonBlockTop(Item item, Properties properties) 
+    public BalloonBlockTop(RegistryObject<? extends Item> supplierIn, Properties properties) 
     {
         super(properties);
-        this.ITEM = item;
+        supplier = supplierIn;
     }
     
     @Override
@@ -49,12 +50,9 @@ public class BalloonBlockTop extends Block
         super.onBlockHarvested(worldIn, pos, state, player);
     }
     
-    //@SuppressWarnings("deprecation")
     @Override
     public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
     {
-        return new ItemStack(ITEM);
-        //return super.getPickBlock(state, null, world, pos.down(), player);
-        //return getItem(world, pos.down(), state);
+        return new ItemStack(supplier.get());
     }
 }

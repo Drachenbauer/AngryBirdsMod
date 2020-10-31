@@ -1,6 +1,5 @@
 package drachenbauer32.angrybirdsmod.blocks;
 
-import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -19,7 +18,6 @@ import net.minecraft.world.World;
 
 public class SlingshotWoodBaseBlock extends Block
 {
-    private final String NAME;
     private static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
     private static final VoxelShape EAST_AABB = Block.makeCuboidShape(2.0D, 4.0D, 0.0D, 14.0D, 8.0D, 16.0D);
     private static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 4.0D, 2.0D, 16.0D, 8.0D, 14.0D);
@@ -30,11 +28,9 @@ public class SlingshotWoodBaseBlock extends Block
     private static final VoxelShape WEST_2_AABB = Block.makeCuboidShape(8.0D, 4.0D, 0.0D, 12.0D, 16.0D, 16.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     
-    public SlingshotWoodBaseBlock(String name, Properties properties)
+    public SlingshotWoodBaseBlock(Properties properties)
     {
         super(properties);
-        setRegistryName(Reference.MOD_ID, name);
-        this.NAME = name;
     }
     
     @Override
@@ -59,7 +55,9 @@ public class SlingshotWoodBaseBlock extends Block
     {
         Direction facing = state.get(FACING);
         
-        if(NAME.contains("2"))
+        String name = this.getRegistryName().toString();
+        
+        if(name.contains("2"))
         {
             switch(facing)
             {

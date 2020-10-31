@@ -33,13 +33,4 @@ public class BluesTrioRenderer extends MobRenderer<BluesEntity, EntityModel<Blue
         float f = 0.5F;
         matrixStackIn.scale(f, f, f);
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<BluesEntity>
-    {
-        @Override
-        public EntityRenderer<? super BluesEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new BluesTrioRenderer(manager);
-        }
-    }*/
 }

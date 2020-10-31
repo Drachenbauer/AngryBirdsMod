@@ -2,7 +2,6 @@ package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import drachenbauer32.angrybirdsmod.entities.BubblesEntity;
-import drachenbauer32.angrybirdsmod.entities.models.BubblesInflatedModel;
 import drachenbauer32.angrybirdsmod.entities.models.BubblesModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
@@ -17,12 +16,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<BubblesEntity>>
 {
     private static final ResourceLocation BUBBLES_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/bubbles.png");
-    private static final BubblesModel<BubblesEntity> BUBBLES_MODEL= new BubblesModel<>();
-    private static final BubblesInflatedModel<BubblesEntity> BUBBLES_INFLATED_MODEL= new BubblesInflatedModel<>();
+    private static final BubblesModel<BubblesEntity> BUBBLES_MODEL= new BubblesModel<>(false); //the boolean in the "()" at the end of this line is he inflating-state of Bubbles
     
     public BubblesRenderer(EntityRendererManager manager)
     {
-        super(manager, new BubblesModel<>(), 0.25f);
+        super(manager, BUBBLES_MODEL, 0.25f);
     }
     
     @Override
@@ -42,23 +40,7 @@ public class BubblesRenderer extends MobRenderer<BubblesEntity, EntityModel<Bubb
     public void render(BubblesEntity bubbles, float entityYaw, float partialTicks,
                        MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
     {
-        if (bubbles.isInflated)
-        {
-            entityModel = BUBBLES_INFLATED_MODEL;
-        }
-        else
-        {
-            entityModel = BUBBLES_MODEL;
-        }
+        entityModel = new BubblesModel<>(bubbles.isInflated);
         super.render(bubbles, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<BubblesEntity>
-    {
-        @Override
-        public EntityRenderer<? super BubblesEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new BubblesRenderer(manager);
-        }
-    }*/
 }

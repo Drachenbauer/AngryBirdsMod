@@ -25,13 +25,4 @@ public class DahliaRenderer extends MobRenderer<DahliaEntity, EntityModel<Dahlia
     {
         return DAHLIA_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<DahliaEntity>
-    {
-        @Override
-        public EntityRenderer<? super DahliaEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new DahliaRenderer(manager);
-        }
-    }*/
 }

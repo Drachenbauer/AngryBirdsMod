@@ -33,13 +33,4 @@ public class LucaRenderer extends MobRenderer<LucaEntity, EntityModel<LucaEntity
         float f = 0.5F;
         matrixStackIn.scale(f, f, f);
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<LucaEntity>
-    {
-        @Override
-        public EntityRenderer<? super LucaEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new LucaRenderer(manager);
-        }
-    }*/
 }

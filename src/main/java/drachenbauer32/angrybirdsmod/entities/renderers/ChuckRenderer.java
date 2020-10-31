@@ -25,13 +25,4 @@ public class ChuckRenderer extends MobRenderer<ChuckEntity, EntityModel<ChuckEnt
     {
         return CHUCK_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<ChuckEntity>
-    {
-        @Override
-        public EntityRenderer<? super ChuckEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new ChuckRenderer(manager);
-        }
-    }*/
 }

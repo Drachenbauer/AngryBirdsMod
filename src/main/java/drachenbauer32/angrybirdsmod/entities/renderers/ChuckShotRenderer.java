@@ -42,13 +42,4 @@ public class ChuckShotRenderer extends AbstractBirdStotRenderer<ChuckShotEntity,
         RenderSystem.scalef(0.25F, 0.25F, 0.25F);
         super.render(chuck_shot, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<ChuckShotEntity>
-    {
-        @Override
-        public EntityRenderer<? super ChuckShotEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new ChuckShotRenderer(manager);
-        }
-    }*/
 }

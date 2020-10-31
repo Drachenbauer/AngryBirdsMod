@@ -8,7 +8,7 @@ public class BlockColorsTileEntity extends TileEntity
 {
     public BlockColorsTileEntity()
     {
-        super(AngryBirdsTileEntities.BLOCK_COLORS);
+        super(AngryBirdsTileEntities.BLOCK_COLORS.get());
     }
     
     @Override

@@ -66,6 +66,6 @@ public class CoralEntity extends AnimalEntity
     @OnlyIn(Dist.CLIENT)
     public float getTailRotation()
     {
-         return (0.55F - (this.getMaxHealth() - this.getHealth()) * 0.02F) * (float)Math.PI;
+        return -45 * ((float)Math.PI / 180) + (this.getHealth() / this.getMaxHealth() * 60 * ((float)Math.PI / 180));
     }
 }

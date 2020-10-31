@@ -25,13 +25,4 @@ public class HalRenderer extends MobRenderer<HalEntity, EntityModel<HalEntity>>
     {
         return HAL_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<HalEntity>
-    {
-        @Override
-        public EntityRenderer<? super HalEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new HalRenderer(manager);
-        }
-    }*/
 }

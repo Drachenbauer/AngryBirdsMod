@@ -23,13 +23,4 @@ public class BombRenderer extends MobRenderer<BombEntity, EntityModel<BombEntity
     {
         return BOMB_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<BombEntity>
-    {
-        @Override
-        public EntityRenderer<? super BombEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new BombRenderer(manager);
-        }
-    }*/
 }

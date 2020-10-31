@@ -25,13 +25,4 @@ public class RedRenderer extends MobRenderer<RedEntity, EntityModel<RedEntity>>
     {
         return RED_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<RedEntity>
-    {
-        @Override
-        public EntityRenderer<? super RedEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new RedRenderer(manager);
-        }
-    }*/
 }

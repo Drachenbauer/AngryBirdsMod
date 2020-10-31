@@ -28,24 +28,24 @@ public class RenderHandler
 {
     public static void regigisterEntityRenders()
     {
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.RED, RedRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CHUCK, ChuckRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.BLUES, BluesTrioRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.BOMB, BombRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.MATHILDA, MathildaRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.TERENCE, TerenceRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.SILVER, SilverRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.BUBBLES, BubblesRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.HAL, HalRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.STELLA, StellaRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.POPPY, PoppyRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.WILLOW, WillowRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.DAHLIA, DahliaRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.LUCA, LucaRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.ICE_BIRD, IceBirdRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CORAL, CoralRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.RED.get(), RedRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CHUCK.get(), ChuckRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.BLUES.get(), BluesTrioRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.BOMB.get(), BombRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.MATHILDA.get(), MathildaRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.TERENCE.get(), TerenceRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.SILVER.get(), SilverRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.BUBBLES.get(), BubblesRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.HAL.get(), HalRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.STELLA.get(), StellaRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.POPPY.get(), PoppyRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.WILLOW.get(), WillowRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.DAHLIA.get(), DahliaRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.LUCA.get(), LucaRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.ICE_BIRD.get(), IceBirdRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CORAL.get(), CoralRenderer::new);
                 
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.RED_SHOT, RedShotRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CHUCK_SHOT, ChuckShotRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.RED_SHOT.get(), RedShotRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AngryBirdsEntities.CHUCK_SHOT.get(), ChuckShotRenderer::new);
     }
 }

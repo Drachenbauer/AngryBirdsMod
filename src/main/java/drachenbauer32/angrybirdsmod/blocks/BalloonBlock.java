@@ -7,7 +7,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
@@ -18,20 +17,19 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.RegistryObject;
 
 public class BalloonBlock extends Block
 {
     protected static final VoxelShape BALLOON_BLOCK_AABB = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 16.0D, 11.0D);
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
-    private final DyeColor COLOR;
-    private final Block TOP;
+    private RegistryObject<? extends Block> supplier;
     
-    public BalloonBlock(DyeColor color, Block top, Block.Properties builder) 
+    public BalloonBlock(RegistryObject<? extends Block> supplierIn, Block.Properties builder) 
     {
         super(builder);
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
-        this.COLOR = color;
-        this.TOP = top;
+        supplier = supplierIn;
     }
     
     @Override
@@ -70,16 +68,11 @@ public class BalloonBlock extends Block
         return state.with(FACING, rot.rotate(state.get(FACING)));
     }
     
-    public DyeColor getColor()
-    {
-        return this.COLOR;
-    }
-    
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer,
             ItemStack stack)
     {
-        worldIn.setBlockState(pos.up(), TOP.getDefaultState());
+        worldIn.setBlockState(pos.up(), supplier.get().getDefaultState());
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
     }
     

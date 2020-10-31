@@ -1,6 +1,7 @@
 package drachenbauer32.angrybirdsmod.entities.renderers;
 
 import drachenbauer32.angrybirdsmod.entities.CoralEntity;
+import drachenbauer32.angrybirdsmod.entities.layers.CoralFinLayer;
 import drachenbauer32.angrybirdsmod.entities.models.CoralModel;
 import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
@@ -11,12 +12,15 @@ import net.minecraft.util.ResourceLocation;
 public class CoralRenderer extends MobRenderer<CoralEntity, EntityModel<CoralEntity>>
 {
     private static final ResourceLocation CORAL_TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/entity/coral.png");
+    private static final CoralModel<CoralEntity> CORAL_MODEL = new CoralModel<>(false);
     
-    public CoralRenderer(final EntityRendererManager manager)
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public CoralRenderer(EntityRendererManager manager)
     {
-        super(manager, new CoralModel<>(), 0.625f);
+        super(manager, CORAL_MODEL, 0.5f);
+        this.addLayer(new CoralFinLayer(this));
     }
-    
+
     @Override
     public ResourceLocation getEntityTexture(CoralEntity coral)
     {
@@ -28,13 +32,4 @@ public class CoralRenderer extends MobRenderer<CoralEntity, EntityModel<CoralEnt
     {
         return coral.getTailRotation();
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<CoralEntity>
-    {
-        @Override
-        public EntityRenderer<? super CoralEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new CoralRenderer(manager);
-        }
-    }*/
 }

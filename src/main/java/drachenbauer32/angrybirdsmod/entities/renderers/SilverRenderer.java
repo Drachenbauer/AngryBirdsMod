@@ -25,13 +25,4 @@ public class SilverRenderer extends MobRenderer<SilverEntity, EntityModel<Silver
     {
         return SILVER_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<SilverEntity>
-    {
-        @Override
-        public EntityRenderer<? super SilverEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new SilverRenderer(manager);
-        }
-    }*/
 }

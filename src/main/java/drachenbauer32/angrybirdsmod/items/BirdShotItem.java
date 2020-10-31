@@ -3,7 +3,6 @@ package drachenbauer32.angrybirdsmod.items;
 import drachenbauer32.angrybirdsmod.entities.BirdShotEntity;
 import drachenbauer32.angrybirdsmod.entities.ChuckShotEntity;
 import drachenbauer32.angrybirdsmod.entities.RedShotEntity;
-import drachenbauer32.angrybirdsmod.util.Reference;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.Item;
@@ -12,18 +11,16 @@ import net.minecraft.world.World;
 
 public class BirdShotItem extends Item
 {
-    private String name;
-    
-    public BirdShotItem(String name, Item.Properties builder)
+    public BirdShotItem(Item.Properties builder)
     {
         super(builder);
-        setRegistryName(Reference.MOD_ID, name);
-        this.name = name;
     }
     
     public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter)
     {
         BirdShotEntity bird_shot_entity;
+        
+        String name = this.getRegistryName().toString();
         
         if(name.equals("ice_bird_shot"))
         {

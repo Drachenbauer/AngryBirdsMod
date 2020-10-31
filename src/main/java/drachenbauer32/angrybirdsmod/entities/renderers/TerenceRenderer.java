@@ -25,13 +25,4 @@ public class TerenceRenderer extends MobRenderer<TerenceEntity, EntityModel<Tere
     {
         return TERENCE_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<TerenceEntity>
-    {
-        @Override
-        public EntityRenderer<? super TerenceEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new TerenceRenderer(manager);
-        }
-    }*/
 }

@@ -25,13 +25,4 @@ public class MathildaRenderer extends MobRenderer<MathildaEntity, EntityModel<Ma
     {
         return MATHILDA_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<MathildaEntity>
-    {
-        @Override
-        public EntityRenderer<? super MathildaEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new MathildaRenderer(manager);
-        }
-    }*/
 }

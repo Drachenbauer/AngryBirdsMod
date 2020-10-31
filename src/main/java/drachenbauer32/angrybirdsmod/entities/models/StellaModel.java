@@ -19,7 +19,7 @@ public class StellaModel<T extends StellaEntity> extends AgeableModel<T>
     public StellaModel()
     {
         textureWidth = 32;
-        textureHeight = 16;
+        textureHeight = 18;
         
         bone = new ModelRenderer(this);
         bone.setRotationPoint(0.0F, 20.0F, 0.0F);

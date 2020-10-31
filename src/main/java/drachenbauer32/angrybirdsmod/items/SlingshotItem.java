@@ -70,7 +70,7 @@ public class SlingshotItem extends BowItem
             {
                 if (itemstack.isEmpty())
                 {
-                    itemstack = new ItemStack(AngryBirdsItems.red_shot);
+                    itemstack = new ItemStack(AngryBirdsItems.RED_SHOT.get());
                 }
                 
                 float f = getArrowVelocity(i);
@@ -81,7 +81,7 @@ public class SlingshotItem extends BowItem
                     
                     if (!worldIn.isRemote)
                     {
-                        BirdShotItem birdshotitem = (BirdShotItem)(itemstack.getItem() instanceof BirdShotItem ? itemstack.getItem() : AngryBirdsItems.red_shot);
+                        BirdShotItem birdshotitem = (BirdShotItem)(itemstack.getItem() instanceof BirdShotItem ? itemstack.getItem() : AngryBirdsItems.RED_SHOT.get());
                         AbstractArrowEntity abstractbirdshotentity = birdshotitem.createArrow(worldIn, itemstack, playerentity);
                         abstractbirdshotentity = customeBird(abstractbirdshotentity);
                         abstractbirdshotentity.shoot(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);

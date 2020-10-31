@@ -42,13 +42,4 @@ public class RedShotRenderer extends AbstractBirdStotRenderer<RedShotEntity, Red
         RenderSystem.scalef(0.25F, 0.25F, 0.25F);
         super.render(red_shot, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<RedShotEntity>
-    {
-        @Override
-        public EntityRenderer<? super RedShotEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new RedShotRenderer(manager);
-        }
-    }*/
 }

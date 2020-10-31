@@ -14,11 +14,11 @@ public class ChuckShotEntity extends BirdShotEntity
     
     public ChuckShotEntity(World worldIn, double x, double y, double z)
     {
-        super(AngryBirdsEntities.CHUCK_SHOT,worldIn, x, y, z);
+        super(AngryBirdsEntities.CHUCK_SHOT.get(),worldIn, x, y, z);
     }
     
     public ChuckShotEntity(World worldIn, LivingEntity shooter)
     {
-        super(AngryBirdsEntities.CHUCK_SHOT,worldIn, shooter);
+        super(AngryBirdsEntities.CHUCK_SHOT.get(),worldIn, shooter);
     }
 }

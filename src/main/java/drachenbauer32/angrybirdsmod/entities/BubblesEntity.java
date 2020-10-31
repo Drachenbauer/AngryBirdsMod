@@ -1,7 +1,11 @@
 package drachenbauer32.angrybirdsmod.entities;
 
+import java.util.List;
+
 import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Pose;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
@@ -18,8 +22,6 @@ public class BubblesEntity extends AnimalEntity
 {
     private int timeUntilDeflating = 0;
     public boolean isInflated = false;
-    protected static final AxisAlignedBB BBUBBLES_AABB = new AxisAlignedBB(6.0D, 0.0D, 6.0D, 12.0D, 4.0D, 12.0D);
-    protected static final AxisAlignedBB BBUBBLES_INFLATED_AABB = new AxisAlignedBB(-2.0D, 0.0D, -2.0D, 18.0D, 20.0D, 18.0D);
     
     public BubblesEntity(EntityType<? extends BubblesEntity> type, World worldIn)
     {
@@ -71,8 +73,8 @@ public class BubblesEntity extends AnimalEntity
             if (timeUntilDeflating == 0)
             {
                 isInflated = false;
-                setBoundingBox(BBUBBLES_AABB);
-                
+                AxisAlignedBB aabb = this.getBoundingBox();
+                this.setBoundingBox(new AxisAlignedBB(aabb.minX + 0.5d, aabb.minY, aabb.minZ + 0.5d, aabb.maxX - 0.5d, aabb.maxY - 1.0d, aabb.maxZ - 0.5d));
             }
         }
         else
@@ -88,7 +90,26 @@ public class BubblesEntity extends AnimalEntity
         {
             timeUntilDeflating = 80;
             isInflated = true;
-            setBoundingBox(BBUBBLES_INFLATED_AABB);
+            AxisAlignedBB aabb = this.getBoundingBox();
+            this.setBoundingBox(new AxisAlignedBB(aabb.minX - 0.5d, aabb.minY, aabb.minZ - 0.5d, aabb.maxX + 0.5d, aabb.maxY + 1.0d, aabb.maxZ + 0.5d));
+            this.collideWithEntities(this.world.getEntitiesInAABBexcluding(this, this.getBoundingBox().grow(0.5D, 0.5D, 0.5D).offset(0.0D, 0.0D, 0.0D), null));
+        }
+    }
+    
+    private void collideWithEntities(List<Entity> entities)
+    {
+        double d0 = (getBoundingBox().minX + getBoundingBox().maxX) / 2.0D;
+        double d1 = (getBoundingBox().minZ + getBoundingBox().maxZ) / 2.0D;
+        
+        for(Entity entity : entities)
+        {
+            if (entity instanceof LivingEntity)
+            {
+                double d2 = entity.getPosX() - d0;
+                double d3 = entity.getPosZ() - d1;
+                double d4 = d2 * d2 + d3 * d3;
+                entity.addVelocity(d2 / d4 * 4.0D, (double)0.2F, d3 / d4 * 4.0D);
+            }
         }
     }
 }

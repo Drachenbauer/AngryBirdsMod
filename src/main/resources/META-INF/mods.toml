@@ -1,15 +1,18 @@
 modLoader="javafml" #mandatory
 loaderVersion="[31,)" #mandatory (31 is current forge version)
-credits="Drachenbauer" #optional
-authors="Drachenbauer" #optional
+credits="Drachenbauer32" #optional
+authors="Drachenbauer32" #optional
 
 [[mods]] #mandatory
 modId="angrybirdsmod" #mandatory
-version="0.1.0" #mandatory
+version="1.0" #mandatory
 displayName="Angry Birds Mod" #mandatory
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Get the Angry Birds into Minecraft
+Get the Angry Birds into Minecraft!
+Adds the birds as entities and munition for an also added slingshot.
+Adds giant slingshots, piggy-build-like frames, an egg, a nest and balloons as new deco-blocks.
+Adds the ability to choose a bird from the angry-flock as player-character.
 '''
 
 [[dependencies.angrybirdsmod]] #optional

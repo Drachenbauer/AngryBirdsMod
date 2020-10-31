@@ -25,13 +25,4 @@ public class IceBirdRenderer extends MobRenderer<IceBirdEntity, EntityModel<IceB
     {
         return ICE_BIRD_TEXTURE;
     }
-    
-    /*public static class RenderFactory implements IRenderFactory<IceBirdEntity>
-    {
-        @Override
-        public EntityRenderer<? super IceBirdEntity> createRenderFor(EntityRendererManager manager)
-        {
-            return new IceBirdRenderer(manager);
-        }
-    }*/
 }
