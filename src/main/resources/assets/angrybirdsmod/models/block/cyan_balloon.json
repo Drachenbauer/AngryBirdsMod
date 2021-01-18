@@ -1,8 +1,0 @@
-{
-	"parent": "angrybirdsmod:block/balloon",
-    
-    "textures":
-    {
-        "1": "block/cyan_concrete"
-    }
-}

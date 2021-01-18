@@ -114,24 +114,7 @@ public class AngryBirds
                                          AngryBirdsItems.OAK_PLANKS_FRAME.get(),
                                          AngryBirdsItems.SPRUCE_PLANKS_FRAME.get(),
                                          AngryBirdsItems.STONE_FRAME.get(),
-                                         AngryBirdsItems.BLUE_ICE_FRAME.get(),
-                                         
-                                         AngryBirdsItems.RED_BALLOON.get(),
-                                         AngryBirdsItems.ORANGE_BALLOON.get(),
-                                         AngryBirdsItems.YELLOW_BALLOON.get(),
-                                         AngryBirdsItems.LIME_BALLOON.get(),
-                                         AngryBirdsItems.CYAN_BALLOON.get(),
-                                         AngryBirdsItems.BLUE_BALLOON.get(),
-                                         AngryBirdsItems.PURPLE_BALLOON.get(),
-                                         AngryBirdsItems.MAGENTA_BALLOON.get(),
-                                         AngryBirdsItems.PINK_BALLOON.get(),
-                                         AngryBirdsItems.LIGHT_BLUE_BALLOON.get(),
-                                         AngryBirdsItems.GREEN_BALLOON.get(),
-                                         AngryBirdsItems.BROWN_BALLOON.get(),
-                                         AngryBirdsItems.BLACK_BALLOON.get(),
-                                         AngryBirdsItems.GRAY_BALLOON.get(),
-                                         AngryBirdsItems.LIGHT_GRAY_BALLOON.get(),
-                                         AngryBirdsItems.WHITE_BALLOON.get());
+                                         AngryBirdsItems.BLUE_ICE_FRAME.get());
         
         itemSorter = Ordering.explicit(items).onResultOf(ItemStack::getItem);
     }

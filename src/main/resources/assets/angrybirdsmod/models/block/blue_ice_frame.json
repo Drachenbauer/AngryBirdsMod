@@ -3,6 +3,6 @@
     
     "textures":
     {
-        "0": "minecraft:block/blue_ice"
+        "0": "block/blue_ice"
     }
 }

@@ -10,7 +10,7 @@ public class AngryBirdsItemGroup extends ItemGroup
 {
     public AngryBirdsItemGroup()
     {
-        super("AngryBirds");
+        super("angrybirds");
     }
     
     @Override

@@ -1,8 +1,0 @@
-{
-    "parent": "angrybirdsmod:block/frame",
-    
-    "textures":
-    {
-        "0": "block/jungle_planks"
-    }
-}

@@ -1,6 +1,6 @@
 {
     //ItemGroup name
-    "itemGroup.AngryBirds": "Angry Birds Items",
+    "itemGroup.angrybirds": "Angry Birds Items",
     
 	//Item names
 	"item.angrybirdsmod.red_egg": "Red-Spawn-Ei",
@@ -62,23 +62,6 @@
     "block.angrybirdsmod.oak_planks_frame": "Eichenholz-Block in Rahmen-Form",
     "block.angrybirdsmod.spruce_planks_frame": "Fichtenholz-Block in Rahmen-Form",
     "block.angrybirdsmod.stone_frame": "Stein-Block in Rahmen-Form",
-	
-	"block.angrybirdsmod.balloon_block": "Schwarzer Luftballon",
-	"block.angrybirdsmod.blue_balloon": "Blauer Luftballon",
-    "block.angrybirdsmod.brown_balloon": "Brauner Luftballon",
-    "block.angrybirdsmod.cyan_balloon": "Türkiser Luftballon",
-    "block.angrybirdsmod.gray_balloon": "Grauer Luftballon",
-    "block.angrybirdsmod.green_balloon": "Grüner Luftballon",
-    "block.angrybirdsmod.light_blue_balloon": "Hellblauer Luftballon",
-    "block.angrybirdsmod.light_gray_balloon": "Hellgrauer Luftballon",
-    "block.angrybirdsmod.lime_balloon": "Hellgrüner Luftballon",
-    "block.angrybirdsmod.magenta_balloon": "Magenta Luftballon",
-    "block.angrybirdsmod.orange_balloon": "Oranger Luftballon",
-    "block.angrybirdsmod.pink_balloon": "Rosa Luftballon",
-    "block.angrybirdsmod.purple_balloon": "Violetter Luftballon",
-    "block.angrybirdsmod.red_balloon": "Roter Luftballon",
-    "block.angrybirdsmod.white_balloon": "Weißer Luftballon",
-    "block.angrybirdsmod.yellow_balloon": "Gelber Luftballon",
 	
     //Entity names
     "entity.angrybirdsmod.red": "Red",

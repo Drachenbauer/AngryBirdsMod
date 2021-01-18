@@ -1,7 +1,7 @@
 
 {
     //ItemGroup name
-     "itemGroup.AngryBirds": "Angry Birds Items",
+     "itemGroup.angrybirds": "Angry Birds Items",
     
     //Item names
     "item.angrybirdsmod.red_egg": "Red-Spawn-Egg",
@@ -64,23 +64,6 @@
     "block.angrybirdsmod.oak_planks_frame": "Oak-Planks-scaffolding-frame-Block",
     "block.angrybirdsmod.spruce_planks_frame": "Spruce-Planks-scaffolding-frame-Block",
     "block.angrybirdsmod.stone_frame": "Stone-scaffolding-frame-Block",
-    
-    "block.angrybirdsmod.black_balloon": "Black Balloon",
-    "block.angrybirdsmod.blue_balloon": "Blue Balloon",
-    "block.angrybirdsmod.brown_balloon": "Brown Balloon",
-    "block.angrybirdsmod.cyan_balloon": "Cyan Balloon",
-    "block.angrybirdsmod.gray_balloon": "Gray Balloon",
-    "block.angrybirdsmod.green_balloon": "Green Balloon",
-    "block.angrybirdsmod.light_blue_balloon": "Light Blue Balloon",
-    "block.angrybirdsmod.light_gray_balloon": "Light Gray Balloon",
-    "block.angrybirdsmod.lime_balloon": "Lime Balloon",
-    "block.angrybirdsmod.magenta_balloon": "Magenta Balloon",
-    "block.angrybirdsmod.orange_balloon": "Orange Balloon",
-    "block.angrybirdsmod.pink_balloon": "Pink Balloon",
-    "block.angrybirdsmod.purple_balloon": "Purple Balloon",
-    "block.angrybirdsmod.red_balloon": "Red Balloon",
-    "block.angrybirdsmod.white_balloon": "White Balloon",
-    "block.angrybirdsmod.yellow_balloon": "Yellow Balloon",
     
     //Entity names
     "entity.angrybirdsmod.red": "Red",

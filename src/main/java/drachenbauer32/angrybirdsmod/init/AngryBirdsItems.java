@@ -131,39 +131,6 @@ public class AngryBirdsItems
                         new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
     public static final RegistryObject<Item> BLUE_ICE_FRAME = ITEMS.register("blue_ice_frame", () -> new BlockItem(AngryBirdsBlocks.BLUE_ICE_FRAME.get(),
                         new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    
-    public static final RegistryObject<Item> BLACK_BALLOON = ITEMS.register("black_balloon", () -> new BlockItem(AngryBirdsBlocks.BLACK_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> BLUE_BALLOON = ITEMS.register("blue_balloon", () -> new BlockItem(AngryBirdsBlocks.BLUE_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> BROWN_BALLOON = ITEMS.register("brown_balloon", () -> new BlockItem(AngryBirdsBlocks.BROWN_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> CYAN_BALLOON = ITEMS.register("cyan_balloon", () -> new BlockItem(AngryBirdsBlocks.CYAN_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> GRAY_BALLOON = ITEMS.register("gray_balloon", () -> new BlockItem(AngryBirdsBlocks.GRAY_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> GREEN_BALLOON = ITEMS.register("green_balloon", () -> new BlockItem(AngryBirdsBlocks.GREEN_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> LIGHT_BLUE_BALLOON = ITEMS.register("light_blue_balloon", () -> new BlockItem(AngryBirdsBlocks.LIGHT_BLUE_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> LIGHT_GRAY_BALLOON = ITEMS.register("light_gray_balloon", () -> new BlockItem(AngryBirdsBlocks.LIGHT_GRAY_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> LIME_BALLOON = ITEMS.register("lime_balloon", () -> new BlockItem(AngryBirdsBlocks.LIME_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> MAGENTA_BALLOON = ITEMS.register("magenta_balloon", () -> new BlockItem(AngryBirdsBlocks.MAGENTA_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> ORANGE_BALLOON = ITEMS.register("orange_balloon", () -> new BlockItem(AngryBirdsBlocks.ORANGE_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> PINK_BALLOON = ITEMS.register("pink_balloon", () -> new BlockItem(AngryBirdsBlocks.PINK_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> PURPLE_BALLOON = ITEMS.register("purple_balloon", () -> new BlockItem(AngryBirdsBlocks.PURPLE_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> RED_BALLOON = ITEMS.register("red_balloon", () -> new BlockItem(AngryBirdsBlocks.RED_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> WHITE_BALLOON = ITEMS.register("white_balloon", () -> new BlockItem(AngryBirdsBlocks.WHITE_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
-    public static final RegistryObject<Item> YELLOW_BALLOON = ITEMS.register("yellow_balloon", () -> new BlockItem(AngryBirdsBlocks.YELLOW_BALLOON.get(),
-                        new Item.Properties().defaultMaxDamage(0).group(AngryBirds.ANGRY_BIRDS).maxStackSize(64).rarity(Rarity.COMMON).setNoRepair()));
         
     public static final Tag<Item> BIRD_SHOTS = makeWrapperTag("bird_shots");
     
